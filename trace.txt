@@ -1,0 +1,1606 @@
+[TRACE] ===== layer 0 =====
+[TRACE] layer 0: Q matmul
+[TRACE] layer 0: K matmul
+[TRACE] layer 0: V matmul
+[TRACE] layer 0: attn (Q*K, scores*V, wo)
+[TRACE] layer 0: ffn (gate, up, down)
+[TRACE] ===== layer 1 =====
+[TRACE] layer 1: Q matmul
+[TRACE] layer 1: K matmul
+[TRACE] layer 1: V matmul
+[TRACE] layer 1: attn (Q*K, scores*V, wo)
+[TRACE] layer 1: ffn (gate, up, down)
+[TRACE] ===== layer 2 =====
+[TRACE] layer 2: Q matmul
+[TRACE] layer 2: K matmul
+[TRACE] layer 2: V matmul
+[TRACE] layer 2: attn (Q*K, scores*V, wo)
+[TRACE] layer 2: ffn (gate, up, down)
+[TRACE] ===== layer 3 =====
+[TRACE] layer 3: Q matmul
+[TRACE] layer 3: K matmul
+[TRACE] layer 3: V matmul
+[TRACE] layer 3: attn (Q*K, scores*V, wo)
+[TRACE] layer 3: ffn (gate, up, down)
+[TRACE] ===== layer 4 =====
+[TRACE] layer 4: Q matmul
+[TRACE] layer 4: K matmul
+[TRACE] layer 4: V matmul
+[TRACE] layer 4: attn (Q*K, scores*V, wo)
+[TRACE] layer 4: ffn (gate, up, down)
+[TRACE] ===== layer 5 =====
+[TRACE] layer 5: Q matmul
+[TRACE] layer 5: K matmul
+[TRACE] layer 5: V matmul
+[TRACE] layer 5: attn (Q*K, scores*V, wo)
+[TRACE] layer 5: ffn (gate, up, down)
+[TRACE] ===== layer 6 =====
+[TRACE] layer 6: Q matmul
+[TRACE] layer 6: K matmul
+[TRACE] layer 6: V matmul
+[TRACE] layer 6: attn (Q*K, scores*V, wo)
+[TRACE] layer 6: ffn (gate, up, down)
+[TRACE] ===== layer 7 =====
+[TRACE] layer 7: Q matmul
+[TRACE] layer 7: K matmul
+[TRACE] layer 7: V matmul
+[TRACE] layer 7: attn (Q*K, scores*V, wo)
+[TRACE] layer 7: ffn (gate, up, down)
+[TRACE] ===== layer 8 =====
+[TRACE] layer 8: Q matmul
+[TRACE] layer 8: K matmul
+[TRACE] layer 8: V matmul
+[TRACE] layer 8: attn (Q*K, scores*V, wo)
+[TRACE] layer 8: ffn (gate, up, down)
+[TRACE] ===== layer 9 =====
+[TRACE] layer 9: Q matmul
+[TRACE] layer 9: K matmul
+[TRACE] layer 9: V matmul
+[TRACE] layer 9: attn (Q*K, scores*V, wo)
+[TRACE] layer 9: ffn (gate, up, down)
+[TRACE] ===== layer 10 =====
+[TRACE] layer 10: Q matmul
+[TRACE] layer 10: K matmul
+[TRACE] layer 10: V matmul
+[TRACE] layer 10: attn (Q*K, scores*V, wo)
+[TRACE] layer 10: ffn (gate, up, down)
+[TRACE] ===== layer 11 =====
+[TRACE] layer 11: Q matmul
+[TRACE] layer 11: K matmul
+[TRACE] layer 11: V matmul
+[TRACE] layer 11: attn (Q*K, scores*V, wo)
+[TRACE] layer 11: ffn (gate, up, down)
+[TRACE] ===== layer 12 =====
+[TRACE] layer 12: Q matmul
+[TRACE] layer 12: K matmul
+[TRACE] layer 12: V matmul
+[TRACE] layer 12: attn (Q*K, scores*V, wo)
+[TRACE] layer 12: ffn (gate, up, down)
+[TRACE] ===== layer 13 =====
+[TRACE] layer 13: Q matmul
+[TRACE] layer 13: K matmul
+[TRACE] layer 13: V matmul
+[TRACE] layer 13: attn (Q*K, scores*V, wo)
+[TRACE] layer 13: ffn (gate, up, down)
+[TRACE] ===== layer 14 =====
+[TRACE] layer 14: Q matmul
+[TRACE] layer 14: K matmul
+[TRACE] layer 14: V matmul
+[TRACE] layer 14: attn (Q*K, scores*V, wo)
+[TRACE] layer 14: ffn (gate, up, down)
+[TRACE] ===== layer 15 =====
+[TRACE] layer 15: Q matmul
+[TRACE] layer 15: K matmul
+[TRACE] layer 15: V matmul
+[TRACE] layer 15: attn (Q*K, scores*V, wo)
+[TRACE] layer 15: ffn (gate, up, down)
+[TRACE] ===== layer 16 =====
+[TRACE] layer 16: Q matmul
+[TRACE] layer 16: K matmul
+[TRACE] layer 16: V matmul
+[TRACE] layer 16: attn (Q*K, scores*V, wo)
+[TRACE] layer 16: ffn (gate, up, down)
+[TRACE] ===== layer 17 =====
+[TRACE] layer 17: Q matmul
+[TRACE] layer 17: K matmul
+[TRACE] layer 17: V matmul
+[TRACE] layer 17: attn (Q*K, scores*V, wo)
+[TRACE] layer 17: ffn (gate, up, down)
+[TRACE] ===== layer 18 =====
+[TRACE] layer 18: Q matmul
+[TRACE] layer 18: K matmul
+[TRACE] layer 18: V matmul
+[TRACE] layer 18: attn (Q*K, scores*V, wo)
+[TRACE] layer 18: ffn (gate, up, down)
+[TRACE] ===== layer 19 =====
+[TRACE] layer 19: Q matmul
+[TRACE] layer 19: K matmul
+[TRACE] layer 19: V matmul
+[TRACE] layer 19: attn (Q*K, scores*V, wo)
+[TRACE] layer 19: ffn (gate, up, down)
+[TRACE] ===== layer 20 =====
+[TRACE] layer 20: Q matmul
+[TRACE] layer 20: K matmul
+[TRACE] layer 20: V matmul
+[TRACE] layer 20: attn (Q*K, scores*V, wo)
+[TRACE] layer 20: ffn (gate, up, down)
+[TRACE] ===== layer 21 =====
+[TRACE] layer 21: Q matmul
+[TRACE] layer 21: K matmul
+[TRACE] layer 21: V matmul
+[TRACE] layer 21: attn (Q*K, scores*V, wo)
+[TRACE] layer 21: ffn (gate, up, down)
+[TRACE] ===== layer 22 =====
+[TRACE] layer 22: Q matmul
+[TRACE] layer 22: K matmul
+[TRACE] layer 22: V matmul
+[TRACE] layer 22: attn (Q*K, scores*V, wo)
+[TRACE] layer 22: ffn (gate, up, down)
+[TRACE] ===== layer 23 =====
+[TRACE] layer 23: Q matmul
+[TRACE] layer 23: K matmul
+[TRACE] layer 23: V matmul
+[TRACE] layer 23: attn (Q*K, scores*V, wo)
+[TRACE] layer 23: ffn (gate, up, down)
+[TRACE] output_norm
+[TRACE] lm_head matmul → logits
+[TRACE] ===== layer 0 =====
+[TRACE] layer 0: Q matmul
+[TRACE] layer 0: K matmul
+[TRACE] layer 0: V matmul
+[TRACE] layer 0: attn (Q*K, scores*V, wo)
+[TRACE] layer 0: ffn (gate, up, down)
+[TRACE] ===== layer 1 =====
+[TRACE] layer 1: Q matmul
+[TRACE] layer 1: K matmul
+[TRACE] layer 1: V matmul
+[TRACE] layer 1: attn (Q*K, scores*V, wo)
+[TRACE] layer 1: ffn (gate, up, down)
+[TRACE] ===== layer 2 =====
+[TRACE] layer 2: Q matmul
+[TRACE] layer 2: K matmul
+[TRACE] layer 2: V matmul
+[TRACE] layer 2: attn (Q*K, scores*V, wo)
+[TRACE] layer 2: ffn (gate, up, down)
+[TRACE] ===== layer 3 =====
+[TRACE] layer 3: Q matmul
+[TRACE] layer 3: K matmul
+[TRACE] layer 3: V matmul
+[TRACE] layer 3: attn (Q*K, scores*V, wo)
+[TRACE] layer 3: ffn (gate, up, down)
+[TRACE] ===== layer 4 =====
+[TRACE] layer 4: Q matmul
+[TRACE] layer 4: K matmul
+[TRACE] layer 4: V matmul
+[TRACE] layer 4: attn (Q*K, scores*V, wo)
+[TRACE] layer 4: ffn (gate, up, down)
+[TRACE] ===== layer 5 =====
+[TRACE] layer 5: Q matmul
+[TRACE] layer 5: K matmul
+[TRACE] layer 5: V matmul
+[TRACE] layer 5: attn (Q*K, scores*V, wo)
+[TRACE] layer 5: ffn (gate, up, down)
+[TRACE] ===== layer 6 =====
+[TRACE] layer 6: Q matmul
+[TRACE] layer 6: K matmul
+[TRACE] layer 6: V matmul
+[TRACE] layer 6: attn (Q*K, scores*V, wo)
+[TRACE] layer 6: ffn (gate, up, down)
+[TRACE] ===== layer 7 =====
+[TRACE] layer 7: Q matmul
+[TRACE] layer 7: K matmul
+[TRACE] layer 7: V matmul
+[TRACE] layer 7: attn (Q*K, scores*V, wo)
+[TRACE] layer 7: ffn (gate, up, down)
+[TRACE] ===== layer 8 =====
+[TRACE] layer 8: Q matmul
+[TRACE] layer 8: K matmul
+[TRACE] layer 8: V matmul
+[TRACE] layer 8: attn (Q*K, scores*V, wo)
+[TRACE] layer 8: ffn (gate, up, down)
+[TRACE] ===== layer 9 =====
+[TRACE] layer 9: Q matmul
+[TRACE] layer 9: K matmul
+[TRACE] layer 9: V matmul
+[TRACE] layer 9: attn (Q*K, scores*V, wo)
+[TRACE] layer 9: ffn (gate, up, down)
+[TRACE] ===== layer 10 =====
+[TRACE] layer 10: Q matmul
+[TRACE] layer 10: K matmul
+[TRACE] layer 10: V matmul
+[TRACE] layer 10: attn (Q*K, scores*V, wo)
+[TRACE] layer 10: ffn (gate, up, down)
+[TRACE] ===== layer 11 =====
+[TRACE] layer 11: Q matmul
+[TRACE] layer 11: K matmul
+[TRACE] layer 11: V matmul
+[TRACE] layer 11: attn (Q*K, scores*V, wo)
+[TRACE] layer 11: ffn (gate, up, down)
+[TRACE] ===== layer 12 =====
+[TRACE] layer 12: Q matmul
+[TRACE] layer 12: K matmul
+[TRACE] layer 12: V matmul
+[TRACE] layer 12: attn (Q*K, scores*V, wo)
+[TRACE] layer 12: ffn (gate, up, down)
+[TRACE] ===== layer 13 =====
+[TRACE] layer 13: Q matmul
+[TRACE] layer 13: K matmul
+[TRACE] layer 13: V matmul
+[TRACE] layer 13: attn (Q*K, scores*V, wo)
+[TRACE] layer 13: ffn (gate, up, down)
+[TRACE] ===== layer 14 =====
+[TRACE] layer 14: Q matmul
+[TRACE] layer 14: K matmul
+[TRACE] layer 14: V matmul
+[TRACE] layer 14: attn (Q*K, scores*V, wo)
+[TRACE] layer 14: ffn (gate, up, down)
+[TRACE] ===== layer 15 =====
+[TRACE] layer 15: Q matmul
+[TRACE] layer 15: K matmul
+[TRACE] layer 15: V matmul
+[TRACE] layer 15: attn (Q*K, scores*V, wo)
+[TRACE] layer 15: ffn (gate, up, down)
+[TRACE] ===== layer 16 =====
+[TRACE] layer 16: Q matmul
+[TRACE] layer 16: K matmul
+[TRACE] layer 16: V matmul
+[TRACE] layer 16: attn (Q*K, scores*V, wo)
+[TRACE] layer 16: ffn (gate, up, down)
+[TRACE] ===== layer 17 =====
+[TRACE] layer 17: Q matmul
+[TRACE] layer 17: K matmul
+[TRACE] layer 17: V matmul
+[TRACE] layer 17: attn (Q*K, scores*V, wo)
+[TRACE] layer 17: ffn (gate, up, down)
+[TRACE] ===== layer 18 =====
+[TRACE] layer 18: Q matmul
+[TRACE] layer 18: K matmul
+[TRACE] layer 18: V matmul
+[TRACE] layer 18: attn (Q*K, scores*V, wo)
+[TRACE] layer 18: ffn (gate, up, down)
+[TRACE] ===== layer 19 =====
+[TRACE] layer 19: Q matmul
+[TRACE] layer 19: K matmul
+[TRACE] layer 19: V matmul
+[TRACE] layer 19: attn (Q*K, scores*V, wo)
+[TRACE] layer 19: ffn (gate, up, down)
+[TRACE] ===== layer 20 =====
+[TRACE] layer 20: Q matmul
+[TRACE] layer 20: K matmul
+[TRACE] layer 20: V matmul
+[TRACE] layer 20: attn (Q*K, scores*V, wo)
+[TRACE] layer 20: ffn (gate, up, down)
+[TRACE] ===== layer 21 =====
+[TRACE] layer 21: Q matmul
+[TRACE] layer 21: K matmul
+[TRACE] layer 21: V matmul
+[TRACE] layer 21: attn (Q*K, scores*V, wo)
+[TRACE] layer 21: ffn (gate, up, down)
+[TRACE] ===== layer 22 =====
+[TRACE] layer 22: Q matmul
+[TRACE] layer 22: K matmul
+[TRACE] layer 22: V matmul
+[TRACE] layer 22: attn (Q*K, scores*V, wo)
+[TRACE] layer 22: ffn (gate, up, down)
+[TRACE] ===== layer 23 =====
+[TRACE] layer 23: Q matmul
+[TRACE] layer 23: K matmul
+[TRACE] layer 23: V matmul
+[TRACE] layer 23: attn (Q*K, scores*V, wo)
+[TRACE] layer 23: ffn (gate, up, down)
+[TRACE] output_norm
+[TRACE] lm_head matmul → logits
+[TRACE] ===== layer 0 =====
+[TRACE] layer 0: Q matmul
+[TRACE] layer 0: K matmul
+[TRACE] layer 0: V matmul
+[TRACE] layer 0: attn (Q*K, scores*V, wo)
+[TRACE] layer 0: ffn (gate, up, down)
+[TRACE] ===== layer 1 =====
+[TRACE] layer 1: Q matmul
+[TRACE] layer 1: K matmul
+[TRACE] layer 1: V matmul
+[TRACE] layer 1: attn (Q*K, scores*V, wo)
+[TRACE] layer 1: ffn (gate, up, down)
+[TRACE] ===== layer 2 =====
+[TRACE] layer 2: Q matmul
+[TRACE] layer 2: K matmul
+[TRACE] layer 2: V matmul
+[TRACE] layer 2: attn (Q*K, scores*V, wo)
+[TRACE] layer 2: ffn (gate, up, down)
+[TRACE] ===== layer 3 =====
+[TRACE] layer 3: Q matmul
+[TRACE] layer 3: K matmul
+[TRACE] layer 3: V matmul
+[TRACE] layer 3: attn (Q*K, scores*V, wo)
+[TRACE] layer 3: ffn (gate, up, down)
+[TRACE] ===== layer 4 =====
+[TRACE] layer 4: Q matmul
+[TRACE] layer 4: K matmul
+[TRACE] layer 4: V matmul
+[TRACE] layer 4: attn (Q*K, scores*V, wo)
+[TRACE] layer 4: ffn (gate, up, down)
+[TRACE] ===== layer 5 =====
+[TRACE] layer 5: Q matmul
+[TRACE] layer 5: K matmul
+[TRACE] layer 5: V matmul
+[TRACE] layer 5: attn (Q*K, scores*V, wo)
+[TRACE] layer 5: ffn (gate, up, down)
+[TRACE] ===== layer 6 =====
+[TRACE] layer 6: Q matmul
+[TRACE] layer 6: K matmul
+[TRACE] layer 6: V matmul
+[TRACE] layer 6: attn (Q*K, scores*V, wo)
+[TRACE] layer 6: ffn (gate, up, down)
+[TRACE] ===== layer 7 =====
+[TRACE] layer 7: Q matmul
+[TRACE] layer 7: K matmul
+[TRACE] layer 7: V matmul
+[TRACE] layer 7: attn (Q*K, scores*V, wo)
+[TRACE] layer 7: ffn (gate, up, down)
+[TRACE] ===== layer 8 =====
+[TRACE] layer 8: Q matmul
+[TRACE] layer 8: K matmul
+[TRACE] layer 8: V matmul
+[TRACE] layer 8: attn (Q*K, scores*V, wo)
+[TRACE] layer 8: ffn (gate, up, down)
+[TRACE] ===== layer 9 =====
+[TRACE] layer 9: Q matmul
+[TRACE] layer 9: K matmul
+[TRACE] layer 9: V matmul
+[TRACE] layer 9: attn (Q*K, scores*V, wo)
+[TRACE] layer 9: ffn (gate, up, down)
+[TRACE] ===== layer 10 =====
+[TRACE] layer 10: Q matmul
+[TRACE] layer 10: K matmul
+[TRACE] layer 10: V matmul
+[TRACE] layer 10: attn (Q*K, scores*V, wo)
+[TRACE] layer 10: ffn (gate, up, down)
+[TRACE] ===== layer 11 =====
+[TRACE] layer 11: Q matmul
+[TRACE] layer 11: K matmul
+[TRACE] layer 11: V matmul
+[TRACE] layer 11: attn (Q*K, scores*V, wo)
+[TRACE] layer 11: ffn (gate, up, down)
+[TRACE] ===== layer 12 =====
+[TRACE] layer 12: Q matmul
+[TRACE] layer 12: K matmul
+[TRACE] layer 12: V matmul
+[TRACE] layer 12: attn (Q*K, scores*V, wo)
+[TRACE] layer 12: ffn (gate, up, down)
+[TRACE] ===== layer 13 =====
+[TRACE] layer 13: Q matmul
+[TRACE] layer 13: K matmul
+[TRACE] layer 13: V matmul
+[TRACE] layer 13: attn (Q*K, scores*V, wo)
+[TRACE] layer 13: ffn (gate, up, down)
+[TRACE] ===== layer 14 =====
+[TRACE] layer 14: Q matmul
+[TRACE] layer 14: K matmul
+[TRACE] layer 14: V matmul
+[TRACE] layer 14: attn (Q*K, scores*V, wo)
+[TRACE] layer 14: ffn (gate, up, down)
+[TRACE] ===== layer 15 =====
+[TRACE] layer 15: Q matmul
+[TRACE] layer 15: K matmul
+[TRACE] layer 15: V matmul
+[TRACE] layer 15: attn (Q*K, scores*V, wo)
+[TRACE] layer 15: ffn (gate, up, down)
+[TRACE] ===== layer 16 =====
+[TRACE] layer 16: Q matmul
+[TRACE] layer 16: K matmul
+[TRACE] layer 16: V matmul
+[TRACE] layer 16: attn (Q*K, scores*V, wo)
+[TRACE] layer 16: ffn (gate, up, down)
+[TRACE] ===== layer 17 =====
+[TRACE] layer 17: Q matmul
+[TRACE] layer 17: K matmul
+[TRACE] layer 17: V matmul
+[TRACE] layer 17: attn (Q*K, scores*V, wo)
+[TRACE] layer 17: ffn (gate, up, down)
+[TRACE] ===== layer 18 =====
+[TRACE] layer 18: Q matmul
+[TRACE] layer 18: K matmul
+[TRACE] layer 18: V matmul
+[TRACE] layer 18: attn (Q*K, scores*V, wo)
+[TRACE] layer 18: ffn (gate, up, down)
+[TRACE] ===== layer 19 =====
+[TRACE] layer 19: Q matmul
+[TRACE] layer 19: K matmul
+[TRACE] layer 19: V matmul
+[TRACE] layer 19: attn (Q*K, scores*V, wo)
+[TRACE] layer 19: ffn (gate, up, down)
+[TRACE] ===== layer 20 =====
+[TRACE] layer 20: Q matmul
+[TRACE] layer 20: K matmul
+[TRACE] layer 20: V matmul
+[TRACE] layer 20: attn (Q*K, scores*V, wo)
+[TRACE] layer 20: ffn (gate, up, down)
+[TRACE] ===== layer 21 =====
+[TRACE] layer 21: Q matmul
+[TRACE] layer 21: K matmul
+[TRACE] layer 21: V matmul
+[TRACE] layer 21: attn (Q*K, scores*V, wo)
+[TRACE] layer 21: ffn (gate, up, down)
+[TRACE] ===== layer 22 =====
+[TRACE] layer 22: Q matmul
+[TRACE] layer 22: K matmul
+[TRACE] layer 22: V matmul
+[TRACE] layer 22: attn (Q*K, scores*V, wo)
+[TRACE] layer 22: ffn (gate, up, down)
+[TRACE] ===== layer 23 =====
+[TRACE] layer 23: Q matmul
+[TRACE] layer 23: K matmul
+[TRACE] layer 23: V matmul
+[TRACE] layer 23: attn (Q*K, scores*V, wo)
+[TRACE] layer 23: ffn (gate, up, down)
+[TRACE] output_norm
+[TRACE] lm_head matmul → logits
+[TRACE] ===== layer 0 =====
+[TRACE] layer 0: Q matmul
+[TRACE] layer 0: K matmul
+[TRACE] layer 0: V matmul
+[TRACE] layer 0: attn (Q*K, scores*V, wo)
+[TRACE] layer 0: ffn (gate, up, down)
+[TRACE] ===== layer 1 =====
+[TRACE] layer 1: Q matmul
+[TRACE] layer 1: K matmul
+[TRACE] layer 1: V matmul
+[TRACE] layer 1: attn (Q*K, scores*V, wo)
+[TRACE] layer 1: ffn (gate, up, down)
+[TRACE] ===== layer 2 =====
+[TRACE] layer 2: Q matmul
+[TRACE] layer 2: K matmul
+[TRACE] layer 2: V matmul
+[TRACE] layer 2: attn (Q*K, scores*V, wo)
+[TRACE] layer 2: ffn (gate, up, down)
+[TRACE] ===== layer 3 =====
+[TRACE] layer 3: Q matmul
+[TRACE] layer 3: K matmul
+[TRACE] layer 3: V matmul
+[TRACE] layer 3: attn (Q*K, scores*V, wo)
+[TRACE] layer 3: ffn (gate, up, down)
+[TRACE] ===== layer 4 =====
+[TRACE] layer 4: Q matmul
+[TRACE] layer 4: K matmul
+[TRACE] layer 4: V matmul
+[TRACE] layer 4: attn (Q*K, scores*V, wo)
+[TRACE] layer 4: ffn (gate, up, down)
+[TRACE] ===== layer 5 =====
+[TRACE] layer 5: Q matmul
+[TRACE] layer 5: K matmul
+[TRACE] layer 5: V matmul
+[TRACE] layer 5: attn (Q*K, scores*V, wo)
+[TRACE] layer 5: ffn (gate, up, down)
+[TRACE] ===== layer 6 =====
+[TRACE] layer 6: Q matmul
+[TRACE] layer 6: K matmul
+[TRACE] layer 6: V matmul
+[TRACE] layer 6: attn (Q*K, scores*V, wo)
+[TRACE] layer 6: ffn (gate, up, down)
+[TRACE] ===== layer 7 =====
+[TRACE] layer 7: Q matmul
+[TRACE] layer 7: K matmul
+[TRACE] layer 7: V matmul
+[TRACE] layer 7: attn (Q*K, scores*V, wo)
+[TRACE] layer 7: ffn (gate, up, down)
+[TRACE] ===== layer 8 =====
+[TRACE] layer 8: Q matmul
+[TRACE] layer 8: K matmul
+[TRACE] layer 8: V matmul
+[TRACE] layer 8: attn (Q*K, scores*V, wo)
+[TRACE] layer 8: ffn (gate, up, down)
+[TRACE] ===== layer 9 =====
+[TRACE] layer 9: Q matmul
+[TRACE] layer 9: K matmul
+[TRACE] layer 9: V matmul
+[TRACE] layer 9: attn (Q*K, scores*V, wo)
+[TRACE] layer 9: ffn (gate, up, down)
+[TRACE] ===== layer 10 =====
+[TRACE] layer 10: Q matmul
+[TRACE] layer 10: K matmul
+[TRACE] layer 10: V matmul
+[TRACE] layer 10: attn (Q*K, scores*V, wo)
+[TRACE] layer 10: ffn (gate, up, down)
+[TRACE] ===== layer 11 =====
+[TRACE] layer 11: Q matmul
+[TRACE] layer 11: K matmul
+[TRACE] layer 11: V matmul
+[TRACE] layer 11: attn (Q*K, scores*V, wo)
+[TRACE] layer 11: ffn (gate, up, down)
+[TRACE] ===== layer 12 =====
+[TRACE] layer 12: Q matmul
+[TRACE] layer 12: K matmul
+[TRACE] layer 12: V matmul
+[TRACE] layer 12: attn (Q*K, scores*V, wo)
+[TRACE] layer 12: ffn (gate, up, down)
+[TRACE] ===== layer 13 =====
+[TRACE] layer 13: Q matmul
+[TRACE] layer 13: K matmul
+[TRACE] layer 13: V matmul
+[TRACE] layer 13: attn (Q*K, scores*V, wo)
+[TRACE] layer 13: ffn (gate, up, down)
+[TRACE] ===== layer 14 =====
+[TRACE] layer 14: Q matmul
+[TRACE] layer 14: K matmul
+[TRACE] layer 14: V matmul
+[TRACE] layer 14: attn (Q*K, scores*V, wo)
+[TRACE] layer 14: ffn (gate, up, down)
+[TRACE] ===== layer 15 =====
+[TRACE] layer 15: Q matmul
+[TRACE] layer 15: K matmul
+[TRACE] layer 15: V matmul
+[TRACE] layer 15: attn (Q*K, scores*V, wo)
+[TRACE] layer 15: ffn (gate, up, down)
+[TRACE] ===== layer 16 =====
+[TRACE] layer 16: Q matmul
+[TRACE] layer 16: K matmul
+[TRACE] layer 16: V matmul
+[TRACE] layer 16: attn (Q*K, scores*V, wo)
+[TRACE] layer 16: ffn (gate, up, down)
+[TRACE] ===== layer 17 =====
+[TRACE] layer 17: Q matmul
+[TRACE] layer 17: K matmul
+[TRACE] layer 17: V matmul
+[TRACE] layer 17: attn (Q*K, scores*V, wo)
+[TRACE] layer 17: ffn (gate, up, down)
+[TRACE] ===== layer 18 =====
+[TRACE] layer 18: Q matmul
+[TRACE] layer 18: K matmul
+[TRACE] layer 18: V matmul
+[TRACE] layer 18: attn (Q*K, scores*V, wo)
+[TRACE] layer 18: ffn (gate, up, down)
+[TRACE] ===== layer 19 =====
+[TRACE] layer 19: Q matmul
+[TRACE] layer 19: K matmul
+[TRACE] layer 19: V matmul
+[TRACE] layer 19: attn (Q*K, scores*V, wo)
+[TRACE] layer 19: ffn (gate, up, down)
+[TRACE] ===== layer 20 =====
+[TRACE] layer 20: Q matmul
+[TRACE] layer 20: K matmul
+[TRACE] layer 20: V matmul
+[TRACE] layer 20: attn (Q*K, scores*V, wo)
+[TRACE] layer 20: ffn (gate, up, down)
+[TRACE] ===== layer 21 =====
+[TRACE] layer 21: Q matmul
+[TRACE] layer 21: K matmul
+[TRACE] layer 21: V matmul
+[TRACE] layer 21: attn (Q*K, scores*V, wo)
+[TRACE] layer 21: ffn (gate, up, down)
+[TRACE] ===== layer 22 =====
+[TRACE] layer 22: Q matmul
+[TRACE] layer 22: K matmul
+[TRACE] layer 22: V matmul
+[TRACE] layer 22: attn (Q*K, scores*V, wo)
+[TRACE] layer 22: ffn (gate, up, down)
+[TRACE] ===== layer 23 =====
+[TRACE] layer 23: Q matmul
+[TRACE] layer 23: K matmul
+[TRACE] layer 23: V matmul
+[TRACE] layer 23: attn (Q*K, scores*V, wo)
+[TRACE] layer 23: ffn (gate, up, down)
+[TRACE] output_norm
+[TRACE] lm_head matmul → logits
+[TRACE] ===== layer 0 =====
+[TRACE] layer 0: Q matmul
+[TRACE] layer 0: K matmul
+[TRACE] layer 0: V matmul
+[TRACE] layer 0: attn (Q*K, scores*V, wo)
+[TRACE] layer 0: ffn (gate, up, down)
+[TRACE] ===== layer 1 =====
+[TRACE] layer 1: Q matmul
+[TRACE] layer 1: K matmul
+[TRACE] layer 1: V matmul
+[TRACE] layer 1: attn (Q*K, scores*V, wo)
+[TRACE] layer 1: ffn (gate, up, down)
+[TRACE] ===== layer 2 =====
+[TRACE] layer 2: Q matmul
+[TRACE] layer 2: K matmul
+[TRACE] layer 2: V matmul
+[TRACE] layer 2: attn (Q*K, scores*V, wo)
+[TRACE] layer 2: ffn (gate, up, down)
+[TRACE] ===== layer 3 =====
+[TRACE] layer 3: Q matmul
+[TRACE] layer 3: K matmul
+[TRACE] layer 3: V matmul
+[TRACE] layer 3: attn (Q*K, scores*V, wo)
+[TRACE] layer 3: ffn (gate, up, down)
+[TRACE] ===== layer 4 =====
+[TRACE] layer 4: Q matmul
+[TRACE] layer 4: K matmul
+[TRACE] layer 4: V matmul
+[TRACE] layer 4: attn (Q*K, scores*V, wo)
+[TRACE] layer 4: ffn (gate, up, down)
+[TRACE] ===== layer 5 =====
+[TRACE] layer 5: Q matmul
+[TRACE] layer 5: K matmul
+[TRACE] layer 5: V matmul
+[TRACE] layer 5: attn (Q*K, scores*V, wo)
+[TRACE] layer 5: ffn (gate, up, down)
+[TRACE] ===== layer 6 =====
+[TRACE] layer 6: Q matmul
+[TRACE] layer 6: K matmul
+[TRACE] layer 6: V matmul
+[TRACE] layer 6: attn (Q*K, scores*V, wo)
+[TRACE] layer 6: ffn (gate, up, down)
+[TRACE] ===== layer 7 =====
+[TRACE] layer 7: Q matmul
+[TRACE] layer 7: K matmul
+[TRACE] layer 7: V matmul
+[TRACE] layer 7: attn (Q*K, scores*V, wo)
+[TRACE] layer 7: ffn (gate, up, down)
+[TRACE] ===== layer 8 =====
+[TRACE] layer 8: Q matmul
+[TRACE] layer 8: K matmul
+[TRACE] layer 8: V matmul
+[TRACE] layer 8: attn (Q*K, scores*V, wo)
+[TRACE] layer 8: ffn (gate, up, down)
+[TRACE] ===== layer 9 =====
+[TRACE] layer 9: Q matmul
+[TRACE] layer 9: K matmul
+[TRACE] layer 9: V matmul
+[TRACE] layer 9: attn (Q*K, scores*V, wo)
+[TRACE] layer 9: ffn (gate, up, down)
+[TRACE] ===== layer 10 =====
+[TRACE] layer 10: Q matmul
+[TRACE] layer 10: K matmul
+[TRACE] layer 10: V matmul
+[TRACE] layer 10: attn (Q*K, scores*V, wo)
+[TRACE] layer 10: ffn (gate, up, down)
+[TRACE] ===== layer 11 =====
+[TRACE] layer 11: Q matmul
+[TRACE] layer 11: K matmul
+[TRACE] layer 11: V matmul
+[TRACE] layer 11: attn (Q*K, scores*V, wo)
+[TRACE] layer 11: ffn (gate, up, down)
+[TRACE] ===== layer 12 =====
+[TRACE] layer 12: Q matmul
+[TRACE] layer 12: K matmul
+[TRACE] layer 12: V matmul
+[TRACE] layer 12: attn (Q*K, scores*V, wo)
+[TRACE] layer 12: ffn (gate, up, down)
+[TRACE] ===== layer 13 =====
+[TRACE] layer 13: Q matmul
+[TRACE] layer 13: K matmul
+[TRACE] layer 13: V matmul
+[TRACE] layer 13: attn (Q*K, scores*V, wo)
+[TRACE] layer 13: ffn (gate, up, down)
+[TRACE] ===== layer 14 =====
+[TRACE] layer 14: Q matmul
+[TRACE] layer 14: K matmul
+[TRACE] layer 14: V matmul
+[TRACE] layer 14: attn (Q*K, scores*V, wo)
+[TRACE] layer 14: ffn (gate, up, down)
+[TRACE] ===== layer 15 =====
+[TRACE] layer 15: Q matmul
+[TRACE] layer 15: K matmul
+[TRACE] layer 15: V matmul
+[TRACE] layer 15: attn (Q*K, scores*V, wo)
+[TRACE] layer 15: ffn (gate, up, down)
+[TRACE] ===== layer 16 =====
+[TRACE] layer 16: Q matmul
+[TRACE] layer 16: K matmul
+[TRACE] layer 16: V matmul
+[TRACE] layer 16: attn (Q*K, scores*V, wo)
+[TRACE] layer 16: ffn (gate, up, down)
+[TRACE] ===== layer 17 =====
+[TRACE] layer 17: Q matmul
+[TRACE] layer 17: K matmul
+[TRACE] layer 17: V matmul
+[TRACE] layer 17: attn (Q*K, scores*V, wo)
+[TRACE] layer 17: ffn (gate, up, down)
+[TRACE] ===== layer 18 =====
+[TRACE] layer 18: Q matmul
+[TRACE] layer 18: K matmul
+[TRACE] layer 18: V matmul
+[TRACE] layer 18: attn (Q*K, scores*V, wo)
+[TRACE] layer 18: ffn (gate, up, down)
+[TRACE] ===== layer 19 =====
+[TRACE] layer 19: Q matmul
+[TRACE] layer 19: K matmul
+[TRACE] layer 19: V matmul
+[TRACE] layer 19: attn (Q*K, scores*V, wo)
+[TRACE] layer 19: ffn (gate, up, down)
+[TRACE] ===== layer 20 =====
+[TRACE] layer 20: Q matmul
+[TRACE] layer 20: K matmul
+[TRACE] layer 20: V matmul
+[TRACE] layer 20: attn (Q*K, scores*V, wo)
+[TRACE] layer 20: ffn (gate, up, down)
+[TRACE] ===== layer 21 =====
+[TRACE] layer 21: Q matmul
+[TRACE] layer 21: K matmul
+[TRACE] layer 21: V matmul
+[TRACE] layer 21: attn (Q*K, scores*V, wo)
+[TRACE] layer 21: ffn (gate, up, down)
+[TRACE] ===== layer 22 =====
+[TRACE] layer 22: Q matmul
+[TRACE] layer 22: K matmul
+[TRACE] layer 22: V matmul
+[TRACE] layer 22: attn (Q*K, scores*V, wo)
+[TRACE] layer 22: ffn (gate, up, down)
+[TRACE] ===== layer 23 =====
+[TRACE] layer 23: Q matmul
+[TRACE] layer 23: K matmul
+[TRACE] layer 23: V matmul
+[TRACE] layer 23: attn (Q*K, scores*V, wo)
+[TRACE] layer 23: ffn (gate, up, down)
+[TRACE] output_norm
+[TRACE] lm_head matmul → logits
+[TRACE] ===== layer 0 =====
+[TRACE] layer 0: Q matmul
+[TRACE] layer 0: K matmul
+[TRACE] layer 0: V matmul
+[TRACE] layer 0: attn (Q*K, scores*V, wo)
+[TRACE] layer 0: ffn (gate, up, down)
+[TRACE] ===== layer 1 =====
+[TRACE] layer 1: Q matmul
+[TRACE] layer 1: K matmul
+[TRACE] layer 1: V matmul
+[TRACE] layer 1: attn (Q*K, scores*V, wo)
+[TRACE] layer 1: ffn (gate, up, down)
+[TRACE] ===== layer 2 =====
+[TRACE] layer 2: Q matmul
+[TRACE] layer 2: K matmul
+[TRACE] layer 2: V matmul
+[TRACE] layer 2: attn (Q*K, scores*V, wo)
+[TRACE] layer 2: ffn (gate, up, down)
+[TRACE] ===== layer 3 =====
+[TRACE] layer 3: Q matmul
+[TRACE] layer 3: K matmul
+[TRACE] layer 3: V matmul
+[TRACE] layer 3: attn (Q*K, scores*V, wo)
+[TRACE] layer 3: ffn (gate, up, down)
+[TRACE] ===== layer 4 =====
+[TRACE] layer 4: Q matmul
+[TRACE] layer 4: K matmul
+[TRACE] layer 4: V matmul
+[TRACE] layer 4: attn (Q*K, scores*V, wo)
+[TRACE] layer 4: ffn (gate, up, down)
+[TRACE] ===== layer 5 =====
+[TRACE] layer 5: Q matmul
+[TRACE] layer 5: K matmul
+[TRACE] layer 5: V matmul
+[TRACE] layer 5: attn (Q*K, scores*V, wo)
+[TRACE] layer 5: ffn (gate, up, down)
+[TRACE] ===== layer 6 =====
+[TRACE] layer 6: Q matmul
+[TRACE] layer 6: K matmul
+[TRACE] layer 6: V matmul
+[TRACE] layer 6: attn (Q*K, scores*V, wo)
+[TRACE] layer 6: ffn (gate, up, down)
+[TRACE] ===== layer 7 =====
+[TRACE] layer 7: Q matmul
+[TRACE] layer 7: K matmul
+[TRACE] layer 7: V matmul
+[TRACE] layer 7: attn (Q*K, scores*V, wo)
+[TRACE] layer 7: ffn (gate, up, down)
+[TRACE] ===== layer 8 =====
+[TRACE] layer 8: Q matmul
+[TRACE] layer 8: K matmul
+[TRACE] layer 8: V matmul
+[TRACE] layer 8: attn (Q*K, scores*V, wo)
+[TRACE] layer 8: ffn (gate, up, down)
+[TRACE] ===== layer 9 =====
+[TRACE] layer 9: Q matmul
+[TRACE] layer 9: K matmul
+[TRACE] layer 9: V matmul
+[TRACE] layer 9: attn (Q*K, scores*V, wo)
+[TRACE] layer 9: ffn (gate, up, down)
+[TRACE] ===== layer 10 =====
+[TRACE] layer 10: Q matmul
+[TRACE] layer 10: K matmul
+[TRACE] layer 10: V matmul
+[TRACE] layer 10: attn (Q*K, scores*V, wo)
+[TRACE] layer 10: ffn (gate, up, down)
+[TRACE] ===== layer 11 =====
+[TRACE] layer 11: Q matmul
+[TRACE] layer 11: K matmul
+[TRACE] layer 11: V matmul
+[TRACE] layer 11: attn (Q*K, scores*V, wo)
+[TRACE] layer 11: ffn (gate, up, down)
+[TRACE] ===== layer 12 =====
+[TRACE] layer 12: Q matmul
+[TRACE] layer 12: K matmul
+[TRACE] layer 12: V matmul
+[TRACE] layer 12: attn (Q*K, scores*V, wo)
+[TRACE] layer 12: ffn (gate, up, down)
+[TRACE] ===== layer 13 =====
+[TRACE] layer 13: Q matmul
+[TRACE] layer 13: K matmul
+[TRACE] layer 13: V matmul
+[TRACE] layer 13: attn (Q*K, scores*V, wo)
+[TRACE] layer 13: ffn (gate, up, down)
+[TRACE] ===== layer 14 =====
+[TRACE] layer 14: Q matmul
+[TRACE] layer 14: K matmul
+[TRACE] layer 14: V matmul
+[TRACE] layer 14: attn (Q*K, scores*V, wo)
+[TRACE] layer 14: ffn (gate, up, down)
+[TRACE] ===== layer 15 =====
+[TRACE] layer 15: Q matmul
+[TRACE] layer 15: K matmul
+[TRACE] layer 15: V matmul
+[TRACE] layer 15: attn (Q*K, scores*V, wo)
+[TRACE] layer 15: ffn (gate, up, down)
+[TRACE] ===== layer 16 =====
+[TRACE] layer 16: Q matmul
+[TRACE] layer 16: K matmul
+[TRACE] layer 16: V matmul
+[TRACE] layer 16: attn (Q*K, scores*V, wo)
+[TRACE] layer 16: ffn (gate, up, down)
+[TRACE] ===== layer 17 =====
+[TRACE] layer 17: Q matmul
+[TRACE] layer 17: K matmul
+[TRACE] layer 17: V matmul
+[TRACE] layer 17: attn (Q*K, scores*V, wo)
+[TRACE] layer 17: ffn (gate, up, down)
+[TRACE] ===== layer 18 =====
+[TRACE] layer 18: Q matmul
+[TRACE] layer 18: K matmul
+[TRACE] layer 18: V matmul
+[TRACE] layer 18: attn (Q*K, scores*V, wo)
+[TRACE] layer 18: ffn (gate, up, down)
+[TRACE] ===== layer 19 =====
+[TRACE] layer 19: Q matmul
+[TRACE] layer 19: K matmul
+[TRACE] layer 19: V matmul
+[TRACE] layer 19: attn (Q*K, scores*V, wo)
+[TRACE] layer 19: ffn (gate, up, down)
+[TRACE] ===== layer 20 =====
+[TRACE] layer 20: Q matmul
+[TRACE] layer 20: K matmul
+[TRACE] layer 20: V matmul
+[TRACE] layer 20: attn (Q*K, scores*V, wo)
+[TRACE] layer 20: ffn (gate, up, down)
+[TRACE] ===== layer 21 =====
+[TRACE] layer 21: Q matmul
+[TRACE] layer 21: K matmul
+[TRACE] layer 21: V matmul
+[TRACE] layer 21: attn (Q*K, scores*V, wo)
+[TRACE] layer 21: ffn (gate, up, down)
+[TRACE] ===== layer 22 =====
+[TRACE] layer 22: Q matmul
+[TRACE] layer 22: K matmul
+[TRACE] layer 22: V matmul
+[TRACE] layer 22: attn (Q*K, scores*V, wo)
+[TRACE] layer 22: ffn (gate, up, down)
+[TRACE] ===== layer 23 =====
+[TRACE] layer 23: Q matmul
+[TRACE] layer 23: K matmul
+[TRACE] layer 23: V matmul
+[TRACE] layer 23: attn (Q*K, scores*V, wo)
+[TRACE] layer 23: ffn (gate, up, down)
+[TRACE] output_norm
+[TRACE] lm_head matmul → logits
+[TRACE] ===== layer 0 =====
+[TRACE] layer 0: Q matmul
+[TRACE] layer 0: K matmul
+[TRACE] layer 0: V matmul
+[TRACE] layer 0: attn (Q*K, scores*V, wo)
+[TRACE] layer 0: ffn (gate, up, down)
+[TRACE] ===== layer 1 =====
+[TRACE] layer 1: Q matmul
+[TRACE] layer 1: K matmul
+[TRACE] layer 1: V matmul
+[TRACE] layer 1: attn (Q*K, scores*V, wo)
+[TRACE] layer 1: ffn (gate, up, down)
+[TRACE] ===== layer 2 =====
+[TRACE] layer 2: Q matmul
+[TRACE] layer 2: K matmul
+[TRACE] layer 2: V matmul
+[TRACE] layer 2: attn (Q*K, scores*V, wo)
+[TRACE] layer 2: ffn (gate, up, down)
+[TRACE] ===== layer 3 =====
+[TRACE] layer 3: Q matmul
+[TRACE] layer 3: K matmul
+[TRACE] layer 3: V matmul
+[TRACE] layer 3: attn (Q*K, scores*V, wo)
+[TRACE] layer 3: ffn (gate, up, down)
+[TRACE] ===== layer 4 =====
+[TRACE] layer 4: Q matmul
+[TRACE] layer 4: K matmul
+[TRACE] layer 4: V matmul
+[TRACE] layer 4: attn (Q*K, scores*V, wo)
+[TRACE] layer 4: ffn (gate, up, down)
+[TRACE] ===== layer 5 =====
+[TRACE] layer 5: Q matmul
+[TRACE] layer 5: K matmul
+[TRACE] layer 5: V matmul
+[TRACE] layer 5: attn (Q*K, scores*V, wo)
+[TRACE] layer 5: ffn (gate, up, down)
+[TRACE] ===== layer 6 =====
+[TRACE] layer 6: Q matmul
+[TRACE] layer 6: K matmul
+[TRACE] layer 6: V matmul
+[TRACE] layer 6: attn (Q*K, scores*V, wo)
+[TRACE] layer 6: ffn (gate, up, down)
+[TRACE] ===== layer 7 =====
+[TRACE] layer 7: Q matmul
+[TRACE] layer 7: K matmul
+[TRACE] layer 7: V matmul
+[TRACE] layer 7: attn (Q*K, scores*V, wo)
+[TRACE] layer 7: ffn (gate, up, down)
+[TRACE] ===== layer 8 =====
+[TRACE] layer 8: Q matmul
+[TRACE] layer 8: K matmul
+[TRACE] layer 8: V matmul
+[TRACE] layer 8: attn (Q*K, scores*V, wo)
+[TRACE] layer 8: ffn (gate, up, down)
+[TRACE] ===== layer 9 =====
+[TRACE] layer 9: Q matmul
+[TRACE] layer 9: K matmul
+[TRACE] layer 9: V matmul
+[TRACE] layer 9: attn (Q*K, scores*V, wo)
+[TRACE] layer 9: ffn (gate, up, down)
+[TRACE] ===== layer 10 =====
+[TRACE] layer 10: Q matmul
+[TRACE] layer 10: K matmul
+[TRACE] layer 10: V matmul
+[TRACE] layer 10: attn (Q*K, scores*V, wo)
+[TRACE] layer 10: ffn (gate, up, down)
+[TRACE] ===== layer 11 =====
+[TRACE] layer 11: Q matmul
+[TRACE] layer 11: K matmul
+[TRACE] layer 11: V matmul
+[TRACE] layer 11: attn (Q*K, scores*V, wo)
+[TRACE] layer 11: ffn (gate, up, down)
+[TRACE] ===== layer 12 =====
+[TRACE] layer 12: Q matmul
+[TRACE] layer 12: K matmul
+[TRACE] layer 12: V matmul
+[TRACE] layer 12: attn (Q*K, scores*V, wo)
+[TRACE] layer 12: ffn (gate, up, down)
+[TRACE] ===== layer 13 =====
+[TRACE] layer 13: Q matmul
+[TRACE] layer 13: K matmul
+[TRACE] layer 13: V matmul
+[TRACE] layer 13: attn (Q*K, scores*V, wo)
+[TRACE] layer 13: ffn (gate, up, down)
+[TRACE] ===== layer 14 =====
+[TRACE] layer 14: Q matmul
+[TRACE] layer 14: K matmul
+[TRACE] layer 14: V matmul
+[TRACE] layer 14: attn (Q*K, scores*V, wo)
+[TRACE] layer 14: ffn (gate, up, down)
+[TRACE] ===== layer 15 =====
+[TRACE] layer 15: Q matmul
+[TRACE] layer 15: K matmul
+[TRACE] layer 15: V matmul
+[TRACE] layer 15: attn (Q*K, scores*V, wo)
+[TRACE] layer 15: ffn (gate, up, down)
+[TRACE] ===== layer 16 =====
+[TRACE] layer 16: Q matmul
+[TRACE] layer 16: K matmul
+[TRACE] layer 16: V matmul
+[TRACE] layer 16: attn (Q*K, scores*V, wo)
+[TRACE] layer 16: ffn (gate, up, down)
+[TRACE] ===== layer 17 =====
+[TRACE] layer 17: Q matmul
+[TRACE] layer 17: K matmul
+[TRACE] layer 17: V matmul
+[TRACE] layer 17: attn (Q*K, scores*V, wo)
+[TRACE] layer 17: ffn (gate, up, down)
+[TRACE] ===== layer 18 =====
+[TRACE] layer 18: Q matmul
+[TRACE] layer 18: K matmul
+[TRACE] layer 18: V matmul
+[TRACE] layer 18: attn (Q*K, scores*V, wo)
+[TRACE] layer 18: ffn (gate, up, down)
+[TRACE] ===== layer 19 =====
+[TRACE] layer 19: Q matmul
+[TRACE] layer 19: K matmul
+[TRACE] layer 19: V matmul
+[TRACE] layer 19: attn (Q*K, scores*V, wo)
+[TRACE] layer 19: ffn (gate, up, down)
+[TRACE] ===== layer 20 =====
+[TRACE] layer 20: Q matmul
+[TRACE] layer 20: K matmul
+[TRACE] layer 20: V matmul
+[TRACE] layer 20: attn (Q*K, scores*V, wo)
+[TRACE] layer 20: ffn (gate, up, down)
+[TRACE] ===== layer 21 =====
+[TRACE] layer 21: Q matmul
+[TRACE] layer 21: K matmul
+[TRACE] layer 21: V matmul
+[TRACE] layer 21: attn (Q*K, scores*V, wo)
+[TRACE] layer 21: ffn (gate, up, down)
+[TRACE] ===== layer 22 =====
+[TRACE] layer 22: Q matmul
+[TRACE] layer 22: K matmul
+[TRACE] layer 22: V matmul
+[TRACE] layer 22: attn (Q*K, scores*V, wo)
+[TRACE] layer 22: ffn (gate, up, down)
+[TRACE] ===== layer 23 =====
+[TRACE] layer 23: Q matmul
+[TRACE] layer 23: K matmul
+[TRACE] layer 23: V matmul
+[TRACE] layer 23: attn (Q*K, scores*V, wo)
+[TRACE] layer 23: ffn (gate, up, down)
+[TRACE] output_norm
+[TRACE] lm_head matmul → logits
+[TRACE] ===== layer 0 =====
+[TRACE] layer 0: Q matmul
+[TRACE] layer 0: K matmul
+[TRACE] layer 0: V matmul
+[TRACE] layer 0: attn (Q*K, scores*V, wo)
+[TRACE] layer 0: ffn (gate, up, down)
+[TRACE] ===== layer 1 =====
+[TRACE] layer 1: Q matmul
+[TRACE] layer 1: K matmul
+[TRACE] layer 1: V matmul
+[TRACE] layer 1: attn (Q*K, scores*V, wo)
+[TRACE] layer 1: ffn (gate, up, down)
+[TRACE] ===== layer 2 =====
+[TRACE] layer 2: Q matmul
+[TRACE] layer 2: K matmul
+[TRACE] layer 2: V matmul
+[TRACE] layer 2: attn (Q*K, scores*V, wo)
+[TRACE] layer 2: ffn (gate, up, down)
+[TRACE] ===== layer 3 =====
+[TRACE] layer 3: Q matmul
+[TRACE] layer 3: K matmul
+[TRACE] layer 3: V matmul
+[TRACE] layer 3: attn (Q*K, scores*V, wo)
+[TRACE] layer 3: ffn (gate, up, down)
+[TRACE] ===== layer 4 =====
+[TRACE] layer 4: Q matmul
+[TRACE] layer 4: K matmul
+[TRACE] layer 4: V matmul
+[TRACE] layer 4: attn (Q*K, scores*V, wo)
+[TRACE] layer 4: ffn (gate, up, down)
+[TRACE] ===== layer 5 =====
+[TRACE] layer 5: Q matmul
+[TRACE] layer 5: K matmul
+[TRACE] layer 5: V matmul
+[TRACE] layer 5: attn (Q*K, scores*V, wo)
+[TRACE] layer 5: ffn (gate, up, down)
+[TRACE] ===== layer 6 =====
+[TRACE] layer 6: Q matmul
+[TRACE] layer 6: K matmul
+[TRACE] layer 6: V matmul
+[TRACE] layer 6: attn (Q*K, scores*V, wo)
+[TRACE] layer 6: ffn (gate, up, down)
+[TRACE] ===== layer 7 =====
+[TRACE] layer 7: Q matmul
+[TRACE] layer 7: K matmul
+[TRACE] layer 7: V matmul
+[TRACE] layer 7: attn (Q*K, scores*V, wo)
+[TRACE] layer 7: ffn (gate, up, down)
+[TRACE] ===== layer 8 =====
+[TRACE] layer 8: Q matmul
+[TRACE] layer 8: K matmul
+[TRACE] layer 8: V matmul
+[TRACE] layer 8: attn (Q*K, scores*V, wo)
+[TRACE] layer 8: ffn (gate, up, down)
+[TRACE] ===== layer 9 =====
+[TRACE] layer 9: Q matmul
+[TRACE] layer 9: K matmul
+[TRACE] layer 9: V matmul
+[TRACE] layer 9: attn (Q*K, scores*V, wo)
+[TRACE] layer 9: ffn (gate, up, down)
+[TRACE] ===== layer 10 =====
+[TRACE] layer 10: Q matmul
+[TRACE] layer 10: K matmul
+[TRACE] layer 10: V matmul
+[TRACE] layer 10: attn (Q*K, scores*V, wo)
+[TRACE] layer 10: ffn (gate, up, down)
+[TRACE] ===== layer 11 =====
+[TRACE] layer 11: Q matmul
+[TRACE] layer 11: K matmul
+[TRACE] layer 11: V matmul
+[TRACE] layer 11: attn (Q*K, scores*V, wo)
+[TRACE] layer 11: ffn (gate, up, down)
+[TRACE] ===== layer 12 =====
+[TRACE] layer 12: Q matmul
+[TRACE] layer 12: K matmul
+[TRACE] layer 12: V matmul
+[TRACE] layer 12: attn (Q*K, scores*V, wo)
+[TRACE] layer 12: ffn (gate, up, down)
+[TRACE] ===== layer 13 =====
+[TRACE] layer 13: Q matmul
+[TRACE] layer 13: K matmul
+[TRACE] layer 13: V matmul
+[TRACE] layer 13: attn (Q*K, scores*V, wo)
+[TRACE] layer 13: ffn (gate, up, down)
+[TRACE] ===== layer 14 =====
+[TRACE] layer 14: Q matmul
+[TRACE] layer 14: K matmul
+[TRACE] layer 14: V matmul
+[TRACE] layer 14: attn (Q*K, scores*V, wo)
+[TRACE] layer 14: ffn (gate, up, down)
+[TRACE] ===== layer 15 =====
+[TRACE] layer 15: Q matmul
+[TRACE] layer 15: K matmul
+[TRACE] layer 15: V matmul
+[TRACE] layer 15: attn (Q*K, scores*V, wo)
+[TRACE] layer 15: ffn (gate, up, down)
+[TRACE] ===== layer 16 =====
+[TRACE] layer 16: Q matmul
+[TRACE] layer 16: K matmul
+[TRACE] layer 16: V matmul
+[TRACE] layer 16: attn (Q*K, scores*V, wo)
+[TRACE] layer 16: ffn (gate, up, down)
+[TRACE] ===== layer 17 =====
+[TRACE] layer 17: Q matmul
+[TRACE] layer 17: K matmul
+[TRACE] layer 17: V matmul
+[TRACE] layer 17: attn (Q*K, scores*V, wo)
+[TRACE] layer 17: ffn (gate, up, down)
+[TRACE] ===== layer 18 =====
+[TRACE] layer 18: Q matmul
+[TRACE] layer 18: K matmul
+[TRACE] layer 18: V matmul
+[TRACE] layer 18: attn (Q*K, scores*V, wo)
+[TRACE] layer 18: ffn (gate, up, down)
+[TRACE] ===== layer 19 =====
+[TRACE] layer 19: Q matmul
+[TRACE] layer 19: K matmul
+[TRACE] layer 19: V matmul
+[TRACE] layer 19: attn (Q*K, scores*V, wo)
+[TRACE] layer 19: ffn (gate, up, down)
+[TRACE] ===== layer 20 =====
+[TRACE] layer 20: Q matmul
+[TRACE] layer 20: K matmul
+[TRACE] layer 20: V matmul
+[TRACE] layer 20: attn (Q*K, scores*V, wo)
+[TRACE] layer 20: ffn (gate, up, down)
+[TRACE] ===== layer 21 =====
+[TRACE] layer 21: Q matmul
+[TRACE] layer 21: K matmul
+[TRACE] layer 21: V matmul
+[TRACE] layer 21: attn (Q*K, scores*V, wo)
+[TRACE] layer 21: ffn (gate, up, down)
+[TRACE] ===== layer 22 =====
+[TRACE] layer 22: Q matmul
+[TRACE] layer 22: K matmul
+[TRACE] layer 22: V matmul
+[TRACE] layer 22: attn (Q*K, scores*V, wo)
+[TRACE] layer 22: ffn (gate, up, down)
+[TRACE] ===== layer 23 =====
+[TRACE] layer 23: Q matmul
+[TRACE] layer 23: K matmul
+[TRACE] layer 23: V matmul
+[TRACE] layer 23: attn (Q*K, scores*V, wo)
+[TRACE] layer 23: ffn (gate, up, down)
+[TRACE] output_norm
+[TRACE] lm_head matmul → logits
+[TRACE] ===== layer 0 =====
+[TRACE] layer 0: Q matmul
+[TRACE] layer 0: K matmul
+[TRACE] layer 0: V matmul
+[TRACE] layer 0: attn (Q*K, scores*V, wo)
+[TRACE] layer 0: ffn (gate, up, down)
+[TRACE] ===== layer 1 =====
+[TRACE] layer 1: Q matmul
+[TRACE] layer 1: K matmul
+[TRACE] layer 1: V matmul
+[TRACE] layer 1: attn (Q*K, scores*V, wo)
+[TRACE] layer 1: ffn (gate, up, down)
+[TRACE] ===== layer 2 =====
+[TRACE] layer 2: Q matmul
+[TRACE] layer 2: K matmul
+[TRACE] layer 2: V matmul
+[TRACE] layer 2: attn (Q*K, scores*V, wo)
+[TRACE] layer 2: ffn (gate, up, down)
+[TRACE] ===== layer 3 =====
+[TRACE] layer 3: Q matmul
+[TRACE] layer 3: K matmul
+[TRACE] layer 3: V matmul
+[TRACE] layer 3: attn (Q*K, scores*V, wo)
+[TRACE] layer 3: ffn (gate, up, down)
+[TRACE] ===== layer 4 =====
+[TRACE] layer 4: Q matmul
+[TRACE] layer 4: K matmul
+[TRACE] layer 4: V matmul
+[TRACE] layer 4: attn (Q*K, scores*V, wo)
+[TRACE] layer 4: ffn (gate, up, down)
+[TRACE] ===== layer 5 =====
+[TRACE] layer 5: Q matmul
+[TRACE] layer 5: K matmul
+[TRACE] layer 5: V matmul
+[TRACE] layer 5: attn (Q*K, scores*V, wo)
+[TRACE] layer 5: ffn (gate, up, down)
+[TRACE] ===== layer 6 =====
+[TRACE] layer 6: Q matmul
+[TRACE] layer 6: K matmul
+[TRACE] layer 6: V matmul
+[TRACE] layer 6: attn (Q*K, scores*V, wo)
+[TRACE] layer 6: ffn (gate, up, down)
+[TRACE] ===== layer 7 =====
+[TRACE] layer 7: Q matmul
+[TRACE] layer 7: K matmul
+[TRACE] layer 7: V matmul
+[TRACE] layer 7: attn (Q*K, scores*V, wo)
+[TRACE] layer 7: ffn (gate, up, down)
+[TRACE] ===== layer 8 =====
+[TRACE] layer 8: Q matmul
+[TRACE] layer 8: K matmul
+[TRACE] layer 8: V matmul
+[TRACE] layer 8: attn (Q*K, scores*V, wo)
+[TRACE] layer 8: ffn (gate, up, down)
+[TRACE] ===== layer 9 =====
+[TRACE] layer 9: Q matmul
+[TRACE] layer 9: K matmul
+[TRACE] layer 9: V matmul
+[TRACE] layer 9: attn (Q*K, scores*V, wo)
+[TRACE] layer 9: ffn (gate, up, down)
+[TRACE] ===== layer 10 =====
+[TRACE] layer 10: Q matmul
+[TRACE] layer 10: K matmul
+[TRACE] layer 10: V matmul
+[TRACE] layer 10: attn (Q*K, scores*V, wo)
+[TRACE] layer 10: ffn (gate, up, down)
+[TRACE] ===== layer 11 =====
+[TRACE] layer 11: Q matmul
+[TRACE] layer 11: K matmul
+[TRACE] layer 11: V matmul
+[TRACE] layer 11: attn (Q*K, scores*V, wo)
+[TRACE] layer 11: ffn (gate, up, down)
+[TRACE] ===== layer 12 =====
+[TRACE] layer 12: Q matmul
+[TRACE] layer 12: K matmul
+[TRACE] layer 12: V matmul
+[TRACE] layer 12: attn (Q*K, scores*V, wo)
+[TRACE] layer 12: ffn (gate, up, down)
+[TRACE] ===== layer 13 =====
+[TRACE] layer 13: Q matmul
+[TRACE] layer 13: K matmul
+[TRACE] layer 13: V matmul
+[TRACE] layer 13: attn (Q*K, scores*V, wo)
+[TRACE] layer 13: ffn (gate, up, down)
+[TRACE] ===== layer 14 =====
+[TRACE] layer 14: Q matmul
+[TRACE] layer 14: K matmul
+[TRACE] layer 14: V matmul
+[TRACE] layer 14: attn (Q*K, scores*V, wo)
+[TRACE] layer 14: ffn (gate, up, down)
+[TRACE] ===== layer 15 =====
+[TRACE] layer 15: Q matmul
+[TRACE] layer 15: K matmul
+[TRACE] layer 15: V matmul
+[TRACE] layer 15: attn (Q*K, scores*V, wo)
+[TRACE] layer 15: ffn (gate, up, down)
+[TRACE] ===== layer 16 =====
+[TRACE] layer 16: Q matmul
+[TRACE] layer 16: K matmul
+[TRACE] layer 16: V matmul
+[TRACE] layer 16: attn (Q*K, scores*V, wo)
+[TRACE] layer 16: ffn (gate, up, down)
+[TRACE] ===== layer 17 =====
+[TRACE] layer 17: Q matmul
+[TRACE] layer 17: K matmul
+[TRACE] layer 17: V matmul
+[TRACE] layer 17: attn (Q*K, scores*V, wo)
+[TRACE] layer 17: ffn (gate, up, down)
+[TRACE] ===== layer 18 =====
+[TRACE] layer 18: Q matmul
+[TRACE] layer 18: K matmul
+[TRACE] layer 18: V matmul
+[TRACE] layer 18: attn (Q*K, scores*V, wo)
+[TRACE] layer 18: ffn (gate, up, down)
+[TRACE] ===== layer 19 =====
+[TRACE] layer 19: Q matmul
+[TRACE] layer 19: K matmul
+[TRACE] layer 19: V matmul
+[TRACE] layer 19: attn (Q*K, scores*V, wo)
+[TRACE] layer 19: ffn (gate, up, down)
+[TRACE] ===== layer 20 =====
+[TRACE] layer 20: Q matmul
+[TRACE] layer 20: K matmul
+[TRACE] layer 20: V matmul
+[TRACE] layer 20: attn (Q*K, scores*V, wo)
+[TRACE] layer 20: ffn (gate, up, down)
+[TRACE] ===== layer 21 =====
+[TRACE] layer 21: Q matmul
+[TRACE] layer 21: K matmul
+[TRACE] layer 21: V matmul
+[TRACE] layer 21: attn (Q*K, scores*V, wo)
+[TRACE] layer 21: ffn (gate, up, down)
+[TRACE] ===== layer 22 =====
+[TRACE] layer 22: Q matmul
+[TRACE] layer 22: K matmul
+[TRACE] layer 22: V matmul
+[TRACE] layer 22: attn (Q*K, scores*V, wo)
+[TRACE] layer 22: ffn (gate, up, down)
+[TRACE] ===== layer 23 =====
+[TRACE] layer 23: Q matmul
+[TRACE] layer 23: K matmul
+[TRACE] layer 23: V matmul
+[TRACE] layer 23: attn (Q*K, scores*V, wo)
+[TRACE] layer 23: ffn (gate, up, down)
+[TRACE] output_norm
+[TRACE] lm_head matmul → logits
+[TRACE] ===== layer 0 =====
+[TRACE] layer 0: Q matmul
+[TRACE] layer 0: K matmul
+[TRACE] layer 0: V matmul
+[TRACE] layer 0: attn (Q*K, scores*V, wo)
+[TRACE] layer 0: ffn (gate, up, down)
+[TRACE] ===== layer 1 =====
+[TRACE] layer 1: Q matmul
+[TRACE] layer 1: K matmul
+[TRACE] layer 1: V matmul
+[TRACE] layer 1: attn (Q*K, scores*V, wo)
+[TRACE] layer 1: ffn (gate, up, down)
+[TRACE] ===== layer 2 =====
+[TRACE] layer 2: Q matmul
+[TRACE] layer 2: K matmul
+[TRACE] layer 2: V matmul
+[TRACE] layer 2: attn (Q*K, scores*V, wo)
+[TRACE] layer 2: ffn (gate, up, down)
+[TRACE] ===== layer 3 =====
+[TRACE] layer 3: Q matmul
+[TRACE] layer 3: K matmul
+[TRACE] layer 3: V matmul
+[TRACE] layer 3: attn (Q*K, scores*V, wo)
+[TRACE] layer 3: ffn (gate, up, down)
+[TRACE] ===== layer 4 =====
+[TRACE] layer 4: Q matmul
+[TRACE] layer 4: K matmul
+[TRACE] layer 4: V matmul
+[TRACE] layer 4: attn (Q*K, scores*V, wo)
+[TRACE] layer 4: ffn (gate, up, down)
+[TRACE] ===== layer 5 =====
+[TRACE] layer 5: Q matmul
+[TRACE] layer 5: K matmul
+[TRACE] layer 5: V matmul
+[TRACE] layer 5: attn (Q*K, scores*V, wo)
+[TRACE] layer 5: ffn (gate, up, down)
+[TRACE] ===== layer 6 =====
+[TRACE] layer 6: Q matmul
+[TRACE] layer 6: K matmul
+[TRACE] layer 6: V matmul
+[TRACE] layer 6: attn (Q*K, scores*V, wo)
+[TRACE] layer 6: ffn (gate, up, down)
+[TRACE] ===== layer 7 =====
+[TRACE] layer 7: Q matmul
+[TRACE] layer 7: K matmul
+[TRACE] layer 7: V matmul
+[TRACE] layer 7: attn (Q*K, scores*V, wo)
+[TRACE] layer 7: ffn (gate, up, down)
+[TRACE] ===== layer 8 =====
+[TRACE] layer 8: Q matmul
+[TRACE] layer 8: K matmul
+[TRACE] layer 8: V matmul
+[TRACE] layer 8: attn (Q*K, scores*V, wo)
+[TRACE] layer 8: ffn (gate, up, down)
+[TRACE] ===== layer 9 =====
+[TRACE] layer 9: Q matmul
+[TRACE] layer 9: K matmul
+[TRACE] layer 9: V matmul
+[TRACE] layer 9: attn (Q*K, scores*V, wo)
+[TRACE] layer 9: ffn (gate, up, down)
+[TRACE] ===== layer 10 =====
+[TRACE] layer 10: Q matmul
+[TRACE] layer 10: K matmul
+[TRACE] layer 10: V matmul
+[TRACE] layer 10: attn (Q*K, scores*V, wo)
+[TRACE] layer 10: ffn (gate, up, down)
+[TRACE] ===== layer 11 =====
+[TRACE] layer 11: Q matmul
+[TRACE] layer 11: K matmul
+[TRACE] layer 11: V matmul
+[TRACE] layer 11: attn (Q*K, scores*V, wo)
+[TRACE] layer 11: ffn (gate, up, down)
+[TRACE] ===== layer 12 =====
+[TRACE] layer 12: Q matmul
+[TRACE] layer 12: K matmul
+[TRACE] layer 12: V matmul
+[TRACE] layer 12: attn (Q*K, scores*V, wo)
+[TRACE] layer 12: ffn (gate, up, down)
+[TRACE] ===== layer 13 =====
+[TRACE] layer 13: Q matmul
+[TRACE] layer 13: K matmul
+[TRACE] layer 13: V matmul
+[TRACE] layer 13: attn (Q*K, scores*V, wo)
+[TRACE] layer 13: ffn (gate, up, down)
+[TRACE] ===== layer 14 =====
+[TRACE] layer 14: Q matmul
+[TRACE] layer 14: K matmul
+[TRACE] layer 14: V matmul
+[TRACE] layer 14: attn (Q*K, scores*V, wo)
+[TRACE] layer 14: ffn (gate, up, down)
+[TRACE] ===== layer 15 =====
+[TRACE] layer 15: Q matmul
+[TRACE] layer 15: K matmul
+[TRACE] layer 15: V matmul
+[TRACE] layer 15: attn (Q*K, scores*V, wo)
+[TRACE] layer 15: ffn (gate, up, down)
+[TRACE] ===== layer 16 =====
+[TRACE] layer 16: Q matmul
+[TRACE] layer 16: K matmul
+[TRACE] layer 16: V matmul
+[TRACE] layer 16: attn (Q*K, scores*V, wo)
+[TRACE] layer 16: ffn (gate, up, down)
+[TRACE] ===== layer 17 =====
+[TRACE] layer 17: Q matmul
+[TRACE] layer 17: K matmul
+[TRACE] layer 17: V matmul
+[TRACE] layer 17: attn (Q*K, scores*V, wo)
+[TRACE] layer 17: ffn (gate, up, down)
+[TRACE] ===== layer 18 =====
+[TRACE] layer 18: Q matmul
+[TRACE] layer 18: K matmul
+[TRACE] layer 18: V matmul
+[TRACE] layer 18: attn (Q*K, scores*V, wo)
+[TRACE] layer 18: ffn (gate, up, down)
+[TRACE] ===== layer 19 =====
+[TRACE] layer 19: Q matmul
+[TRACE] layer 19: K matmul
+[TRACE] layer 19: V matmul
+[TRACE] layer 19: attn (Q*K, scores*V, wo)
+[TRACE] layer 19: ffn (gate, up, down)
+[TRACE] ===== layer 20 =====
+[TRACE] layer 20: Q matmul
+[TRACE] layer 20: K matmul
+[TRACE] layer 20: V matmul
+[TRACE] layer 20: attn (Q*K, scores*V, wo)
+[TRACE] layer 20: ffn (gate, up, down)
+[TRACE] ===== layer 21 =====
+[TRACE] layer 21: Q matmul
+[TRACE] layer 21: K matmul
+[TRACE] layer 21: V matmul
+[TRACE] layer 21: attn (Q*K, scores*V, wo)
+[TRACE] layer 21: ffn (gate, up, down)
+[TRACE] ===== layer 22 =====
+[TRACE] layer 22: Q matmul
+[TRACE] layer 22: K matmul
+[TRACE] layer 22: V matmul
+[TRACE] layer 22: attn (Q*K, scores*V, wo)
+[TRACE] layer 22: ffn (gate, up, down)
+[TRACE] ===== layer 23 =====
+[TRACE] layer 23: Q matmul
+[TRACE] layer 23: K matmul
+[TRACE] layer 23: V matmul
+[TRACE] layer 23: attn (Q*K, scores*V, wo)
+[TRACE] layer 23: ffn (gate, up, down)
+[TRACE] output_norm
+[TRACE] lm_head matmul → logits
+[TRACE] ===== layer 0 =====
+[TRACE] layer 0: Q matmul
+[TRACE] layer 0: K matmul
+[TRACE] layer 0: V matmul
+[TRACE] layer 0: attn (Q*K, scores*V, wo)
+[TRACE] layer 0: ffn (gate, up, down)
+[TRACE] ===== layer 1 =====
+[TRACE] layer 1: Q matmul
+[TRACE] layer 1: K matmul
+[TRACE] layer 1: V matmul
+[TRACE] layer 1: attn (Q*K, scores*V, wo)
+[TRACE] layer 1: ffn (gate, up, down)
+[TRACE] ===== layer 2 =====
+[TRACE] layer 2: Q matmul
+[TRACE] layer 2: K matmul
+[TRACE] layer 2: V matmul
+[TRACE] layer 2: attn (Q*K, scores*V, wo)
+[TRACE] layer 2: ffn (gate, up, down)
+[TRACE] ===== layer 3 =====
+[TRACE] layer 3: Q matmul
+[TRACE] layer 3: K matmul
+[TRACE] layer 3: V matmul
+[TRACE] layer 3: attn (Q*K, scores*V, wo)
+[TRACE] layer 3: ffn (gate, up, down)
+[TRACE] ===== layer 4 =====
+[TRACE] layer 4: Q matmul
+[TRACE] layer 4: K matmul
+[TRACE] layer 4: V matmul
+[TRACE] layer 4: attn (Q*K, scores*V, wo)
+[TRACE] layer 4: ffn (gate, up, down)
+[TRACE] ===== layer 5 =====
+[TRACE] layer 5: Q matmul
+[TRACE] layer 5: K matmul
+[TRACE] layer 5: V matmul
+[TRACE] layer 5: attn (Q*K, scores*V, wo)
+[TRACE] layer 5: ffn (gate, up, down)
+[TRACE] ===== layer 6 =====
+[TRACE] layer 6: Q matmul
+[TRACE] layer 6: K matmul
+[TRACE] layer 6: V matmul
+[TRACE] layer 6: attn (Q*K, scores*V, wo)
+[TRACE] layer 6: ffn (gate, up, down)
+[TRACE] ===== layer 7 =====
+[TRACE] layer 7: Q matmul
+[TRACE] layer 7: K matmul
+[TRACE] layer 7: V matmul
+[TRACE] layer 7: attn (Q*K, scores*V, wo)
+[TRACE] layer 7: ffn (gate, up, down)
+[TRACE] ===== layer 8 =====
+[TRACE] layer 8: Q matmul
+[TRACE] layer 8: K matmul
+[TRACE] layer 8: V matmul
+[TRACE] layer 8: attn (Q*K, scores*V, wo)
+[TRACE] layer 8: ffn (gate, up, down)
+[TRACE] ===== layer 9 =====
+[TRACE] layer 9: Q matmul
+[TRACE] layer 9: K matmul
+[TRACE] layer 9: V matmul
+[TRACE] layer 9: attn (Q*K, scores*V, wo)
+[TRACE] layer 9: ffn (gate, up, down)
+[TRACE] ===== layer 10 =====
+[TRACE] layer 10: Q matmul
+[TRACE] layer 10: K matmul
+[TRACE] layer 10: V matmul
+[TRACE] layer 10: attn (Q*K, scores*V, wo)
+[TRACE] layer 10: ffn (gate, up, down)
+[TRACE] ===== layer 11 =====
+[TRACE] layer 11: Q matmul
+[TRACE] layer 11: K matmul
+[TRACE] layer 11: V matmul
+[TRACE] layer 11: attn (Q*K, scores*V, wo)
+[TRACE] layer 11: ffn (gate, up, down)
+[TRACE] ===== layer 12 =====
+[TRACE] layer 12: Q matmul
+[TRACE] layer 12: K matmul
+[TRACE] layer 12: V matmul
+[TRACE] layer 12: attn (Q*K, scores*V, wo)
+[TRACE] layer 12: ffn (gate, up, down)
+[TRACE] ===== layer 13 =====
+[TRACE] layer 13: Q matmul
+[TRACE] layer 13: K matmul
+[TRACE] layer 13: V matmul
+[TRACE] layer 13: attn (Q*K, scores*V, wo)
+[TRACE] layer 13: ffn (gate, up, down)
+[TRACE] ===== layer 14 =====
+[TRACE] layer 14: Q matmul
+[TRACE] layer 14: K matmul
+[TRACE] layer 14: V matmul
+[TRACE] layer 14: attn (Q*K, scores*V, wo)
+[TRACE] layer 14: ffn (gate, up, down)
+[TRACE] ===== layer 15 =====
+[TRACE] layer 15: Q matmul
+[TRACE] layer 15: K matmul
+[TRACE] layer 15: V matmul
+[TRACE] layer 15: attn (Q*K, scores*V, wo)
+[TRACE] layer 15: ffn (gate, up, down)
+[TRACE] ===== layer 16 =====
+[TRACE] layer 16: Q matmul
+[TRACE] layer 16: K matmul
+[TRACE] layer 16: V matmul
+[TRACE] layer 16: attn (Q*K, scores*V, wo)
+[TRACE] layer 16: ffn (gate, up, down)
+[TRACE] ===== layer 17 =====
+[TRACE] layer 17: Q matmul
+[TRACE] layer 17: K matmul
+[TRACE] layer 17: V matmul
+[TRACE] layer 17: attn (Q*K, scores*V, wo)
+[TRACE] layer 17: ffn (gate, up, down)
+[TRACE] ===== layer 18 =====
+[TRACE] layer 18: Q matmul
+[TRACE] layer 18: K matmul
+[TRACE] layer 18: V matmul
+[TRACE] layer 18: attn (Q*K, scores*V, wo)
+[TRACE] layer 18: ffn (gate, up, down)
+[TRACE] ===== layer 19 =====
+[TRACE] layer 19: Q matmul
+[TRACE] layer 19: K matmul
+[TRACE] layer 19: V matmul
+[TRACE] layer 19: attn (Q*K, scores*V, wo)
+[TRACE] layer 19: ffn (gate, up, down)
+[TRACE] ===== layer 20 =====
+[TRACE] layer 20: Q matmul
+[TRACE] layer 20: K matmul
+[TRACE] layer 20: V matmul
+[TRACE] layer 20: attn (Q*K, scores*V, wo)
+[TRACE] layer 20: ffn (gate, up, down)
+[TRACE] ===== layer 21 =====
+[TRACE] layer 21: Q matmul
+[TRACE] layer 21: K matmul
+[TRACE] layer 21: V matmul
+[TRACE] layer 21: attn (Q*K, scores*V, wo)
+[TRACE] layer 21: ffn (gate, up, down)
+[TRACE] ===== layer 22 =====
+[TRACE] layer 22: Q matmul
+[TRACE] layer 22: K matmul
+[TRACE] layer 22: V matmul
+[TRACE] layer 22: attn (Q*K, scores*V, wo)
+[TRACE] layer 22: ffn (gate, up, down)
+[TRACE] ===== layer 23 =====
+[TRACE] layer 23: Q matmul
+[TRACE] layer 23: K matmul
+[TRACE] layer 23: V matmul
+[TRACE] layer 23: attn (Q*K, scores*V, wo)
+[TRACE] layer 23: ffn (gate, up, down)
+[TRACE] output_norm
+[TRACE] lm_head matmul → logits

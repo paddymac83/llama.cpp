@@ -1,5 +1,11 @@
 #include "models.h"
 
+// Helper macro — add near top of constructor
+#define TRACE_SHAPE(name, t) \
+    fprintf(stderr, "[SHAPE] %s: [%ld, %ld, %ld, %ld] type=%s\n", \
+            name, (t)->ne[0], (t)->ne[1], (t)->ne[2], (t)->ne[3], \
+            ggml_type_name((t)->type))
+
 llm_build_qwen2::llm_build_qwen2(const llama_model & model, const llm_graph_params & params) : llm_graph_context(params) {
     const int64_t n_embd_head = hparams.n_embd_head_v;
 
@@ -10,6 +16,7 @@ llm_build_qwen2::llm_build_qwen2(const llama_model & model, const llm_graph_para
     ggml_tensor * inpL;
 
     inpL = build_inp_embd(model.tok_embd);
+    TRACE_SHAPE("embedding", inpL);
 
     // inp_pos - contains the positions
     ggml_tensor * inp_pos = build_inp_pos();
@@ -19,6 +26,8 @@ llm_build_qwen2::llm_build_qwen2(const llama_model & model, const llm_graph_para
     ggml_tensor * inp_out_ids = build_inp_out_ids();
 
     for (int il = 0; il < n_layer; ++il) {
+        fprintf(stderr, "\n[TRACE] ===== layer %d =====\n", il);
+
         ggml_tensor * inpSA = inpL;
 
         // norm
@@ -31,6 +40,9 @@ llm_build_qwen2::llm_build_qwen2(const llama_model & model, const llm_graph_para
         {
             // compute Q and K and RoPE them
             ggml_tensor * Qcur = build_lora_mm(model.layers[il].wq, cur);
+            fprintf(stderr, "[TRACE] layer %d: Q matmul\n", il); 
+            TRACE_SHAPE("Q", Qcur);
+
             cb(Qcur, "Qcur", il);
             if (model.layers[il].bq) {
                 Qcur = ggml_add(ctx0, Qcur, model.layers[il].bq);
@@ -38,18 +50,24 @@ llm_build_qwen2::llm_build_qwen2(const llama_model & model, const llm_graph_para
             }
 
             ggml_tensor * Kcur = build_lora_mm(model.layers[il].wk, cur);
+            fprintf(stderr, "[TRACE] layer %d: K matmul\n", il);
+
             cb(Kcur, "Kcur", il);
             if (model.layers[il].bk) {
                 Kcur = ggml_add(ctx0, Kcur, model.layers[il].bk);
                 cb(Kcur, "Kcur", il);
             }
+            TRACE_SHAPE("K", Kcur);
 
             ggml_tensor * Vcur = build_lora_mm(model.layers[il].wv, cur);
+            fprintf(stderr, "[TRACE] layer %d: V matmul\n", il);
+
             cb(Vcur, "Vcur", il);
             if (model.layers[il].bv) {
                 Vcur = ggml_add(ctx0, Vcur, model.layers[il].bv);
                 cb(Vcur, "Vcur", il);
             }
+            TRACE_SHAPE("V", Vcur);   
 
             Qcur = ggml_reshape_3d(ctx0, Qcur, n_embd_head, n_head,    n_tokens);
             Kcur = ggml_reshape_3d(ctx0, Kcur, n_embd_head, n_head_kv, n_tokens);
@@ -74,6 +92,7 @@ llm_build_qwen2::llm_build_qwen2(const llama_model & model, const llm_graph_para
             cur = build_attn(inp_attn,
                     model.layers[il].wo, model.layers[il].bo,
                     Qcur, Kcur, Vcur, nullptr, nullptr, nullptr, 1.0f/sqrtf(float(n_embd_head)), il);
+            fprintf(stderr, "[TRACE] layer %d: attn (Q*K, scores*V, wo)\n", il);
         }
         if (il == n_layer - 1 && inp_out_ids) {
             cur   = ggml_get_rows(ctx0,   cur, inp_out_ids);
@@ -94,7 +113,9 @@ llm_build_qwen2::llm_build_qwen2(const llama_model & model, const llm_graph_para
                 model.layers[il].ffn_down, NULL, NULL,
                 NULL,
                 LLM_FFN_SILU, LLM_FFN_PAR, il);
+        fprintf(stderr, "[TRACE] layer %d: ffn (gate, up, down)\n", il);
         cb(cur, "ffn_out", il);
+        TRACE_SHAPE("ffn_out", cur);
 
         cur = ggml_add(ctx0, cur, ffn_inp);
 
@@ -109,18 +130,21 @@ llm_build_qwen2::llm_build_qwen2(const llama_model & model, const llm_graph_para
     cur = build_norm(cur,
             model.output_norm, NULL,
             LLM_NORM_RMS, -1);
+    fprintf(stderr, "\n[TRACE] output_norm\n"); 
 
     cb(cur, "result_norm", -1);
     res->t_embd = cur;
 
     // lm_head
     cur = build_lora_mm(model.output, cur);
+    fprintf(stderr, "[TRACE] lm_head matmul → logits\n");   
 
     if (model.output_b != nullptr) {
         cur = ggml_add(ctx0, cur, model.output_b);
     }
     cb(cur, "result_output", -1);
     res->t_logits = cur;
+    TRACE_SHAPE("logits", cur);  
 
     ggml_build_forward_expand(gf, cur);
 }
