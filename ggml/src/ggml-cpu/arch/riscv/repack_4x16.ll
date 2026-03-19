@@ -13,966 +13,1267 @@ target triple = "riscv64-unknown-linux-gnu"
 @.str.3 = private unnamed_addr constant [28 x i8] c"nc % ncols_interleaved == 0\00", align 1
 @ggml_table_f32_f16 = external local_unnamed_addr global [65536 x float], align 4
 
-; Function Attrs: mustprogress uwtable vscale_range(2,1024)
+; Function Attrs: mustprogress uwtable vscale_range(4,1024)
 define dso_local void @ggml_gemm_q4_0_8x8_q8_0_4x16(i32 noundef signext %0, ptr noalias noundef %1, i64 noundef %2, ptr noalias noundef %3, ptr noalias noundef %4, i32 noundef signext %5, i32 noundef signext %6) local_unnamed_addr #0 {
   %8 = alloca [8 x float], align 4
   %9 = alloca [8 x float], align 4
   %10 = alloca [8 x float], align 4
-  %11 = sdiv i32 %0, 32
-  %12 = and i32 %0, 31
-  %13 = icmp eq i32 %12, 0
-  br i1 %13, label %15, label %14
+  %11 = alloca [8 x float], align 4
+  %12 = alloca [8 x float], align 4
+  %13 = alloca [8 x float], align 4
+  %14 = alloca [8 x float], align 4
+  %15 = alloca [8 x float], align 4
+  %16 = alloca [8 x float], align 4
+  %17 = sdiv i32 %0, 32
+  %18 = and i32 %0, 31
+  %19 = icmp eq i32 %18, 0
+  br i1 %19, label %21, label %20
 
-14:                                               ; preds = %7
-  tail call void @__assert_fail(ptr noundef nonnull @.str, ptr noundef nonnull @.str.1, i32 noundef signext 30, ptr noundef nonnull @__PRETTY_FUNCTION__.ggml_gemm_q4_0_8x8_q8_0_4x16) #9
+20:                                               ; preds = %7
+  tail call void @__assert_fail(ptr noundef nonnull @.str, ptr noundef nonnull @.str.1, i32 noundef signext 87, ptr noundef nonnull @__PRETTY_FUNCTION__.ggml_gemm_q4_0_8x8_q8_0_4x16) #9
   unreachable
 
-15:                                               ; preds = %7
-  %16 = and i32 %5, 3
-  %17 = icmp eq i32 %16, 0
-  br i1 %17, label %19, label %18
+21:                                               ; preds = %7
+  %22 = and i32 %5, 3
+  %23 = icmp eq i32 %22, 0
+  br i1 %23, label %25, label %24
 
-18:                                               ; preds = %15
-  tail call void @__assert_fail(ptr noundef nonnull @.str.2, ptr noundef nonnull @.str.1, i32 noundef signext 31, ptr noundef nonnull @__PRETTY_FUNCTION__.ggml_gemm_q4_0_8x8_q8_0_4x16) #9
+24:                                               ; preds = %21
+  tail call void @__assert_fail(ptr noundef nonnull @.str.2, ptr noundef nonnull @.str.1, i32 noundef signext 88, ptr noundef nonnull @__PRETTY_FUNCTION__.ggml_gemm_q4_0_8x8_q8_0_4x16) #9
   unreachable
 
-19:                                               ; preds = %15
-  %20 = and i32 %6, 7
-  %21 = icmp eq i32 %20, 0
-  br i1 %21, label %23, label %22
+25:                                               ; preds = %21
+  %26 = and i32 %6, 7
+  %27 = icmp eq i32 %26, 0
+  br i1 %27, label %29, label %28
 
-22:                                               ; preds = %19
-  tail call void @__assert_fail(ptr noundef nonnull @.str.3, ptr noundef nonnull @.str.1, i32 noundef signext 32, ptr noundef nonnull @__PRETTY_FUNCTION__.ggml_gemm_q4_0_8x8_q8_0_4x16) #9
+28:                                               ; preds = %25
+  tail call void @__assert_fail(ptr noundef nonnull @.str.3, ptr noundef nonnull @.str.1, i32 noundef signext 89, ptr noundef nonnull @__PRETTY_FUNCTION__.ggml_gemm_q4_0_8x8_q8_0_4x16) #9
   unreachable
 
-23:                                               ; preds = %19
-  %24 = tail call i64 @llvm.read_register.i64(metadata !9)
-  %25 = icmp ugt i64 %24, 31
-  br i1 %25, label %26, label %838
+29:                                               ; preds = %25
+  %30 = tail call i64 @llvm.read_register.i64(metadata !9)
+  %31 = icmp ugt i64 %30, 31
+  br i1 %31, label %32, label %1069
 
-26:                                               ; preds = %23
-  %27 = and i32 %6, 8
-  %28 = icmp eq i32 %27, 0
-  %29 = ashr exact i32 %5, 2
-  %30 = icmp sgt i32 %29, 0
-  br i1 %28, label %328, label %31
+32:                                               ; preds = %29
+  %33 = and i32 %6, 8
+  %34 = icmp eq i32 %33, 0
+  %35 = ashr exact i32 %5, 2
+  %36 = icmp sgt i32 %35, 0
+  br i1 %34, label %334, label %37
 
-31:                                               ; preds = %26
-  br i1 %30, label %32, label %839
+37:                                               ; preds = %32
+  br i1 %36, label %38, label %1070
 
-32:                                               ; preds = %31
-  %33 = ashr exact i32 %6, 3
-  %34 = icmp sgt i32 %33, 0
-  %35 = getelementptr inbounds float, ptr %10, i64 1
-  %36 = getelementptr inbounds float, ptr %10, i64 2
-  %37 = getelementptr inbounds float, ptr %10, i64 3
-  %38 = getelementptr inbounds float, ptr %10, i64 4
-  %39 = getelementptr inbounds float, ptr %10, i64 5
-  %40 = getelementptr inbounds float, ptr %10, i64 6
-  %41 = getelementptr inbounds float, ptr %10, i64 7
-  br i1 %34, label %42, label %839
+38:                                               ; preds = %37
+  %39 = ashr exact i32 %6, 3
+  %40 = icmp sgt i32 %39, 0
+  %41 = getelementptr inbounds float, ptr %16, i64 1
+  %42 = getelementptr inbounds float, ptr %16, i64 2
+  %43 = getelementptr inbounds float, ptr %16, i64 3
+  %44 = getelementptr inbounds float, ptr %16, i64 4
+  %45 = getelementptr inbounds float, ptr %16, i64 5
+  %46 = getelementptr inbounds float, ptr %16, i64 6
+  %47 = getelementptr inbounds float, ptr %16, i64 7
+  br i1 %40, label %48, label %1070
 
-42:                                               ; preds = %32
-  %43 = icmp sgt i32 %0, 31
-  %44 = tail call <vscale x 2 x float> @llvm.riscv.vfmv.v.f.nxv2f32.i64(<vscale x 2 x float> poison, float 0.000000e+00, i64 8)
-  br i1 %43, label %48, label %45
+48:                                               ; preds = %38
+  %49 = icmp sgt i32 %0, 31
+  %50 = tail call <vscale x 2 x float> @llvm.riscv.vfmv.v.f.nxv2f32.i64(<vscale x 2 x float> poison, float 0.000000e+00, i64 8)
+  br i1 %49, label %54, label %51
 
-45:                                               ; preds = %42
-  %46 = zext nneg i32 %29 to i64
-  %47 = zext nneg i32 %33 to i64
-  br label %302
+51:                                               ; preds = %48
+  %52 = zext nneg i32 %35 to i64
+  %53 = zext nneg i32 %39 to i64
+  br label %308
 
-48:                                               ; preds = %42
-  %49 = zext nneg i32 %11 to i64
-  %50 = zext nneg i32 %29 to i64
-  %51 = zext nneg i32 %33 to i64
-  %52 = zext nneg i32 %11 to i64
-  br label %53
+54:                                               ; preds = %48
+  %55 = zext nneg i32 %17 to i64
+  %56 = zext nneg i32 %35 to i64
+  %57 = zext nneg i32 %39 to i64
+  %58 = zext nneg i32 %17 to i64
+  br label %59
 
-53:                                               ; preds = %48, %299
-  %54 = phi i64 [ 0, %48 ], [ %300, %299 ]
-  %55 = mul nsw i64 %54, %49
-  %56 = getelementptr inbounds %struct.block, ptr %4, i64 %55
-  %57 = shl nsw i64 %54, 2
-  %58 = mul i64 %57, %2
-  %59 = getelementptr float, ptr %1, i64 %58
-  %60 = or disjoint i64 %57, 1
-  %61 = mul i64 %60, %2
-  %62 = getelementptr float, ptr %1, i64 %61
-  %63 = or disjoint i64 %57, 2
+59:                                               ; preds = %54, %305
+  %60 = phi i64 [ 0, %54 ], [ %306, %305 ]
+  %61 = mul nsw i64 %60, %55
+  %62 = getelementptr inbounds %struct.block, ptr %4, i64 %61
+  %63 = shl nsw i64 %60, 2
   %64 = mul i64 %63, %2
   %65 = getelementptr float, ptr %1, i64 %64
-  %66 = or disjoint i64 %57, 3
+  %66 = or disjoint i64 %63, 1
   %67 = mul i64 %66, %2
   %68 = getelementptr float, ptr %1, i64 %67
-  br label %69
+  %69 = or disjoint i64 %63, 2
+  %70 = mul i64 %69, %2
+  %71 = getelementptr float, ptr %1, i64 %70
+  %72 = or disjoint i64 %63, 3
+  %73 = mul i64 %72, %2
+  %74 = getelementptr float, ptr %1, i64 %73
+  br label %75
 
-69:                                               ; preds = %291, %53
-  %70 = phi i64 [ %297, %291 ], [ 0, %53 ]
-  %71 = mul nsw i64 %70, %49
-  %72 = getelementptr inbounds %struct.block.0, ptr %3, i64 %71
-  br label %73
+75:                                               ; preds = %297, %59
+  %76 = phi i64 [ %303, %297 ], [ 0, %59 ]
+  %77 = mul nsw i64 %76, %55
+  %78 = getelementptr inbounds %struct.block.0, ptr %3, i64 %77
+  br label %79
 
-73:                                               ; preds = %73, %69
-  %74 = phi i64 [ %289, %73 ], [ 0, %69 ]
-  %75 = phi <vscale x 2 x float> [ %288, %73 ], [ %44, %69 ]
-  %76 = phi <vscale x 2 x float> [ %253, %73 ], [ %44, %69 ]
-  %77 = phi <vscale x 2 x float> [ %218, %73 ], [ %44, %69 ]
-  %78 = phi <vscale x 2 x float> [ %183, %73 ], [ %44, %69 ]
-  %79 = getelementptr inbounds %struct.block.0, ptr %72, i64 %74
-  %80 = getelementptr inbounds %struct.block.0, ptr %72, i64 %74, i32 1
-  %81 = tail call <vscale x 32 x i8> @llvm.riscv.vle.nxv32i8.i64(<vscale x 32 x i8> poison, ptr nonnull %80, i64 128)
-  %82 = tail call <vscale x 32 x i8> @llvm.riscv.vsll.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %81, i64 4, i64 128)
-  %83 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %82, i64 4, i64 128)
-  %84 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %81, i64 4, i64 128)
-  %85 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %83, i64 0)
-  %86 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %83, i64 16)
-  %87 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %84, i64 0)
-  %88 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %84, i64 16)
-  %89 = getelementptr inbounds %struct.block, ptr %56, i64 %74
-  %90 = load i16, ptr %89, align 2, !tbaa !10
-  %91 = zext i16 %90 to i64
-  %92 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %91
-  %93 = load float, ptr %92, align 4, !tbaa !14
-  %94 = getelementptr inbounds [4 x i16], ptr %89, i64 0, i64 1
-  %95 = load i16, ptr %94, align 2, !tbaa !10
-  %96 = zext i16 %95 to i64
-  %97 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %96
-  %98 = load float, ptr %97, align 4, !tbaa !14
-  %99 = getelementptr inbounds [4 x i16], ptr %89, i64 0, i64 2
-  %100 = load i16, ptr %99, align 2, !tbaa !10
-  %101 = zext i16 %100 to i64
-  %102 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %101
-  %103 = load float, ptr %102, align 4, !tbaa !14
-  %104 = getelementptr inbounds [4 x i16], ptr %89, i64 0, i64 3
-  %105 = load i16, ptr %104, align 2, !tbaa !10
-  %106 = zext i16 %105 to i64
-  %107 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %106
-  %108 = load float, ptr %107, align 4, !tbaa !14
-  call void @llvm.lifetime.start.p0(i64 32, ptr nonnull %10) #10
-  %109 = load i16, ptr %79, align 2, !tbaa !10
-  %110 = zext i16 %109 to i64
-  %111 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %110
-  %112 = load float, ptr %111, align 4, !tbaa !14
-  store float %112, ptr %10, align 4, !tbaa !14
-  %113 = getelementptr inbounds [8 x i16], ptr %79, i64 0, i64 1
-  %114 = load i16, ptr %113, align 2, !tbaa !10
-  %115 = zext i16 %114 to i64
-  %116 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %115
-  %117 = load float, ptr %116, align 4, !tbaa !14
-  store float %117, ptr %35, align 4, !tbaa !14
-  %118 = getelementptr inbounds [8 x i16], ptr %79, i64 0, i64 2
-  %119 = load i16, ptr %118, align 2, !tbaa !10
-  %120 = zext i16 %119 to i64
-  %121 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %120
-  %122 = load float, ptr %121, align 4, !tbaa !14
-  store float %122, ptr %36, align 4, !tbaa !14
-  %123 = getelementptr inbounds [8 x i16], ptr %79, i64 0, i64 3
-  %124 = load i16, ptr %123, align 2, !tbaa !10
-  %125 = zext i16 %124 to i64
-  %126 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %125
-  %127 = load float, ptr %126, align 4, !tbaa !14
-  store float %127, ptr %37, align 4, !tbaa !14
-  %128 = getelementptr inbounds [8 x i16], ptr %79, i64 0, i64 4
-  %129 = load i16, ptr %128, align 2, !tbaa !10
-  %130 = zext i16 %129 to i64
-  %131 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %130
-  %132 = load float, ptr %131, align 4, !tbaa !14
-  store float %132, ptr %38, align 4, !tbaa !14
-  %133 = getelementptr inbounds [8 x i16], ptr %79, i64 0, i64 5
-  %134 = load i16, ptr %133, align 2, !tbaa !10
-  %135 = zext i16 %134 to i64
-  %136 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %135
-  %137 = load float, ptr %136, align 4, !tbaa !14
-  store float %137, ptr %39, align 4, !tbaa !14
-  %138 = getelementptr inbounds [8 x i16], ptr %79, i64 0, i64 6
-  %139 = load i16, ptr %138, align 2, !tbaa !10
-  %140 = zext i16 %139 to i64
-  %141 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %140
-  %142 = load float, ptr %141, align 4, !tbaa !14
-  store float %142, ptr %40, align 4, !tbaa !14
-  %143 = getelementptr inbounds [8 x i16], ptr %79, i64 0, i64 7
-  %144 = load i16, ptr %143, align 2, !tbaa !10
-  %145 = zext i16 %144 to i64
-  %146 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %145
-  %147 = load float, ptr %146, align 4, !tbaa !14
-  store float %147, ptr %41, align 4, !tbaa !14
-  %148 = call <vscale x 2 x float> @llvm.riscv.vle.nxv2f32.i64(<vscale x 2 x float> poison, ptr nonnull %10, i64 8)
-  %149 = getelementptr inbounds %struct.block, ptr %56, i64 %74, i32 1
-  %150 = load i64, ptr %149, align 2, !tbaa !16
-  %151 = getelementptr inbounds %struct.block, ptr %56, i64 %74, i32 1, i64 32
-  %152 = load i64, ptr %151, align 2, !tbaa !16
-  %153 = getelementptr inbounds %struct.block, ptr %56, i64 %74, i32 1, i64 64
-  %154 = load i64, ptr %153, align 2, !tbaa !16
-  %155 = getelementptr inbounds %struct.block, ptr %56, i64 %74, i32 1, i64 96
+79:                                               ; preds = %79, %75
+  %80 = phi i64 [ %295, %79 ], [ 0, %75 ]
+  %81 = phi <vscale x 2 x float> [ %294, %79 ], [ %50, %75 ]
+  %82 = phi <vscale x 2 x float> [ %259, %79 ], [ %50, %75 ]
+  %83 = phi <vscale x 2 x float> [ %224, %79 ], [ %50, %75 ]
+  %84 = phi <vscale x 2 x float> [ %189, %79 ], [ %50, %75 ]
+  %85 = getelementptr inbounds %struct.block.0, ptr %78, i64 %80
+  %86 = getelementptr inbounds %struct.block.0, ptr %78, i64 %80, i32 1
+  %87 = tail call <vscale x 32 x i8> @llvm.riscv.vle.nxv32i8.i64(<vscale x 32 x i8> poison, ptr nonnull %86, i64 128)
+  %88 = tail call <vscale x 32 x i8> @llvm.riscv.vsll.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %87, i64 4, i64 128)
+  %89 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %88, i64 4, i64 128)
+  %90 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %87, i64 4, i64 128)
+  %91 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %89, i64 0)
+  %92 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %89, i64 16)
+  %93 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %90, i64 0)
+  %94 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %90, i64 16)
+  %95 = getelementptr inbounds %struct.block, ptr %62, i64 %80
+  %96 = load i16, ptr %95, align 2, !tbaa !10
+  %97 = zext i16 %96 to i64
+  %98 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %97
+  %99 = load float, ptr %98, align 4, !tbaa !14
+  %100 = getelementptr inbounds [4 x i16], ptr %95, i64 0, i64 1
+  %101 = load i16, ptr %100, align 2, !tbaa !10
+  %102 = zext i16 %101 to i64
+  %103 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %102
+  %104 = load float, ptr %103, align 4, !tbaa !14
+  %105 = getelementptr inbounds [4 x i16], ptr %95, i64 0, i64 2
+  %106 = load i16, ptr %105, align 2, !tbaa !10
+  %107 = zext i16 %106 to i64
+  %108 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %107
+  %109 = load float, ptr %108, align 4, !tbaa !14
+  %110 = getelementptr inbounds [4 x i16], ptr %95, i64 0, i64 3
+  %111 = load i16, ptr %110, align 2, !tbaa !10
+  %112 = zext i16 %111 to i64
+  %113 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %112
+  %114 = load float, ptr %113, align 4, !tbaa !14
+  call void @llvm.lifetime.start.p0(i64 32, ptr nonnull %16) #10
+  %115 = load i16, ptr %85, align 2, !tbaa !10
+  %116 = zext i16 %115 to i64
+  %117 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %116
+  %118 = load float, ptr %117, align 4, !tbaa !14
+  store float %118, ptr %16, align 4, !tbaa !14
+  %119 = getelementptr inbounds [8 x i16], ptr %85, i64 0, i64 1
+  %120 = load i16, ptr %119, align 2, !tbaa !10
+  %121 = zext i16 %120 to i64
+  %122 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %121
+  %123 = load float, ptr %122, align 4, !tbaa !14
+  store float %123, ptr %41, align 4, !tbaa !14
+  %124 = getelementptr inbounds [8 x i16], ptr %85, i64 0, i64 2
+  %125 = load i16, ptr %124, align 2, !tbaa !10
+  %126 = zext i16 %125 to i64
+  %127 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %126
+  %128 = load float, ptr %127, align 4, !tbaa !14
+  store float %128, ptr %42, align 4, !tbaa !14
+  %129 = getelementptr inbounds [8 x i16], ptr %85, i64 0, i64 3
+  %130 = load i16, ptr %129, align 2, !tbaa !10
+  %131 = zext i16 %130 to i64
+  %132 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %131
+  %133 = load float, ptr %132, align 4, !tbaa !14
+  store float %133, ptr %43, align 4, !tbaa !14
+  %134 = getelementptr inbounds [8 x i16], ptr %85, i64 0, i64 4
+  %135 = load i16, ptr %134, align 2, !tbaa !10
+  %136 = zext i16 %135 to i64
+  %137 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %136
+  %138 = load float, ptr %137, align 4, !tbaa !14
+  store float %138, ptr %44, align 4, !tbaa !14
+  %139 = getelementptr inbounds [8 x i16], ptr %85, i64 0, i64 5
+  %140 = load i16, ptr %139, align 2, !tbaa !10
+  %141 = zext i16 %140 to i64
+  %142 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %141
+  %143 = load float, ptr %142, align 4, !tbaa !14
+  store float %143, ptr %45, align 4, !tbaa !14
+  %144 = getelementptr inbounds [8 x i16], ptr %85, i64 0, i64 6
+  %145 = load i16, ptr %144, align 2, !tbaa !10
+  %146 = zext i16 %145 to i64
+  %147 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %146
+  %148 = load float, ptr %147, align 4, !tbaa !14
+  store float %148, ptr %46, align 4, !tbaa !14
+  %149 = getelementptr inbounds [8 x i16], ptr %85, i64 0, i64 7
+  %150 = load i16, ptr %149, align 2, !tbaa !10
+  %151 = zext i16 %150 to i64
+  %152 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %151
+  %153 = load float, ptr %152, align 4, !tbaa !14
+  store float %153, ptr %47, align 4, !tbaa !14
+  %154 = call <vscale x 2 x float> @llvm.riscv.vle.nxv2f32.i64(<vscale x 2 x float> poison, ptr nonnull %16, i64 8)
+  %155 = getelementptr inbounds %struct.block, ptr %62, i64 %80, i32 1
   %156 = load i64, ptr %155, align 2, !tbaa !16
+  %157 = getelementptr inbounds %struct.block, ptr %62, i64 %80, i32 1, i64 32
+  %158 = load i64, ptr %157, align 2, !tbaa !16
+  %159 = getelementptr inbounds %struct.block, ptr %62, i64 %80, i32 1, i64 64
+  %160 = load i64, ptr %159, align 2, !tbaa !16
+  %161 = getelementptr inbounds %struct.block, ptr %62, i64 %80, i32 1, i64 96
+  %162 = load i64, ptr %161, align 2, !tbaa !16
   tail call void asm sideeffect "", "~{memory}"() #10, !srcloc !18
-  %157 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %150, i64 8)
-  %158 = bitcast <vscale x 2 x i64> %157 to <vscale x 16 x i8>
-  %159 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %152, i64 8)
-  %160 = bitcast <vscale x 2 x i64> %159 to <vscale x 16 x i8>
-  %161 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %154, i64 8)
-  %162 = bitcast <vscale x 2 x i64> %161 to <vscale x 16 x i8>
   %163 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %156, i64 8)
   %164 = bitcast <vscale x 2 x i64> %163 to <vscale x 16 x i8>
-  %165 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %85, <vscale x 16 x i8> %158, i64 64)
-  %166 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %165, <vscale x 16 x i8> %86, <vscale x 16 x i8> %160, i64 64, i64 3)
-  %167 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %166, <vscale x 16 x i8> %87, <vscale x 16 x i8> %162, i64 64, i64 3)
-  %168 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %167, <vscale x 16 x i8> %88, <vscale x 16 x i8> %164, i64 64, i64 3)
-  %169 = bitcast <vscale x 16 x i16> %168 to <vscale x 8 x i32>
-  %170 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %169, i64 0, i64 32)
-  %171 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %169, i64 16, i64 32)
-  %172 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %170, <vscale x 8 x i16> %171, i64 32)
-  %173 = bitcast <vscale x 8 x i16> %172 to <vscale x 4 x i32>
-  %174 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %173, i64 0, i64 16)
-  %175 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %173, i64 16, i64 16)
-  %176 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %174, <vscale x 4 x i16> %175, i64 16)
-  %177 = bitcast <vscale x 4 x i16> %176 to <vscale x 2 x i32>
-  %178 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %177, i64 0, i64 8)
-  %179 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %177, i64 16, i64 8)
-  %180 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %178, <vscale x 2 x i16> %179, i64 8)
-  %181 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %180, i64 7, i64 8)
-  %182 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %181, float %93, i64 7, i64 8)
-  %183 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %78, <vscale x 2 x float> %182, <vscale x 2 x float> %148, i64 7, i64 8, i64 3)
-  %184 = getelementptr inbounds %struct.block, ptr %56, i64 %74, i32 1, i64 8
-  %185 = load i64, ptr %184, align 2, !tbaa !16
-  %186 = getelementptr inbounds %struct.block, ptr %56, i64 %74, i32 1, i64 40
-  %187 = load i64, ptr %186, align 2, !tbaa !16
-  %188 = getelementptr inbounds %struct.block, ptr %56, i64 %74, i32 1, i64 72
-  %189 = load i64, ptr %188, align 2, !tbaa !16
-  %190 = getelementptr inbounds %struct.block, ptr %56, i64 %74, i32 1, i64 104
+  %165 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %158, i64 8)
+  %166 = bitcast <vscale x 2 x i64> %165 to <vscale x 16 x i8>
+  %167 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %160, i64 8)
+  %168 = bitcast <vscale x 2 x i64> %167 to <vscale x 16 x i8>
+  %169 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %162, i64 8)
+  %170 = bitcast <vscale x 2 x i64> %169 to <vscale x 16 x i8>
+  %171 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %91, <vscale x 16 x i8> %164, i64 64)
+  %172 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %171, <vscale x 16 x i8> %92, <vscale x 16 x i8> %166, i64 64, i64 3)
+  %173 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %172, <vscale x 16 x i8> %93, <vscale x 16 x i8> %168, i64 64, i64 3)
+  %174 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %173, <vscale x 16 x i8> %94, <vscale x 16 x i8> %170, i64 64, i64 3)
+  %175 = bitcast <vscale x 16 x i16> %174 to <vscale x 8 x i32>
+  %176 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %175, i64 0, i64 32)
+  %177 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %175, i64 16, i64 32)
+  %178 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %176, <vscale x 8 x i16> %177, i64 32)
+  %179 = bitcast <vscale x 8 x i16> %178 to <vscale x 4 x i32>
+  %180 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %179, i64 0, i64 16)
+  %181 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %179, i64 16, i64 16)
+  %182 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %180, <vscale x 4 x i16> %181, i64 16)
+  %183 = bitcast <vscale x 4 x i16> %182 to <vscale x 2 x i32>
+  %184 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %183, i64 0, i64 8)
+  %185 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %183, i64 16, i64 8)
+  %186 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %184, <vscale x 2 x i16> %185, i64 8)
+  %187 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %186, i64 7, i64 8)
+  %188 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %187, float %99, i64 7, i64 8)
+  %189 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %84, <vscale x 2 x float> %188, <vscale x 2 x float> %154, i64 7, i64 8, i64 3)
+  %190 = getelementptr inbounds %struct.block, ptr %62, i64 %80, i32 1, i64 8
   %191 = load i64, ptr %190, align 2, !tbaa !16
+  %192 = getelementptr inbounds %struct.block, ptr %62, i64 %80, i32 1, i64 40
+  %193 = load i64, ptr %192, align 2, !tbaa !16
+  %194 = getelementptr inbounds %struct.block, ptr %62, i64 %80, i32 1, i64 72
+  %195 = load i64, ptr %194, align 2, !tbaa !16
+  %196 = getelementptr inbounds %struct.block, ptr %62, i64 %80, i32 1, i64 104
+  %197 = load i64, ptr %196, align 2, !tbaa !16
   tail call void asm sideeffect "", "~{memory}"() #10, !srcloc !19
-  %192 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %185, i64 8)
-  %193 = bitcast <vscale x 2 x i64> %192 to <vscale x 16 x i8>
-  %194 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %187, i64 8)
-  %195 = bitcast <vscale x 2 x i64> %194 to <vscale x 16 x i8>
-  %196 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %189, i64 8)
-  %197 = bitcast <vscale x 2 x i64> %196 to <vscale x 16 x i8>
   %198 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %191, i64 8)
   %199 = bitcast <vscale x 2 x i64> %198 to <vscale x 16 x i8>
-  %200 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %85, <vscale x 16 x i8> %193, i64 64)
-  %201 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %200, <vscale x 16 x i8> %86, <vscale x 16 x i8> %195, i64 64, i64 3)
-  %202 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %201, <vscale x 16 x i8> %87, <vscale x 16 x i8> %197, i64 64, i64 3)
-  %203 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %202, <vscale x 16 x i8> %88, <vscale x 16 x i8> %199, i64 64, i64 3)
-  %204 = bitcast <vscale x 16 x i16> %203 to <vscale x 8 x i32>
-  %205 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %204, i64 0, i64 32)
-  %206 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %204, i64 16, i64 32)
-  %207 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %205, <vscale x 8 x i16> %206, i64 32)
-  %208 = bitcast <vscale x 8 x i16> %207 to <vscale x 4 x i32>
-  %209 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %208, i64 0, i64 16)
-  %210 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %208, i64 16, i64 16)
-  %211 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %209, <vscale x 4 x i16> %210, i64 16)
-  %212 = bitcast <vscale x 4 x i16> %211 to <vscale x 2 x i32>
-  %213 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %212, i64 0, i64 8)
-  %214 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %212, i64 16, i64 8)
-  %215 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %213, <vscale x 2 x i16> %214, i64 8)
-  %216 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %215, i64 7, i64 8)
-  %217 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %216, float %98, i64 7, i64 8)
-  %218 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %77, <vscale x 2 x float> %217, <vscale x 2 x float> %148, i64 7, i64 8, i64 3)
-  %219 = getelementptr inbounds %struct.block, ptr %56, i64 %74, i32 1, i64 16
-  %220 = load i64, ptr %219, align 2, !tbaa !16
-  %221 = getelementptr inbounds %struct.block, ptr %56, i64 %74, i32 1, i64 48
-  %222 = load i64, ptr %221, align 2, !tbaa !16
-  %223 = getelementptr inbounds %struct.block, ptr %56, i64 %74, i32 1, i64 80
-  %224 = load i64, ptr %223, align 2, !tbaa !16
-  %225 = getelementptr inbounds %struct.block, ptr %56, i64 %74, i32 1, i64 112
+  %200 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %193, i64 8)
+  %201 = bitcast <vscale x 2 x i64> %200 to <vscale x 16 x i8>
+  %202 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %195, i64 8)
+  %203 = bitcast <vscale x 2 x i64> %202 to <vscale x 16 x i8>
+  %204 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %197, i64 8)
+  %205 = bitcast <vscale x 2 x i64> %204 to <vscale x 16 x i8>
+  %206 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %91, <vscale x 16 x i8> %199, i64 64)
+  %207 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %206, <vscale x 16 x i8> %92, <vscale x 16 x i8> %201, i64 64, i64 3)
+  %208 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %207, <vscale x 16 x i8> %93, <vscale x 16 x i8> %203, i64 64, i64 3)
+  %209 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %208, <vscale x 16 x i8> %94, <vscale x 16 x i8> %205, i64 64, i64 3)
+  %210 = bitcast <vscale x 16 x i16> %209 to <vscale x 8 x i32>
+  %211 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %210, i64 0, i64 32)
+  %212 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %210, i64 16, i64 32)
+  %213 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %211, <vscale x 8 x i16> %212, i64 32)
+  %214 = bitcast <vscale x 8 x i16> %213 to <vscale x 4 x i32>
+  %215 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %214, i64 0, i64 16)
+  %216 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %214, i64 16, i64 16)
+  %217 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %215, <vscale x 4 x i16> %216, i64 16)
+  %218 = bitcast <vscale x 4 x i16> %217 to <vscale x 2 x i32>
+  %219 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %218, i64 0, i64 8)
+  %220 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %218, i64 16, i64 8)
+  %221 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %219, <vscale x 2 x i16> %220, i64 8)
+  %222 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %221, i64 7, i64 8)
+  %223 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %222, float %104, i64 7, i64 8)
+  %224 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %83, <vscale x 2 x float> %223, <vscale x 2 x float> %154, i64 7, i64 8, i64 3)
+  %225 = getelementptr inbounds %struct.block, ptr %62, i64 %80, i32 1, i64 16
   %226 = load i64, ptr %225, align 2, !tbaa !16
+  %227 = getelementptr inbounds %struct.block, ptr %62, i64 %80, i32 1, i64 48
+  %228 = load i64, ptr %227, align 2, !tbaa !16
+  %229 = getelementptr inbounds %struct.block, ptr %62, i64 %80, i32 1, i64 80
+  %230 = load i64, ptr %229, align 2, !tbaa !16
+  %231 = getelementptr inbounds %struct.block, ptr %62, i64 %80, i32 1, i64 112
+  %232 = load i64, ptr %231, align 2, !tbaa !16
   tail call void asm sideeffect "", "~{memory}"() #10, !srcloc !20
-  %227 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %220, i64 8)
-  %228 = bitcast <vscale x 2 x i64> %227 to <vscale x 16 x i8>
-  %229 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %222, i64 8)
-  %230 = bitcast <vscale x 2 x i64> %229 to <vscale x 16 x i8>
-  %231 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %224, i64 8)
-  %232 = bitcast <vscale x 2 x i64> %231 to <vscale x 16 x i8>
   %233 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %226, i64 8)
   %234 = bitcast <vscale x 2 x i64> %233 to <vscale x 16 x i8>
-  %235 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %85, <vscale x 16 x i8> %228, i64 64)
-  %236 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %235, <vscale x 16 x i8> %86, <vscale x 16 x i8> %230, i64 64, i64 3)
-  %237 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %236, <vscale x 16 x i8> %87, <vscale x 16 x i8> %232, i64 64, i64 3)
-  %238 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %237, <vscale x 16 x i8> %88, <vscale x 16 x i8> %234, i64 64, i64 3)
-  %239 = bitcast <vscale x 16 x i16> %238 to <vscale x 8 x i32>
-  %240 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %239, i64 0, i64 32)
-  %241 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %239, i64 16, i64 32)
-  %242 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %240, <vscale x 8 x i16> %241, i64 32)
-  %243 = bitcast <vscale x 8 x i16> %242 to <vscale x 4 x i32>
-  %244 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %243, i64 0, i64 16)
-  %245 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %243, i64 16, i64 16)
-  %246 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %244, <vscale x 4 x i16> %245, i64 16)
-  %247 = bitcast <vscale x 4 x i16> %246 to <vscale x 2 x i32>
-  %248 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %247, i64 0, i64 8)
-  %249 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %247, i64 16, i64 8)
-  %250 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %248, <vscale x 2 x i16> %249, i64 8)
-  %251 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %250, i64 7, i64 8)
-  %252 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %251, float %103, i64 7, i64 8)
-  %253 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %76, <vscale x 2 x float> %252, <vscale x 2 x float> %148, i64 7, i64 8, i64 3)
-  %254 = getelementptr inbounds %struct.block, ptr %56, i64 %74, i32 1, i64 24
-  %255 = load i64, ptr %254, align 2, !tbaa !16
-  %256 = getelementptr inbounds %struct.block, ptr %56, i64 %74, i32 1, i64 56
-  %257 = load i64, ptr %256, align 2, !tbaa !16
-  %258 = getelementptr inbounds %struct.block, ptr %56, i64 %74, i32 1, i64 88
-  %259 = load i64, ptr %258, align 2, !tbaa !16
-  %260 = getelementptr inbounds %struct.block, ptr %56, i64 %74, i32 1, i64 120
+  %235 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %228, i64 8)
+  %236 = bitcast <vscale x 2 x i64> %235 to <vscale x 16 x i8>
+  %237 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %230, i64 8)
+  %238 = bitcast <vscale x 2 x i64> %237 to <vscale x 16 x i8>
+  %239 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %232, i64 8)
+  %240 = bitcast <vscale x 2 x i64> %239 to <vscale x 16 x i8>
+  %241 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %91, <vscale x 16 x i8> %234, i64 64)
+  %242 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %241, <vscale x 16 x i8> %92, <vscale x 16 x i8> %236, i64 64, i64 3)
+  %243 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %242, <vscale x 16 x i8> %93, <vscale x 16 x i8> %238, i64 64, i64 3)
+  %244 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %243, <vscale x 16 x i8> %94, <vscale x 16 x i8> %240, i64 64, i64 3)
+  %245 = bitcast <vscale x 16 x i16> %244 to <vscale x 8 x i32>
+  %246 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %245, i64 0, i64 32)
+  %247 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %245, i64 16, i64 32)
+  %248 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %246, <vscale x 8 x i16> %247, i64 32)
+  %249 = bitcast <vscale x 8 x i16> %248 to <vscale x 4 x i32>
+  %250 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %249, i64 0, i64 16)
+  %251 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %249, i64 16, i64 16)
+  %252 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %250, <vscale x 4 x i16> %251, i64 16)
+  %253 = bitcast <vscale x 4 x i16> %252 to <vscale x 2 x i32>
+  %254 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %253, i64 0, i64 8)
+  %255 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %253, i64 16, i64 8)
+  %256 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %254, <vscale x 2 x i16> %255, i64 8)
+  %257 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %256, i64 7, i64 8)
+  %258 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %257, float %109, i64 7, i64 8)
+  %259 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %82, <vscale x 2 x float> %258, <vscale x 2 x float> %154, i64 7, i64 8, i64 3)
+  %260 = getelementptr inbounds %struct.block, ptr %62, i64 %80, i32 1, i64 24
   %261 = load i64, ptr %260, align 2, !tbaa !16
+  %262 = getelementptr inbounds %struct.block, ptr %62, i64 %80, i32 1, i64 56
+  %263 = load i64, ptr %262, align 2, !tbaa !16
+  %264 = getelementptr inbounds %struct.block, ptr %62, i64 %80, i32 1, i64 88
+  %265 = load i64, ptr %264, align 2, !tbaa !16
+  %266 = getelementptr inbounds %struct.block, ptr %62, i64 %80, i32 1, i64 120
+  %267 = load i64, ptr %266, align 2, !tbaa !16
   tail call void asm sideeffect "", "~{memory}"() #10, !srcloc !21
-  %262 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %255, i64 8)
-  %263 = bitcast <vscale x 2 x i64> %262 to <vscale x 16 x i8>
-  %264 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %257, i64 8)
-  %265 = bitcast <vscale x 2 x i64> %264 to <vscale x 16 x i8>
-  %266 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %259, i64 8)
-  %267 = bitcast <vscale x 2 x i64> %266 to <vscale x 16 x i8>
   %268 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %261, i64 8)
   %269 = bitcast <vscale x 2 x i64> %268 to <vscale x 16 x i8>
-  %270 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %85, <vscale x 16 x i8> %263, i64 64)
-  %271 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %270, <vscale x 16 x i8> %86, <vscale x 16 x i8> %265, i64 64, i64 3)
-  %272 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %271, <vscale x 16 x i8> %87, <vscale x 16 x i8> %267, i64 64, i64 3)
-  %273 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %272, <vscale x 16 x i8> %88, <vscale x 16 x i8> %269, i64 64, i64 3)
-  %274 = bitcast <vscale x 16 x i16> %273 to <vscale x 8 x i32>
-  %275 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %274, i64 0, i64 32)
-  %276 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %274, i64 16, i64 32)
-  %277 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %275, <vscale x 8 x i16> %276, i64 32)
-  %278 = bitcast <vscale x 8 x i16> %277 to <vscale x 4 x i32>
-  %279 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %278, i64 0, i64 16)
-  %280 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %278, i64 16, i64 16)
-  %281 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %279, <vscale x 4 x i16> %280, i64 16)
-  %282 = bitcast <vscale x 4 x i16> %281 to <vscale x 2 x i32>
-  %283 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %282, i64 0, i64 8)
-  %284 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %282, i64 16, i64 8)
-  %285 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %283, <vscale x 2 x i16> %284, i64 8)
-  %286 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %285, i64 7, i64 8)
-  %287 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %286, float %108, i64 7, i64 8)
-  %288 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %75, <vscale x 2 x float> %287, <vscale x 2 x float> %148, i64 7, i64 8, i64 3)
-  call void @llvm.lifetime.end.p0(i64 32, ptr nonnull %10) #10
-  %289 = add nuw nsw i64 %74, 1
-  %290 = icmp eq i64 %289, %52
-  br i1 %290, label %291, label %73, !llvm.loop !22
+  %270 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %263, i64 8)
+  %271 = bitcast <vscale x 2 x i64> %270 to <vscale x 16 x i8>
+  %272 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %265, i64 8)
+  %273 = bitcast <vscale x 2 x i64> %272 to <vscale x 16 x i8>
+  %274 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %267, i64 8)
+  %275 = bitcast <vscale x 2 x i64> %274 to <vscale x 16 x i8>
+  %276 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %91, <vscale x 16 x i8> %269, i64 64)
+  %277 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %276, <vscale x 16 x i8> %92, <vscale x 16 x i8> %271, i64 64, i64 3)
+  %278 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %277, <vscale x 16 x i8> %93, <vscale x 16 x i8> %273, i64 64, i64 3)
+  %279 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %278, <vscale x 16 x i8> %94, <vscale x 16 x i8> %275, i64 64, i64 3)
+  %280 = bitcast <vscale x 16 x i16> %279 to <vscale x 8 x i32>
+  %281 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %280, i64 0, i64 32)
+  %282 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %280, i64 16, i64 32)
+  %283 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %281, <vscale x 8 x i16> %282, i64 32)
+  %284 = bitcast <vscale x 8 x i16> %283 to <vscale x 4 x i32>
+  %285 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %284, i64 0, i64 16)
+  %286 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %284, i64 16, i64 16)
+  %287 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %285, <vscale x 4 x i16> %286, i64 16)
+  %288 = bitcast <vscale x 4 x i16> %287 to <vscale x 2 x i32>
+  %289 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %288, i64 0, i64 8)
+  %290 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %288, i64 16, i64 8)
+  %291 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %289, <vscale x 2 x i16> %290, i64 8)
+  %292 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %291, i64 7, i64 8)
+  %293 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %292, float %114, i64 7, i64 8)
+  %294 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %81, <vscale x 2 x float> %293, <vscale x 2 x float> %154, i64 7, i64 8, i64 3)
+  call void @llvm.lifetime.end.p0(i64 32, ptr nonnull %16) #10
+  %295 = add nuw nsw i64 %80, 1
+  %296 = icmp eq i64 %295, %58
+  br i1 %296, label %297, label %79, !llvm.loop !22
 
-291:                                              ; preds = %73
-  %292 = shl nsw i64 %70, 3
-  %293 = getelementptr float, ptr %59, i64 %292
-  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %183, ptr %293, i64 8)
-  %294 = getelementptr float, ptr %62, i64 %292
-  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %218, ptr %294, i64 8)
-  %295 = getelementptr float, ptr %65, i64 %292
-  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %253, ptr %295, i64 8)
-  %296 = getelementptr float, ptr %68, i64 %292
-  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %288, ptr %296, i64 8)
-  %297 = add nuw nsw i64 %70, 1
-  %298 = icmp eq i64 %297, %51
-  br i1 %298, label %299, label %69, !llvm.loop !24
+297:                                              ; preds = %79
+  %298 = shl nsw i64 %76, 3
+  %299 = getelementptr float, ptr %65, i64 %298
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %189, ptr %299, i64 8)
+  %300 = getelementptr float, ptr %68, i64 %298
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %224, ptr %300, i64 8)
+  %301 = getelementptr float, ptr %71, i64 %298
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %259, ptr %301, i64 8)
+  %302 = getelementptr float, ptr %74, i64 %298
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %294, ptr %302, i64 8)
+  %303 = add nuw nsw i64 %76, 1
+  %304 = icmp eq i64 %303, %57
+  br i1 %304, label %305, label %75, !llvm.loop !24
 
-299:                                              ; preds = %291
-  %300 = add nuw nsw i64 %54, 1
-  %301 = icmp eq i64 %300, %50
-  br i1 %301, label %839, label %53, !llvm.loop !25
+305:                                              ; preds = %297
+  %306 = add nuw nsw i64 %60, 1
+  %307 = icmp eq i64 %306, %56
+  br i1 %307, label %1070, label %59, !llvm.loop !25
 
-302:                                              ; preds = %45, %325
-  %303 = phi i64 [ 0, %45 ], [ %326, %325 ]
-  %304 = shl nsw i64 %303, 2
-  %305 = mul i64 %304, %2
-  %306 = getelementptr float, ptr %1, i64 %305
-  %307 = or disjoint i64 %304, 1
-  %308 = mul i64 %307, %2
-  %309 = getelementptr float, ptr %1, i64 %308
-  %310 = or disjoint i64 %304, 2
+308:                                              ; preds = %51, %331
+  %309 = phi i64 [ 0, %51 ], [ %332, %331 ]
+  %310 = shl nsw i64 %309, 2
   %311 = mul i64 %310, %2
   %312 = getelementptr float, ptr %1, i64 %311
-  %313 = or disjoint i64 %304, 3
+  %313 = or disjoint i64 %310, 1
   %314 = mul i64 %313, %2
   %315 = getelementptr float, ptr %1, i64 %314
-  br label %316
+  %316 = or disjoint i64 %310, 2
+  %317 = mul i64 %316, %2
+  %318 = getelementptr float, ptr %1, i64 %317
+  %319 = or disjoint i64 %310, 3
+  %320 = mul i64 %319, %2
+  %321 = getelementptr float, ptr %1, i64 %320
+  br label %322
 
-316:                                              ; preds = %302, %316
-  %317 = phi i64 [ 0, %302 ], [ %323, %316 ]
-  %318 = shl nsw i64 %317, 3
-  %319 = getelementptr float, ptr %306, i64 %318
-  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %44, ptr %319, i64 8)
-  %320 = getelementptr float, ptr %309, i64 %318
-  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %44, ptr %320, i64 8)
-  %321 = getelementptr float, ptr %312, i64 %318
-  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %44, ptr %321, i64 8)
-  %322 = getelementptr float, ptr %315, i64 %318
-  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %44, ptr %322, i64 8)
-  %323 = add nuw nsw i64 %317, 1
-  %324 = icmp eq i64 %323, %47
-  br i1 %324, label %325, label %316, !llvm.loop !24
+322:                                              ; preds = %308, %322
+  %323 = phi i64 [ 0, %308 ], [ %329, %322 ]
+  %324 = shl nsw i64 %323, 3
+  %325 = getelementptr float, ptr %312, i64 %324
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %50, ptr %325, i64 8)
+  %326 = getelementptr float, ptr %315, i64 %324
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %50, ptr %326, i64 8)
+  %327 = getelementptr float, ptr %318, i64 %324
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %50, ptr %327, i64 8)
+  %328 = getelementptr float, ptr %321, i64 %324
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %50, ptr %328, i64 8)
+  %329 = add nuw nsw i64 %323, 1
+  %330 = icmp eq i64 %329, %53
+  br i1 %330, label %331, label %322, !llvm.loop !24
 
-325:                                              ; preds = %316
-  %326 = add nuw nsw i64 %303, 1
-  %327 = icmp eq i64 %326, %46
-  br i1 %327, label %839, label %302, !llvm.loop !25
+331:                                              ; preds = %322
+  %332 = add nuw nsw i64 %309, 1
+  %333 = icmp eq i64 %332, %52
+  br i1 %333, label %1070, label %308, !llvm.loop !25
 
-328:                                              ; preds = %26
-  br i1 %30, label %329, label %839
+334:                                              ; preds = %32
+  br i1 %36, label %335, label %1070
 
-329:                                              ; preds = %328
-  %330 = ashr exact i32 %6, 3
-  %331 = icmp sgt i32 %330, 0
-  %332 = icmp sgt i32 %0, 31
-  %333 = getelementptr inbounds float, ptr %8, i64 1
-  %334 = getelementptr inbounds float, ptr %8, i64 2
-  %335 = getelementptr inbounds float, ptr %8, i64 3
-  %336 = getelementptr inbounds float, ptr %8, i64 4
-  %337 = getelementptr inbounds float, ptr %8, i64 5
-  %338 = getelementptr inbounds float, ptr %8, i64 6
-  %339 = getelementptr inbounds float, ptr %8, i64 7
-  %340 = getelementptr inbounds float, ptr %9, i64 1
-  %341 = getelementptr inbounds float, ptr %9, i64 2
-  %342 = getelementptr inbounds float, ptr %9, i64 3
-  %343 = getelementptr inbounds float, ptr %9, i64 4
-  %344 = getelementptr inbounds float, ptr %9, i64 5
-  %345 = getelementptr inbounds float, ptr %9, i64 6
-  %346 = getelementptr inbounds float, ptr %9, i64 7
-  br i1 %331, label %347, label %839
+335:                                              ; preds = %334
+  %336 = ashr exact i32 %6, 3
+  %337 = icmp sgt i32 %336, 0
+  %338 = getelementptr inbounds float, ptr %8, i64 1
+  %339 = getelementptr inbounds float, ptr %8, i64 2
+  %340 = getelementptr inbounds float, ptr %8, i64 3
+  %341 = getelementptr inbounds float, ptr %8, i64 4
+  %342 = getelementptr inbounds float, ptr %8, i64 5
+  %343 = getelementptr inbounds float, ptr %8, i64 6
+  %344 = getelementptr inbounds float, ptr %8, i64 7
+  %345 = getelementptr inbounds float, ptr %9, i64 1
+  %346 = getelementptr inbounds float, ptr %9, i64 2
+  %347 = getelementptr inbounds float, ptr %9, i64 3
+  %348 = getelementptr inbounds float, ptr %9, i64 4
+  %349 = getelementptr inbounds float, ptr %9, i64 5
+  %350 = getelementptr inbounds float, ptr %9, i64 6
+  %351 = getelementptr inbounds float, ptr %9, i64 7
+  %352 = getelementptr inbounds float, ptr %10, i64 1
+  %353 = getelementptr inbounds float, ptr %10, i64 2
+  %354 = getelementptr inbounds float, ptr %10, i64 3
+  %355 = getelementptr inbounds float, ptr %10, i64 4
+  %356 = getelementptr inbounds float, ptr %10, i64 5
+  %357 = getelementptr inbounds float, ptr %10, i64 6
+  %358 = getelementptr inbounds float, ptr %10, i64 7
+  %359 = getelementptr inbounds float, ptr %11, i64 1
+  %360 = getelementptr inbounds float, ptr %11, i64 2
+  %361 = getelementptr inbounds float, ptr %11, i64 3
+  %362 = getelementptr inbounds float, ptr %11, i64 4
+  %363 = getelementptr inbounds float, ptr %11, i64 5
+  %364 = getelementptr inbounds float, ptr %11, i64 6
+  %365 = getelementptr inbounds float, ptr %11, i64 7
+  %366 = getelementptr inbounds float, ptr %12, i64 1
+  %367 = getelementptr inbounds float, ptr %12, i64 2
+  %368 = getelementptr inbounds float, ptr %12, i64 3
+  %369 = getelementptr inbounds float, ptr %12, i64 4
+  %370 = getelementptr inbounds float, ptr %12, i64 5
+  %371 = getelementptr inbounds float, ptr %12, i64 6
+  %372 = getelementptr inbounds float, ptr %12, i64 7
+  %373 = getelementptr inbounds float, ptr %13, i64 1
+  %374 = getelementptr inbounds float, ptr %13, i64 2
+  %375 = getelementptr inbounds float, ptr %13, i64 3
+  %376 = getelementptr inbounds float, ptr %13, i64 4
+  %377 = getelementptr inbounds float, ptr %13, i64 5
+  %378 = getelementptr inbounds float, ptr %13, i64 6
+  %379 = getelementptr inbounds float, ptr %13, i64 7
+  %380 = getelementptr inbounds float, ptr %14, i64 1
+  %381 = getelementptr inbounds float, ptr %14, i64 2
+  %382 = getelementptr inbounds float, ptr %14, i64 3
+  %383 = getelementptr inbounds float, ptr %14, i64 4
+  %384 = getelementptr inbounds float, ptr %14, i64 5
+  %385 = getelementptr inbounds float, ptr %14, i64 6
+  %386 = getelementptr inbounds float, ptr %14, i64 7
+  %387 = getelementptr inbounds float, ptr %15, i64 1
+  %388 = getelementptr inbounds float, ptr %15, i64 2
+  %389 = getelementptr inbounds float, ptr %15, i64 3
+  %390 = getelementptr inbounds float, ptr %15, i64 4
+  %391 = getelementptr inbounds float, ptr %15, i64 5
+  %392 = getelementptr inbounds float, ptr %15, i64 6
+  %393 = getelementptr inbounds float, ptr %15, i64 7
+  br i1 %337, label %394, label %1070
 
-347:                                              ; preds = %329
-  %348 = tail call <vscale x 2 x float> @llvm.riscv.vfmv.v.f.nxv2f32.i64(<vscale x 2 x float> poison, float 0.000000e+00, i64 8)
-  %349 = sext i32 %11 to i64
-  %350 = zext nneg i32 %330 to i64
-  %351 = zext nneg i32 %29 to i64
-  %352 = zext nneg i32 %11 to i64
-  %353 = zext nneg i32 %11 to i64
-  br label %354
+394:                                              ; preds = %335
+  %395 = icmp sgt i32 %0, 31
+  %396 = tail call <vscale x 2 x float> @llvm.riscv.vfmv.v.f.nxv2f32.i64(<vscale x 2 x float> poison, float 0.000000e+00, i64 8)
+  br i1 %395, label %400, label %397
 
-354:                                              ; preds = %835, %347
-  %355 = phi i64 [ %836, %835 ], [ 0, %347 ]
-  %356 = mul nsw i64 %355, %349
-  %357 = getelementptr inbounds %struct.block, ptr %4, i64 %356
-  %358 = shl nsw i64 %355, 2
-  %359 = mul i64 %358, %2
-  %360 = getelementptr float, ptr %1, i64 %359
-  %361 = or disjoint i64 %358, 1
-  %362 = mul i64 %361, %2
-  %363 = getelementptr float, ptr %1, i64 %362
-  %364 = or disjoint i64 %358, 2
-  %365 = mul i64 %364, %2
-  %366 = getelementptr float, ptr %1, i64 %365
-  %367 = or disjoint i64 %358, 3
-  %368 = mul i64 %367, %2
-  %369 = getelementptr float, ptr %1, i64 %368
-  br label %370
+397:                                              ; preds = %394
+  %398 = zext nneg i32 %336 to i64
+  %399 = zext nneg i32 %35 to i64
+  br label %1038
 
-370:                                              ; preds = %354, %377
-  %371 = phi i64 [ 0, %354 ], [ %396, %377 ]
-  %372 = mul nsw i64 %371, %349
-  %373 = getelementptr inbounds %struct.block.0, ptr %3, i64 %372
-  %374 = or disjoint i64 %371, 1
-  %375 = mul nsw i64 %374, %349
-  %376 = getelementptr inbounds %struct.block.0, ptr %3, i64 %375
-  br i1 %332, label %616, label %377
+400:                                              ; preds = %394
+  %401 = zext nneg i32 %17 to i64
+  %402 = zext nneg i32 %336 to i64
+  %403 = zext nneg i32 %35 to i64
+  %404 = zext nneg i32 %17 to i64
+  br label %405
 
-377:                                              ; preds = %398, %370, %834
-  %378 = phi <vscale x 2 x float> [ %726, %834 ], [ %348, %370 ], [ %726, %398 ]
-  %379 = phi <vscale x 2 x float> [ %761, %834 ], [ %348, %370 ], [ %761, %398 ]
-  %380 = phi <vscale x 2 x float> [ %796, %834 ], [ %348, %370 ], [ %796, %398 ]
-  %381 = phi <vscale x 2 x float> [ %831, %834 ], [ %348, %370 ], [ %831, %398 ]
-  %382 = phi <vscale x 2 x float> [ %348, %834 ], [ %348, %370 ], [ %613, %398 ]
-  %383 = phi <vscale x 2 x float> [ %348, %834 ], [ %348, %370 ], [ %578, %398 ]
-  %384 = phi <vscale x 2 x float> [ %348, %834 ], [ %348, %370 ], [ %543, %398 ]
-  %385 = phi <vscale x 2 x float> [ %348, %834 ], [ %348, %370 ], [ %508, %398 ]
-  %386 = shl nsw i64 %371, 3
-  %387 = getelementptr float, ptr %360, i64 %386
-  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %378, ptr %387, i64 8)
-  %388 = shl nsw i64 %374, 3
-  %389 = getelementptr float, ptr %360, i64 %388
-  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %385, ptr %389, i64 8)
-  %390 = getelementptr float, ptr %363, i64 %386
-  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %379, ptr %390, i64 8)
-  %391 = getelementptr float, ptr %363, i64 %388
-  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %384, ptr %391, i64 8)
-  %392 = getelementptr float, ptr %366, i64 %386
-  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %380, ptr %392, i64 8)
-  %393 = getelementptr float, ptr %366, i64 %388
-  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %383, ptr %393, i64 8)
-  %394 = getelementptr float, ptr %369, i64 %386
-  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %381, ptr %394, i64 8)
-  %395 = getelementptr float, ptr %369, i64 %388
-  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %382, ptr %395, i64 8)
-  %396 = add nuw nsw i64 %371, 2
-  %397 = icmp ult i64 %396, %350
-  br i1 %397, label %370, label %835, !llvm.loop !26
+405:                                              ; preds = %400, %1035
+  %406 = phi i64 [ 0, %400 ], [ %1036, %1035 ]
+  %407 = mul nsw i64 %406, %401
+  %408 = getelementptr inbounds %struct.block, ptr %4, i64 %407
+  %409 = shl nsw i64 %406, 2
+  %410 = mul i64 %409, %2
+  %411 = getelementptr float, ptr %1, i64 %410
+  %412 = or disjoint i64 %409, 1
+  %413 = mul i64 %412, %2
+  %414 = getelementptr float, ptr %1, i64 %413
+  %415 = or disjoint i64 %409, 2
+  %416 = mul i64 %415, %2
+  %417 = getelementptr float, ptr %1, i64 %416
+  %418 = or disjoint i64 %409, 3
+  %419 = mul i64 %418, %2
+  %420 = getelementptr float, ptr %1, i64 %419
+  br label %421
 
-398:                                              ; preds = %834, %398
-  %399 = phi i64 [ %614, %398 ], [ 0, %834 ]
-  %400 = phi <vscale x 2 x float> [ %508, %398 ], [ %348, %834 ]
-  %401 = phi <vscale x 2 x float> [ %543, %398 ], [ %348, %834 ]
-  %402 = phi <vscale x 2 x float> [ %578, %398 ], [ %348, %834 ]
-  %403 = phi <vscale x 2 x float> [ %613, %398 ], [ %348, %834 ]
-  %404 = getelementptr inbounds %struct.block.0, ptr %376, i64 %399
-  %405 = getelementptr inbounds %struct.block.0, ptr %376, i64 %399, i32 1
-  %406 = tail call <vscale x 32 x i8> @llvm.riscv.vle.nxv32i8.i64(<vscale x 32 x i8> poison, ptr nonnull %405, i64 128)
-  %407 = tail call <vscale x 32 x i8> @llvm.riscv.vsll.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %406, i64 4, i64 128)
-  %408 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %407, i64 4, i64 128)
-  %409 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %406, i64 4, i64 128)
-  %410 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %408, i64 0)
-  %411 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %408, i64 16)
-  %412 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %409, i64 0)
-  %413 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %409, i64 16)
-  %414 = getelementptr inbounds %struct.block, ptr %357, i64 %399
-  %415 = load i16, ptr %414, align 2, !tbaa !10
-  %416 = zext i16 %415 to i64
-  %417 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %416
-  %418 = load float, ptr %417, align 4, !tbaa !14
-  %419 = getelementptr inbounds [4 x i16], ptr %414, i64 0, i64 1
-  %420 = load i16, ptr %419, align 2, !tbaa !10
-  %421 = zext i16 %420 to i64
-  %422 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %421
-  %423 = load float, ptr %422, align 4, !tbaa !14
-  %424 = getelementptr inbounds [4 x i16], ptr %414, i64 0, i64 2
-  %425 = load i16, ptr %424, align 2, !tbaa !10
-  %426 = zext i16 %425 to i64
-  %427 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %426
-  %428 = load float, ptr %427, align 4, !tbaa !14
-  %429 = getelementptr inbounds [4 x i16], ptr %414, i64 0, i64 3
-  %430 = load i16, ptr %429, align 2, !tbaa !10
-  %431 = zext i16 %430 to i64
-  %432 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %431
-  %433 = load float, ptr %432, align 4, !tbaa !14
-  call void @llvm.lifetime.start.p0(i64 32, ptr nonnull %9) #10
-  %434 = load i16, ptr %404, align 2, !tbaa !10
-  %435 = zext i16 %434 to i64
-  %436 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %435
-  %437 = load float, ptr %436, align 4, !tbaa !14
-  store float %437, ptr %9, align 4, !tbaa !14
-  %438 = getelementptr inbounds [8 x i16], ptr %404, i64 0, i64 1
+421:                                              ; preds = %1022, %405
+  %422 = phi i64 [ %1033, %1022 ], [ 0, %405 ]
+  %423 = mul nsw i64 %422, %401
+  %424 = getelementptr inbounds %struct.block.0, ptr %3, i64 %423
+  %425 = or disjoint i64 %422, 1
+  %426 = mul nsw i64 %425, %401
+  %427 = getelementptr inbounds %struct.block.0, ptr %3, i64 %426
+  br label %428
+
+428:                                              ; preds = %428, %421
+  %429 = phi i64 [ %1020, %428 ], [ 0, %421 ]
+  %430 = phi <vscale x 2 x float> [ %542, %428 ], [ %396, %421 ]
+  %431 = phi <vscale x 2 x float> [ %687, %428 ], [ %396, %421 ]
+  %432 = phi <vscale x 2 x float> [ %823, %428 ], [ %396, %421 ]
+  %433 = phi <vscale x 2 x float> [ %959, %428 ], [ %396, %421 ]
+  %434 = phi <vscale x 2 x float> [ %611, %428 ], [ %396, %421 ]
+  %435 = phi <vscale x 2 x float> [ %747, %428 ], [ %396, %421 ]
+  %436 = phi <vscale x 2 x float> [ %883, %428 ], [ %396, %421 ]
+  %437 = phi <vscale x 2 x float> [ %1019, %428 ], [ %396, %421 ]
+  %438 = getelementptr inbounds %struct.block, ptr %408, i64 %429
   %439 = load i16, ptr %438, align 2, !tbaa !10
   %440 = zext i16 %439 to i64
   %441 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %440
   %442 = load float, ptr %441, align 4, !tbaa !14
-  store float %442, ptr %340, align 4, !tbaa !14
-  %443 = getelementptr inbounds [8 x i16], ptr %404, i64 0, i64 2
+  %443 = getelementptr inbounds [4 x i16], ptr %438, i64 0, i64 1
   %444 = load i16, ptr %443, align 2, !tbaa !10
   %445 = zext i16 %444 to i64
   %446 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %445
   %447 = load float, ptr %446, align 4, !tbaa !14
-  store float %447, ptr %341, align 4, !tbaa !14
-  %448 = getelementptr inbounds [8 x i16], ptr %404, i64 0, i64 3
+  %448 = getelementptr inbounds [4 x i16], ptr %438, i64 0, i64 2
   %449 = load i16, ptr %448, align 2, !tbaa !10
   %450 = zext i16 %449 to i64
   %451 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %450
   %452 = load float, ptr %451, align 4, !tbaa !14
-  store float %452, ptr %342, align 4, !tbaa !14
-  %453 = getelementptr inbounds [8 x i16], ptr %404, i64 0, i64 4
+  %453 = getelementptr inbounds [4 x i16], ptr %438, i64 0, i64 3
   %454 = load i16, ptr %453, align 2, !tbaa !10
   %455 = zext i16 %454 to i64
   %456 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %455
   %457 = load float, ptr %456, align 4, !tbaa !14
-  store float %457, ptr %343, align 4, !tbaa !14
-  %458 = getelementptr inbounds [8 x i16], ptr %404, i64 0, i64 5
-  %459 = load i16, ptr %458, align 2, !tbaa !10
-  %460 = zext i16 %459 to i64
-  %461 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %460
-  %462 = load float, ptr %461, align 4, !tbaa !14
-  store float %462, ptr %344, align 4, !tbaa !14
-  %463 = getelementptr inbounds [8 x i16], ptr %404, i64 0, i64 6
-  %464 = load i16, ptr %463, align 2, !tbaa !10
-  %465 = zext i16 %464 to i64
-  %466 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %465
-  %467 = load float, ptr %466, align 4, !tbaa !14
-  store float %467, ptr %345, align 4, !tbaa !14
-  %468 = getelementptr inbounds [8 x i16], ptr %404, i64 0, i64 7
-  %469 = load i16, ptr %468, align 2, !tbaa !10
-  %470 = zext i16 %469 to i64
-  %471 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %470
-  %472 = load float, ptr %471, align 4, !tbaa !14
-  store float %472, ptr %346, align 4, !tbaa !14
-  %473 = call <vscale x 2 x float> @llvm.riscv.vle.nxv2f32.i64(<vscale x 2 x float> poison, ptr nonnull %9, i64 8)
-  %474 = getelementptr inbounds %struct.block, ptr %357, i64 %399, i32 1
-  %475 = load i64, ptr %474, align 2, !tbaa !16
-  %476 = getelementptr inbounds %struct.block, ptr %357, i64 %399, i32 1, i64 32
-  %477 = load i64, ptr %476, align 2, !tbaa !16
-  %478 = getelementptr inbounds %struct.block, ptr %357, i64 %399, i32 1, i64 64
-  %479 = load i64, ptr %478, align 2, !tbaa !16
-  %480 = getelementptr inbounds %struct.block, ptr %357, i64 %399, i32 1, i64 96
-  %481 = load i64, ptr %480, align 2, !tbaa !16
-  tail call void asm sideeffect "", "~{memory}"() #10, !srcloc !27
-  %482 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %475, i64 8)
-  %483 = bitcast <vscale x 2 x i64> %482 to <vscale x 16 x i8>
-  %484 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %477, i64 8)
-  %485 = bitcast <vscale x 2 x i64> %484 to <vscale x 16 x i8>
-  %486 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %479, i64 8)
-  %487 = bitcast <vscale x 2 x i64> %486 to <vscale x 16 x i8>
-  %488 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %481, i64 8)
-  %489 = bitcast <vscale x 2 x i64> %488 to <vscale x 16 x i8>
-  %490 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %410, <vscale x 16 x i8> %483, i64 64)
-  %491 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %490, <vscale x 16 x i8> %411, <vscale x 16 x i8> %485, i64 64, i64 3)
-  %492 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %491, <vscale x 16 x i8> %412, <vscale x 16 x i8> %487, i64 64, i64 3)
-  %493 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %492, <vscale x 16 x i8> %413, <vscale x 16 x i8> %489, i64 64, i64 3)
-  %494 = bitcast <vscale x 16 x i16> %493 to <vscale x 8 x i32>
-  %495 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %494, i64 0, i64 32)
-  %496 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %494, i64 16, i64 32)
-  %497 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %495, <vscale x 8 x i16> %496, i64 32)
-  %498 = bitcast <vscale x 8 x i16> %497 to <vscale x 4 x i32>
-  %499 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %498, i64 0, i64 16)
-  %500 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %498, i64 16, i64 16)
-  %501 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %499, <vscale x 4 x i16> %500, i64 16)
-  %502 = bitcast <vscale x 4 x i16> %501 to <vscale x 2 x i32>
-  %503 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %502, i64 0, i64 8)
-  %504 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %502, i64 16, i64 8)
-  %505 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %503, <vscale x 2 x i16> %504, i64 8)
-  %506 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %505, i64 7, i64 8)
-  %507 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %506, float %418, i64 7, i64 8)
-  %508 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %400, <vscale x 2 x float> %507, <vscale x 2 x float> %473, i64 7, i64 8, i64 3)
-  %509 = getelementptr inbounds %struct.block, ptr %357, i64 %399, i32 1, i64 8
-  %510 = load i64, ptr %509, align 2, !tbaa !16
-  %511 = getelementptr inbounds %struct.block, ptr %357, i64 %399, i32 1, i64 40
-  %512 = load i64, ptr %511, align 2, !tbaa !16
-  %513 = getelementptr inbounds %struct.block, ptr %357, i64 %399, i32 1, i64 72
-  %514 = load i64, ptr %513, align 2, !tbaa !16
-  %515 = getelementptr inbounds %struct.block, ptr %357, i64 %399, i32 1, i64 104
-  %516 = load i64, ptr %515, align 2, !tbaa !16
-  tail call void asm sideeffect "", "~{memory}"() #10, !srcloc !28
-  %517 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %510, i64 8)
-  %518 = bitcast <vscale x 2 x i64> %517 to <vscale x 16 x i8>
-  %519 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %512, i64 8)
-  %520 = bitcast <vscale x 2 x i64> %519 to <vscale x 16 x i8>
-  %521 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %514, i64 8)
-  %522 = bitcast <vscale x 2 x i64> %521 to <vscale x 16 x i8>
-  %523 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %516, i64 8)
-  %524 = bitcast <vscale x 2 x i64> %523 to <vscale x 16 x i8>
-  %525 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %410, <vscale x 16 x i8> %518, i64 64)
-  %526 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %525, <vscale x 16 x i8> %411, <vscale x 16 x i8> %520, i64 64, i64 3)
-  %527 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %526, <vscale x 16 x i8> %412, <vscale x 16 x i8> %522, i64 64, i64 3)
-  %528 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %527, <vscale x 16 x i8> %413, <vscale x 16 x i8> %524, i64 64, i64 3)
-  %529 = bitcast <vscale x 16 x i16> %528 to <vscale x 8 x i32>
-  %530 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %529, i64 0, i64 32)
-  %531 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %529, i64 16, i64 32)
-  %532 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %530, <vscale x 8 x i16> %531, i64 32)
-  %533 = bitcast <vscale x 8 x i16> %532 to <vscale x 4 x i32>
-  %534 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %533, i64 0, i64 16)
-  %535 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %533, i64 16, i64 16)
-  %536 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %534, <vscale x 4 x i16> %535, i64 16)
-  %537 = bitcast <vscale x 4 x i16> %536 to <vscale x 2 x i32>
-  %538 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %537, i64 0, i64 8)
-  %539 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %537, i64 16, i64 8)
-  %540 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %538, <vscale x 2 x i16> %539, i64 8)
-  %541 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %540, i64 7, i64 8)
-  %542 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %541, float %423, i64 7, i64 8)
-  %543 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %401, <vscale x 2 x float> %542, <vscale x 2 x float> %473, i64 7, i64 8, i64 3)
-  %544 = getelementptr inbounds %struct.block, ptr %357, i64 %399, i32 1, i64 16
-  %545 = load i64, ptr %544, align 2, !tbaa !16
-  %546 = getelementptr inbounds %struct.block, ptr %357, i64 %399, i32 1, i64 48
-  %547 = load i64, ptr %546, align 2, !tbaa !16
-  %548 = getelementptr inbounds %struct.block, ptr %357, i64 %399, i32 1, i64 80
-  %549 = load i64, ptr %548, align 2, !tbaa !16
-  %550 = getelementptr inbounds %struct.block, ptr %357, i64 %399, i32 1, i64 112
-  %551 = load i64, ptr %550, align 2, !tbaa !16
-  tail call void asm sideeffect "", "~{memory}"() #10, !srcloc !29
-  %552 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %545, i64 8)
-  %553 = bitcast <vscale x 2 x i64> %552 to <vscale x 16 x i8>
-  %554 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %547, i64 8)
-  %555 = bitcast <vscale x 2 x i64> %554 to <vscale x 16 x i8>
-  %556 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %549, i64 8)
-  %557 = bitcast <vscale x 2 x i64> %556 to <vscale x 16 x i8>
-  %558 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %551, i64 8)
-  %559 = bitcast <vscale x 2 x i64> %558 to <vscale x 16 x i8>
-  %560 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %410, <vscale x 16 x i8> %553, i64 64)
-  %561 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %560, <vscale x 16 x i8> %411, <vscale x 16 x i8> %555, i64 64, i64 3)
-  %562 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %561, <vscale x 16 x i8> %412, <vscale x 16 x i8> %557, i64 64, i64 3)
-  %563 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %562, <vscale x 16 x i8> %413, <vscale x 16 x i8> %559, i64 64, i64 3)
-  %564 = bitcast <vscale x 16 x i16> %563 to <vscale x 8 x i32>
-  %565 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %564, i64 0, i64 32)
-  %566 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %564, i64 16, i64 32)
-  %567 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %565, <vscale x 8 x i16> %566, i64 32)
-  %568 = bitcast <vscale x 8 x i16> %567 to <vscale x 4 x i32>
-  %569 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %568, i64 0, i64 16)
-  %570 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %568, i64 16, i64 16)
-  %571 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %569, <vscale x 4 x i16> %570, i64 16)
-  %572 = bitcast <vscale x 4 x i16> %571 to <vscale x 2 x i32>
-  %573 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %572, i64 0, i64 8)
-  %574 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %572, i64 16, i64 8)
-  %575 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %573, <vscale x 2 x i16> %574, i64 8)
-  %576 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %575, i64 7, i64 8)
-  %577 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %576, float %428, i64 7, i64 8)
-  %578 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %402, <vscale x 2 x float> %577, <vscale x 2 x float> %473, i64 7, i64 8, i64 3)
-  %579 = getelementptr inbounds %struct.block, ptr %357, i64 %399, i32 1, i64 24
-  %580 = load i64, ptr %579, align 2, !tbaa !16
-  %581 = getelementptr inbounds %struct.block, ptr %357, i64 %399, i32 1, i64 56
-  %582 = load i64, ptr %581, align 2, !tbaa !16
-  %583 = getelementptr inbounds %struct.block, ptr %357, i64 %399, i32 1, i64 88
-  %584 = load i64, ptr %583, align 2, !tbaa !16
-  %585 = getelementptr inbounds %struct.block, ptr %357, i64 %399, i32 1, i64 120
-  %586 = load i64, ptr %585, align 2, !tbaa !16
-  tail call void asm sideeffect "", "~{memory}"() #10, !srcloc !30
-  %587 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %580, i64 8)
-  %588 = bitcast <vscale x 2 x i64> %587 to <vscale x 16 x i8>
-  %589 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %582, i64 8)
-  %590 = bitcast <vscale x 2 x i64> %589 to <vscale x 16 x i8>
-  %591 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %584, i64 8)
-  %592 = bitcast <vscale x 2 x i64> %591 to <vscale x 16 x i8>
-  %593 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %586, i64 8)
-  %594 = bitcast <vscale x 2 x i64> %593 to <vscale x 16 x i8>
-  %595 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %410, <vscale x 16 x i8> %588, i64 64)
-  %596 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %595, <vscale x 16 x i8> %411, <vscale x 16 x i8> %590, i64 64, i64 3)
-  %597 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %596, <vscale x 16 x i8> %412, <vscale x 16 x i8> %592, i64 64, i64 3)
-  %598 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %597, <vscale x 16 x i8> %413, <vscale x 16 x i8> %594, i64 64, i64 3)
-  %599 = bitcast <vscale x 16 x i16> %598 to <vscale x 8 x i32>
-  %600 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %599, i64 0, i64 32)
-  %601 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %599, i64 16, i64 32)
-  %602 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %600, <vscale x 8 x i16> %601, i64 32)
-  %603 = bitcast <vscale x 8 x i16> %602 to <vscale x 4 x i32>
-  %604 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %603, i64 0, i64 16)
-  %605 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %603, i64 16, i64 16)
-  %606 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %604, <vscale x 4 x i16> %605, i64 16)
-  %607 = bitcast <vscale x 4 x i16> %606 to <vscale x 2 x i32>
-  %608 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %607, i64 0, i64 8)
-  %609 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %607, i64 16, i64 8)
-  %610 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %608, <vscale x 2 x i16> %609, i64 8)
-  %611 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %610, i64 7, i64 8)
-  %612 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %611, float %433, i64 7, i64 8)
-  %613 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %403, <vscale x 2 x float> %612, <vscale x 2 x float> %473, i64 7, i64 8, i64 3)
+  %458 = getelementptr inbounds %struct.block, ptr %408, i64 %429, i32 1
+  %459 = load i64, ptr %458, align 2, !tbaa !16
+  %460 = getelementptr inbounds %struct.block, ptr %408, i64 %429, i32 1, i64 32
+  %461 = load i64, ptr %460, align 2, !tbaa !16
+  %462 = getelementptr inbounds %struct.block, ptr %408, i64 %429, i32 1, i64 64
+  %463 = load i64, ptr %462, align 2, !tbaa !16
+  %464 = getelementptr inbounds %struct.block, ptr %408, i64 %429, i32 1, i64 96
+  %465 = load i64, ptr %464, align 2, !tbaa !16
+  tail call void asm sideeffect "", "~{memory}"() #10, !srcloc !26
+  %466 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %459, i64 8)
+  %467 = bitcast <vscale x 2 x i64> %466 to <vscale x 16 x i8>
+  %468 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %461, i64 8)
+  %469 = bitcast <vscale x 2 x i64> %468 to <vscale x 16 x i8>
+  %470 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %463, i64 8)
+  %471 = bitcast <vscale x 2 x i64> %470 to <vscale x 16 x i8>
+  %472 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %465, i64 8)
+  %473 = bitcast <vscale x 2 x i64> %472 to <vscale x 16 x i8>
+  %474 = getelementptr inbounds %struct.block.0, ptr %424, i64 %429
+  %475 = getelementptr inbounds %struct.block.0, ptr %424, i64 %429, i32 1
+  %476 = tail call <vscale x 32 x i8> @llvm.riscv.vle.nxv32i8.i64(<vscale x 32 x i8> poison, ptr nonnull %475, i64 128)
+  %477 = tail call <vscale x 32 x i8> @llvm.riscv.vsll.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %476, i64 4, i64 128)
+  %478 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %477, i64 4, i64 128)
+  %479 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %476, i64 4, i64 128)
+  %480 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %478, i64 0)
+  %481 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %478, i64 16)
+  %482 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %479, i64 0)
+  %483 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %479, i64 16)
+  call void @llvm.lifetime.start.p0(i64 32, ptr nonnull %8) #10
+  %484 = load i16, ptr %474, align 2, !tbaa !10
+  %485 = zext i16 %484 to i64
+  %486 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %485
+  %487 = load float, ptr %486, align 4, !tbaa !14
+  store float %487, ptr %8, align 4, !tbaa !14
+  %488 = getelementptr inbounds [8 x i16], ptr %474, i64 0, i64 1
+  %489 = load i16, ptr %488, align 2, !tbaa !10
+  %490 = zext i16 %489 to i64
+  %491 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %490
+  %492 = load float, ptr %491, align 4, !tbaa !14
+  store float %492, ptr %338, align 4, !tbaa !14
+  %493 = getelementptr inbounds [8 x i16], ptr %474, i64 0, i64 2
+  %494 = load i16, ptr %493, align 2, !tbaa !10
+  %495 = zext i16 %494 to i64
+  %496 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %495
+  %497 = load float, ptr %496, align 4, !tbaa !14
+  store float %497, ptr %339, align 4, !tbaa !14
+  %498 = getelementptr inbounds [8 x i16], ptr %474, i64 0, i64 3
+  %499 = load i16, ptr %498, align 2, !tbaa !10
+  %500 = zext i16 %499 to i64
+  %501 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %500
+  %502 = load float, ptr %501, align 4, !tbaa !14
+  store float %502, ptr %340, align 4, !tbaa !14
+  %503 = getelementptr inbounds [8 x i16], ptr %474, i64 0, i64 4
+  %504 = load i16, ptr %503, align 2, !tbaa !10
+  %505 = zext i16 %504 to i64
+  %506 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %505
+  %507 = load float, ptr %506, align 4, !tbaa !14
+  store float %507, ptr %341, align 4, !tbaa !14
+  %508 = getelementptr inbounds [8 x i16], ptr %474, i64 0, i64 5
+  %509 = load i16, ptr %508, align 2, !tbaa !10
+  %510 = zext i16 %509 to i64
+  %511 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %510
+  %512 = load float, ptr %511, align 4, !tbaa !14
+  store float %512, ptr %342, align 4, !tbaa !14
+  %513 = getelementptr inbounds [8 x i16], ptr %474, i64 0, i64 6
+  %514 = load i16, ptr %513, align 2, !tbaa !10
+  %515 = zext i16 %514 to i64
+  %516 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %515
+  %517 = load float, ptr %516, align 4, !tbaa !14
+  store float %517, ptr %343, align 4, !tbaa !14
+  %518 = getelementptr inbounds [8 x i16], ptr %474, i64 0, i64 7
+  %519 = load i16, ptr %518, align 2, !tbaa !10
+  %520 = zext i16 %519 to i64
+  %521 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %520
+  %522 = load float, ptr %521, align 4, !tbaa !14
+  store float %522, ptr %344, align 4, !tbaa !14
+  %523 = call <vscale x 2 x float> @llvm.riscv.vle.nxv2f32.i64(<vscale x 2 x float> poison, ptr nonnull %8, i64 8)
+  %524 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %480, <vscale x 16 x i8> %467, i64 64)
+  %525 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %524, <vscale x 16 x i8> %481, <vscale x 16 x i8> %469, i64 64, i64 3)
+  %526 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %525, <vscale x 16 x i8> %482, <vscale x 16 x i8> %471, i64 64, i64 3)
+  %527 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %526, <vscale x 16 x i8> %483, <vscale x 16 x i8> %473, i64 64, i64 3)
+  %528 = bitcast <vscale x 16 x i16> %527 to <vscale x 8 x i32>
+  %529 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %528, i64 0, i64 32)
+  %530 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %528, i64 16, i64 32)
+  %531 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %529, <vscale x 8 x i16> %530, i64 32)
+  %532 = bitcast <vscale x 8 x i16> %531 to <vscale x 4 x i32>
+  %533 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %532, i64 0, i64 16)
+  %534 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %532, i64 16, i64 16)
+  %535 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %533, <vscale x 4 x i16> %534, i64 16)
+  %536 = bitcast <vscale x 4 x i16> %535 to <vscale x 2 x i32>
+  %537 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %536, i64 0, i64 8)
+  %538 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %536, i64 16, i64 8)
+  %539 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %537, <vscale x 2 x i16> %538, i64 8)
+  %540 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %539, i64 7, i64 8)
+  %541 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %540, float %442, i64 7, i64 8)
+  %542 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %430, <vscale x 2 x float> %541, <vscale x 2 x float> %523, i64 7, i64 8, i64 3)
+  call void @llvm.lifetime.end.p0(i64 32, ptr nonnull %8) #10
+  %543 = getelementptr inbounds %struct.block.0, ptr %427, i64 %429
+  %544 = getelementptr inbounds %struct.block.0, ptr %427, i64 %429, i32 1
+  %545 = tail call <vscale x 32 x i8> @llvm.riscv.vle.nxv32i8.i64(<vscale x 32 x i8> poison, ptr nonnull %544, i64 128)
+  %546 = tail call <vscale x 32 x i8> @llvm.riscv.vsll.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %545, i64 4, i64 128)
+  %547 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %546, i64 4, i64 128)
+  %548 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %545, i64 4, i64 128)
+  %549 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %547, i64 0)
+  %550 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %547, i64 16)
+  %551 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %548, i64 0)
+  %552 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %548, i64 16)
+  call void @llvm.lifetime.start.p0(i64 32, ptr nonnull %9) #10
+  %553 = load i16, ptr %543, align 2, !tbaa !10
+  %554 = zext i16 %553 to i64
+  %555 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %554
+  %556 = load float, ptr %555, align 4, !tbaa !14
+  store float %556, ptr %9, align 4, !tbaa !14
+  %557 = getelementptr inbounds [8 x i16], ptr %543, i64 0, i64 1
+  %558 = load i16, ptr %557, align 2, !tbaa !10
+  %559 = zext i16 %558 to i64
+  %560 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %559
+  %561 = load float, ptr %560, align 4, !tbaa !14
+  store float %561, ptr %345, align 4, !tbaa !14
+  %562 = getelementptr inbounds [8 x i16], ptr %543, i64 0, i64 2
+  %563 = load i16, ptr %562, align 2, !tbaa !10
+  %564 = zext i16 %563 to i64
+  %565 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %564
+  %566 = load float, ptr %565, align 4, !tbaa !14
+  store float %566, ptr %346, align 4, !tbaa !14
+  %567 = getelementptr inbounds [8 x i16], ptr %543, i64 0, i64 3
+  %568 = load i16, ptr %567, align 2, !tbaa !10
+  %569 = zext i16 %568 to i64
+  %570 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %569
+  %571 = load float, ptr %570, align 4, !tbaa !14
+  store float %571, ptr %347, align 4, !tbaa !14
+  %572 = getelementptr inbounds [8 x i16], ptr %543, i64 0, i64 4
+  %573 = load i16, ptr %572, align 2, !tbaa !10
+  %574 = zext i16 %573 to i64
+  %575 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %574
+  %576 = load float, ptr %575, align 4, !tbaa !14
+  store float %576, ptr %348, align 4, !tbaa !14
+  %577 = getelementptr inbounds [8 x i16], ptr %543, i64 0, i64 5
+  %578 = load i16, ptr %577, align 2, !tbaa !10
+  %579 = zext i16 %578 to i64
+  %580 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %579
+  %581 = load float, ptr %580, align 4, !tbaa !14
+  store float %581, ptr %349, align 4, !tbaa !14
+  %582 = getelementptr inbounds [8 x i16], ptr %543, i64 0, i64 6
+  %583 = load i16, ptr %582, align 2, !tbaa !10
+  %584 = zext i16 %583 to i64
+  %585 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %584
+  %586 = load float, ptr %585, align 4, !tbaa !14
+  store float %586, ptr %350, align 4, !tbaa !14
+  %587 = getelementptr inbounds [8 x i16], ptr %543, i64 0, i64 7
+  %588 = load i16, ptr %587, align 2, !tbaa !10
+  %589 = zext i16 %588 to i64
+  %590 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %589
+  %591 = load float, ptr %590, align 4, !tbaa !14
+  store float %591, ptr %351, align 4, !tbaa !14
+  %592 = call <vscale x 2 x float> @llvm.riscv.vle.nxv2f32.i64(<vscale x 2 x float> poison, ptr nonnull %9, i64 8)
+  %593 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %549, <vscale x 16 x i8> %467, i64 64)
+  %594 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %593, <vscale x 16 x i8> %550, <vscale x 16 x i8> %469, i64 64, i64 3)
+  %595 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %594, <vscale x 16 x i8> %551, <vscale x 16 x i8> %471, i64 64, i64 3)
+  %596 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %595, <vscale x 16 x i8> %552, <vscale x 16 x i8> %473, i64 64, i64 3)
+  %597 = bitcast <vscale x 16 x i16> %596 to <vscale x 8 x i32>
+  %598 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %597, i64 0, i64 32)
+  %599 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %597, i64 16, i64 32)
+  %600 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %598, <vscale x 8 x i16> %599, i64 32)
+  %601 = bitcast <vscale x 8 x i16> %600 to <vscale x 4 x i32>
+  %602 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %601, i64 0, i64 16)
+  %603 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %601, i64 16, i64 16)
+  %604 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %602, <vscale x 4 x i16> %603, i64 16)
+  %605 = bitcast <vscale x 4 x i16> %604 to <vscale x 2 x i32>
+  %606 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %605, i64 0, i64 8)
+  %607 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %605, i64 16, i64 8)
+  %608 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %606, <vscale x 2 x i16> %607, i64 8)
+  %609 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %608, i64 7, i64 8)
+  %610 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %609, float %442, i64 7, i64 8)
+  %611 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %434, <vscale x 2 x float> %610, <vscale x 2 x float> %592, i64 7, i64 8, i64 3)
   call void @llvm.lifetime.end.p0(i64 32, ptr nonnull %9) #10
-  %614 = add nuw nsw i64 %399, 1
-  %615 = icmp eq i64 %614, %353
-  br i1 %615, label %377, label %398, !llvm.loop !31
-
-616:                                              ; preds = %370, %616
-  %617 = phi i64 [ %832, %616 ], [ 0, %370 ]
-  %618 = phi <vscale x 2 x float> [ %726, %616 ], [ %348, %370 ]
-  %619 = phi <vscale x 2 x float> [ %761, %616 ], [ %348, %370 ]
-  %620 = phi <vscale x 2 x float> [ %796, %616 ], [ %348, %370 ]
-  %621 = phi <vscale x 2 x float> [ %831, %616 ], [ %348, %370 ]
-  %622 = getelementptr inbounds %struct.block.0, ptr %373, i64 %617
-  %623 = getelementptr inbounds %struct.block.0, ptr %373, i64 %617, i32 1
-  %624 = tail call <vscale x 32 x i8> @llvm.riscv.vle.nxv32i8.i64(<vscale x 32 x i8> poison, ptr nonnull %623, i64 128)
-  %625 = tail call <vscale x 32 x i8> @llvm.riscv.vsll.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %624, i64 4, i64 128)
-  %626 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %625, i64 4, i64 128)
-  %627 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %624, i64 4, i64 128)
-  %628 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %626, i64 0)
-  %629 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %626, i64 16)
-  %630 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %627, i64 0)
-  %631 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %627, i64 16)
-  %632 = getelementptr inbounds %struct.block, ptr %357, i64 %617
-  %633 = load i16, ptr %632, align 2, !tbaa !10
-  %634 = zext i16 %633 to i64
-  %635 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %634
-  %636 = load float, ptr %635, align 4, !tbaa !14
-  %637 = getelementptr inbounds [4 x i16], ptr %632, i64 0, i64 1
-  %638 = load i16, ptr %637, align 2, !tbaa !10
-  %639 = zext i16 %638 to i64
-  %640 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %639
-  %641 = load float, ptr %640, align 4, !tbaa !14
-  %642 = getelementptr inbounds [4 x i16], ptr %632, i64 0, i64 2
-  %643 = load i16, ptr %642, align 2, !tbaa !10
-  %644 = zext i16 %643 to i64
-  %645 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %644
-  %646 = load float, ptr %645, align 4, !tbaa !14
-  %647 = getelementptr inbounds [4 x i16], ptr %632, i64 0, i64 3
-  %648 = load i16, ptr %647, align 2, !tbaa !10
+  %612 = getelementptr inbounds %struct.block, ptr %408, i64 %429, i32 1, i64 8
+  %613 = load i64, ptr %612, align 2, !tbaa !16
+  %614 = getelementptr inbounds %struct.block, ptr %408, i64 %429, i32 1, i64 40
+  %615 = load i64, ptr %614, align 2, !tbaa !16
+  %616 = getelementptr inbounds %struct.block, ptr %408, i64 %429, i32 1, i64 72
+  %617 = load i64, ptr %616, align 2, !tbaa !16
+  %618 = getelementptr inbounds %struct.block, ptr %408, i64 %429, i32 1, i64 104
+  %619 = load i64, ptr %618, align 2, !tbaa !16
+  tail call void asm sideeffect "", "~{memory}"() #10, !srcloc !27
+  %620 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %613, i64 8)
+  %621 = bitcast <vscale x 2 x i64> %620 to <vscale x 16 x i8>
+  %622 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %615, i64 8)
+  %623 = bitcast <vscale x 2 x i64> %622 to <vscale x 16 x i8>
+  %624 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %617, i64 8)
+  %625 = bitcast <vscale x 2 x i64> %624 to <vscale x 16 x i8>
+  %626 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %619, i64 8)
+  %627 = bitcast <vscale x 2 x i64> %626 to <vscale x 16 x i8>
+  %628 = tail call <vscale x 32 x i8> @llvm.riscv.vle.nxv32i8.i64(<vscale x 32 x i8> poison, ptr nonnull %475, i64 128)
+  %629 = tail call <vscale x 32 x i8> @llvm.riscv.vsll.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %628, i64 4, i64 128)
+  %630 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %629, i64 4, i64 128)
+  %631 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %628, i64 4, i64 128)
+  %632 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %630, i64 0)
+  %633 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %630, i64 16)
+  %634 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %631, i64 0)
+  %635 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %631, i64 16)
+  call void @llvm.lifetime.start.p0(i64 32, ptr nonnull %10) #10
+  %636 = load i16, ptr %474, align 2, !tbaa !10
+  %637 = zext i16 %636 to i64
+  %638 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %637
+  %639 = load float, ptr %638, align 4, !tbaa !14
+  store float %639, ptr %10, align 4, !tbaa !14
+  %640 = load i16, ptr %488, align 2, !tbaa !10
+  %641 = zext i16 %640 to i64
+  %642 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %641
+  %643 = load float, ptr %642, align 4, !tbaa !14
+  store float %643, ptr %352, align 4, !tbaa !14
+  %644 = load i16, ptr %493, align 2, !tbaa !10
+  %645 = zext i16 %644 to i64
+  %646 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %645
+  %647 = load float, ptr %646, align 4, !tbaa !14
+  store float %647, ptr %353, align 4, !tbaa !14
+  %648 = load i16, ptr %498, align 2, !tbaa !10
   %649 = zext i16 %648 to i64
   %650 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %649
   %651 = load float, ptr %650, align 4, !tbaa !14
-  call void @llvm.lifetime.start.p0(i64 32, ptr nonnull %8) #10
-  %652 = load i16, ptr %622, align 2, !tbaa !10
+  store float %651, ptr %354, align 4, !tbaa !14
+  %652 = load i16, ptr %503, align 2, !tbaa !10
   %653 = zext i16 %652 to i64
   %654 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %653
   %655 = load float, ptr %654, align 4, !tbaa !14
-  store float %655, ptr %8, align 4, !tbaa !14
-  %656 = getelementptr inbounds [8 x i16], ptr %622, i64 0, i64 1
-  %657 = load i16, ptr %656, align 2, !tbaa !10
-  %658 = zext i16 %657 to i64
-  %659 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %658
-  %660 = load float, ptr %659, align 4, !tbaa !14
-  store float %660, ptr %333, align 4, !tbaa !14
-  %661 = getelementptr inbounds [8 x i16], ptr %622, i64 0, i64 2
-  %662 = load i16, ptr %661, align 2, !tbaa !10
-  %663 = zext i16 %662 to i64
-  %664 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %663
-  %665 = load float, ptr %664, align 4, !tbaa !14
-  store float %665, ptr %334, align 4, !tbaa !14
-  %666 = getelementptr inbounds [8 x i16], ptr %622, i64 0, i64 3
-  %667 = load i16, ptr %666, align 2, !tbaa !10
-  %668 = zext i16 %667 to i64
-  %669 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %668
-  %670 = load float, ptr %669, align 4, !tbaa !14
-  store float %670, ptr %335, align 4, !tbaa !14
-  %671 = getelementptr inbounds [8 x i16], ptr %622, i64 0, i64 4
-  %672 = load i16, ptr %671, align 2, !tbaa !10
-  %673 = zext i16 %672 to i64
-  %674 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %673
-  %675 = load float, ptr %674, align 4, !tbaa !14
-  store float %675, ptr %336, align 4, !tbaa !14
-  %676 = getelementptr inbounds [8 x i16], ptr %622, i64 0, i64 5
-  %677 = load i16, ptr %676, align 2, !tbaa !10
-  %678 = zext i16 %677 to i64
-  %679 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %678
-  %680 = load float, ptr %679, align 4, !tbaa !14
-  store float %680, ptr %337, align 4, !tbaa !14
-  %681 = getelementptr inbounds [8 x i16], ptr %622, i64 0, i64 6
-  %682 = load i16, ptr %681, align 2, !tbaa !10
-  %683 = zext i16 %682 to i64
-  %684 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %683
-  %685 = load float, ptr %684, align 4, !tbaa !14
-  store float %685, ptr %338, align 4, !tbaa !14
-  %686 = getelementptr inbounds [8 x i16], ptr %622, i64 0, i64 7
-  %687 = load i16, ptr %686, align 2, !tbaa !10
-  %688 = zext i16 %687 to i64
-  %689 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %688
-  %690 = load float, ptr %689, align 4, !tbaa !14
-  store float %690, ptr %339, align 4, !tbaa !14
-  %691 = call <vscale x 2 x float> @llvm.riscv.vle.nxv2f32.i64(<vscale x 2 x float> poison, ptr nonnull %8, i64 8)
-  %692 = getelementptr inbounds %struct.block, ptr %357, i64 %617, i32 1
-  %693 = load i64, ptr %692, align 2, !tbaa !16
-  %694 = getelementptr inbounds %struct.block, ptr %357, i64 %617, i32 1, i64 32
-  %695 = load i64, ptr %694, align 2, !tbaa !16
-  %696 = getelementptr inbounds %struct.block, ptr %357, i64 %617, i32 1, i64 64
-  %697 = load i64, ptr %696, align 2, !tbaa !16
-  %698 = getelementptr inbounds %struct.block, ptr %357, i64 %617, i32 1, i64 96
-  %699 = load i64, ptr %698, align 2, !tbaa !16
-  tail call void asm sideeffect "", "~{memory}"() #10, !srcloc !32
-  %700 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %693, i64 8)
-  %701 = bitcast <vscale x 2 x i64> %700 to <vscale x 16 x i8>
-  %702 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %695, i64 8)
-  %703 = bitcast <vscale x 2 x i64> %702 to <vscale x 16 x i8>
-  %704 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %697, i64 8)
-  %705 = bitcast <vscale x 2 x i64> %704 to <vscale x 16 x i8>
-  %706 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %699, i64 8)
-  %707 = bitcast <vscale x 2 x i64> %706 to <vscale x 16 x i8>
-  %708 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %628, <vscale x 16 x i8> %701, i64 64)
-  %709 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %708, <vscale x 16 x i8> %629, <vscale x 16 x i8> %703, i64 64, i64 3)
-  %710 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %709, <vscale x 16 x i8> %630, <vscale x 16 x i8> %705, i64 64, i64 3)
-  %711 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %710, <vscale x 16 x i8> %631, <vscale x 16 x i8> %707, i64 64, i64 3)
-  %712 = bitcast <vscale x 16 x i16> %711 to <vscale x 8 x i32>
-  %713 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %712, i64 0, i64 32)
-  %714 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %712, i64 16, i64 32)
-  %715 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %713, <vscale x 8 x i16> %714, i64 32)
-  %716 = bitcast <vscale x 8 x i16> %715 to <vscale x 4 x i32>
-  %717 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %716, i64 0, i64 16)
-  %718 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %716, i64 16, i64 16)
-  %719 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %717, <vscale x 4 x i16> %718, i64 16)
-  %720 = bitcast <vscale x 4 x i16> %719 to <vscale x 2 x i32>
-  %721 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %720, i64 0, i64 8)
-  %722 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %720, i64 16, i64 8)
-  %723 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %721, <vscale x 2 x i16> %722, i64 8)
-  %724 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %723, i64 7, i64 8)
-  %725 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %724, float %636, i64 7, i64 8)
-  %726 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %618, <vscale x 2 x float> %725, <vscale x 2 x float> %691, i64 7, i64 8, i64 3)
-  %727 = getelementptr inbounds %struct.block, ptr %357, i64 %617, i32 1, i64 8
-  %728 = load i64, ptr %727, align 2, !tbaa !16
-  %729 = getelementptr inbounds %struct.block, ptr %357, i64 %617, i32 1, i64 40
-  %730 = load i64, ptr %729, align 2, !tbaa !16
-  %731 = getelementptr inbounds %struct.block, ptr %357, i64 %617, i32 1, i64 72
-  %732 = load i64, ptr %731, align 2, !tbaa !16
-  %733 = getelementptr inbounds %struct.block, ptr %357, i64 %617, i32 1, i64 104
-  %734 = load i64, ptr %733, align 2, !tbaa !16
-  tail call void asm sideeffect "", "~{memory}"() #10, !srcloc !33
-  %735 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %728, i64 8)
-  %736 = bitcast <vscale x 2 x i64> %735 to <vscale x 16 x i8>
-  %737 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %730, i64 8)
-  %738 = bitcast <vscale x 2 x i64> %737 to <vscale x 16 x i8>
-  %739 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %732, i64 8)
-  %740 = bitcast <vscale x 2 x i64> %739 to <vscale x 16 x i8>
-  %741 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %734, i64 8)
-  %742 = bitcast <vscale x 2 x i64> %741 to <vscale x 16 x i8>
-  %743 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %628, <vscale x 16 x i8> %736, i64 64)
-  %744 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %743, <vscale x 16 x i8> %629, <vscale x 16 x i8> %738, i64 64, i64 3)
-  %745 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %744, <vscale x 16 x i8> %630, <vscale x 16 x i8> %740, i64 64, i64 3)
-  %746 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %745, <vscale x 16 x i8> %631, <vscale x 16 x i8> %742, i64 64, i64 3)
-  %747 = bitcast <vscale x 16 x i16> %746 to <vscale x 8 x i32>
-  %748 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %747, i64 0, i64 32)
-  %749 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %747, i64 16, i64 32)
-  %750 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %748, <vscale x 8 x i16> %749, i64 32)
-  %751 = bitcast <vscale x 8 x i16> %750 to <vscale x 4 x i32>
-  %752 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %751, i64 0, i64 16)
-  %753 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %751, i64 16, i64 16)
-  %754 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %752, <vscale x 4 x i16> %753, i64 16)
-  %755 = bitcast <vscale x 4 x i16> %754 to <vscale x 2 x i32>
-  %756 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %755, i64 0, i64 8)
-  %757 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %755, i64 16, i64 8)
-  %758 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %756, <vscale x 2 x i16> %757, i64 8)
-  %759 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %758, i64 7, i64 8)
-  %760 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %759, float %641, i64 7, i64 8)
-  %761 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %619, <vscale x 2 x float> %760, <vscale x 2 x float> %691, i64 7, i64 8, i64 3)
-  %762 = getelementptr inbounds %struct.block, ptr %357, i64 %617, i32 1, i64 16
-  %763 = load i64, ptr %762, align 2, !tbaa !16
-  %764 = getelementptr inbounds %struct.block, ptr %357, i64 %617, i32 1, i64 48
-  %765 = load i64, ptr %764, align 2, !tbaa !16
-  %766 = getelementptr inbounds %struct.block, ptr %357, i64 %617, i32 1, i64 80
-  %767 = load i64, ptr %766, align 2, !tbaa !16
-  %768 = getelementptr inbounds %struct.block, ptr %357, i64 %617, i32 1, i64 112
-  %769 = load i64, ptr %768, align 2, !tbaa !16
-  tail call void asm sideeffect "", "~{memory}"() #10, !srcloc !34
-  %770 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %763, i64 8)
-  %771 = bitcast <vscale x 2 x i64> %770 to <vscale x 16 x i8>
-  %772 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %765, i64 8)
-  %773 = bitcast <vscale x 2 x i64> %772 to <vscale x 16 x i8>
-  %774 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %767, i64 8)
-  %775 = bitcast <vscale x 2 x i64> %774 to <vscale x 16 x i8>
-  %776 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %769, i64 8)
-  %777 = bitcast <vscale x 2 x i64> %776 to <vscale x 16 x i8>
-  %778 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %628, <vscale x 16 x i8> %771, i64 64)
-  %779 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %778, <vscale x 16 x i8> %629, <vscale x 16 x i8> %773, i64 64, i64 3)
-  %780 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %779, <vscale x 16 x i8> %630, <vscale x 16 x i8> %775, i64 64, i64 3)
-  %781 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %780, <vscale x 16 x i8> %631, <vscale x 16 x i8> %777, i64 64, i64 3)
-  %782 = bitcast <vscale x 16 x i16> %781 to <vscale x 8 x i32>
-  %783 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %782, i64 0, i64 32)
-  %784 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %782, i64 16, i64 32)
-  %785 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %783, <vscale x 8 x i16> %784, i64 32)
-  %786 = bitcast <vscale x 8 x i16> %785 to <vscale x 4 x i32>
-  %787 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %786, i64 0, i64 16)
-  %788 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %786, i64 16, i64 16)
-  %789 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %787, <vscale x 4 x i16> %788, i64 16)
-  %790 = bitcast <vscale x 4 x i16> %789 to <vscale x 2 x i32>
-  %791 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %790, i64 0, i64 8)
-  %792 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %790, i64 16, i64 8)
-  %793 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %791, <vscale x 2 x i16> %792, i64 8)
-  %794 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %793, i64 7, i64 8)
-  %795 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %794, float %646, i64 7, i64 8)
-  %796 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %620, <vscale x 2 x float> %795, <vscale x 2 x float> %691, i64 7, i64 8, i64 3)
-  %797 = getelementptr inbounds %struct.block, ptr %357, i64 %617, i32 1, i64 24
-  %798 = load i64, ptr %797, align 2, !tbaa !16
-  %799 = getelementptr inbounds %struct.block, ptr %357, i64 %617, i32 1, i64 56
-  %800 = load i64, ptr %799, align 2, !tbaa !16
-  %801 = getelementptr inbounds %struct.block, ptr %357, i64 %617, i32 1, i64 88
-  %802 = load i64, ptr %801, align 2, !tbaa !16
-  %803 = getelementptr inbounds %struct.block, ptr %357, i64 %617, i32 1, i64 120
-  %804 = load i64, ptr %803, align 2, !tbaa !16
-  tail call void asm sideeffect "", "~{memory}"() #10, !srcloc !35
-  %805 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %798, i64 8)
-  %806 = bitcast <vscale x 2 x i64> %805 to <vscale x 16 x i8>
-  %807 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %800, i64 8)
-  %808 = bitcast <vscale x 2 x i64> %807 to <vscale x 16 x i8>
-  %809 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %802, i64 8)
-  %810 = bitcast <vscale x 2 x i64> %809 to <vscale x 16 x i8>
-  %811 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %804, i64 8)
-  %812 = bitcast <vscale x 2 x i64> %811 to <vscale x 16 x i8>
-  %813 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %628, <vscale x 16 x i8> %806, i64 64)
-  %814 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %813, <vscale x 16 x i8> %629, <vscale x 16 x i8> %808, i64 64, i64 3)
-  %815 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %814, <vscale x 16 x i8> %630, <vscale x 16 x i8> %810, i64 64, i64 3)
-  %816 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %815, <vscale x 16 x i8> %631, <vscale x 16 x i8> %812, i64 64, i64 3)
-  %817 = bitcast <vscale x 16 x i16> %816 to <vscale x 8 x i32>
-  %818 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %817, i64 0, i64 32)
-  %819 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %817, i64 16, i64 32)
-  %820 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %818, <vscale x 8 x i16> %819, i64 32)
-  %821 = bitcast <vscale x 8 x i16> %820 to <vscale x 4 x i32>
-  %822 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %821, i64 0, i64 16)
-  %823 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %821, i64 16, i64 16)
-  %824 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %822, <vscale x 4 x i16> %823, i64 16)
-  %825 = bitcast <vscale x 4 x i16> %824 to <vscale x 2 x i32>
-  %826 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %825, i64 0, i64 8)
-  %827 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %825, i64 16, i64 8)
-  %828 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %826, <vscale x 2 x i16> %827, i64 8)
-  %829 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %828, i64 7, i64 8)
-  %830 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %829, float %651, i64 7, i64 8)
-  %831 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %621, <vscale x 2 x float> %830, <vscale x 2 x float> %691, i64 7, i64 8, i64 3)
-  call void @llvm.lifetime.end.p0(i64 32, ptr nonnull %8) #10
-  %832 = add nuw nsw i64 %617, 1
-  %833 = icmp eq i64 %832, %352
-  br i1 %833, label %834, label %616, !llvm.loop !36
+  store float %655, ptr %355, align 4, !tbaa !14
+  %656 = load i16, ptr %508, align 2, !tbaa !10
+  %657 = zext i16 %656 to i64
+  %658 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %657
+  %659 = load float, ptr %658, align 4, !tbaa !14
+  store float %659, ptr %356, align 4, !tbaa !14
+  %660 = load i16, ptr %513, align 2, !tbaa !10
+  %661 = zext i16 %660 to i64
+  %662 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %661
+  %663 = load float, ptr %662, align 4, !tbaa !14
+  store float %663, ptr %357, align 4, !tbaa !14
+  %664 = load i16, ptr %518, align 2, !tbaa !10
+  %665 = zext i16 %664 to i64
+  %666 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %665
+  %667 = load float, ptr %666, align 4, !tbaa !14
+  store float %667, ptr %358, align 4, !tbaa !14
+  %668 = call <vscale x 2 x float> @llvm.riscv.vle.nxv2f32.i64(<vscale x 2 x float> poison, ptr nonnull %10, i64 8)
+  %669 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %632, <vscale x 16 x i8> %621, i64 64)
+  %670 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %669, <vscale x 16 x i8> %633, <vscale x 16 x i8> %623, i64 64, i64 3)
+  %671 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %670, <vscale x 16 x i8> %634, <vscale x 16 x i8> %625, i64 64, i64 3)
+  %672 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %671, <vscale x 16 x i8> %635, <vscale x 16 x i8> %627, i64 64, i64 3)
+  %673 = bitcast <vscale x 16 x i16> %672 to <vscale x 8 x i32>
+  %674 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %673, i64 0, i64 32)
+  %675 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %673, i64 16, i64 32)
+  %676 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %674, <vscale x 8 x i16> %675, i64 32)
+  %677 = bitcast <vscale x 8 x i16> %676 to <vscale x 4 x i32>
+  %678 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %677, i64 0, i64 16)
+  %679 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %677, i64 16, i64 16)
+  %680 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %678, <vscale x 4 x i16> %679, i64 16)
+  %681 = bitcast <vscale x 4 x i16> %680 to <vscale x 2 x i32>
+  %682 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %681, i64 0, i64 8)
+  %683 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %681, i64 16, i64 8)
+  %684 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %682, <vscale x 2 x i16> %683, i64 8)
+  %685 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %684, i64 7, i64 8)
+  %686 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %685, float %447, i64 7, i64 8)
+  %687 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %431, <vscale x 2 x float> %686, <vscale x 2 x float> %668, i64 7, i64 8, i64 3)
+  call void @llvm.lifetime.end.p0(i64 32, ptr nonnull %10) #10
+  %688 = tail call <vscale x 32 x i8> @llvm.riscv.vle.nxv32i8.i64(<vscale x 32 x i8> poison, ptr nonnull %544, i64 128)
+  %689 = tail call <vscale x 32 x i8> @llvm.riscv.vsll.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %688, i64 4, i64 128)
+  %690 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %689, i64 4, i64 128)
+  %691 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %688, i64 4, i64 128)
+  %692 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %690, i64 0)
+  %693 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %690, i64 16)
+  %694 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %691, i64 0)
+  %695 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %691, i64 16)
+  call void @llvm.lifetime.start.p0(i64 32, ptr nonnull %11) #10
+  %696 = load i16, ptr %543, align 2, !tbaa !10
+  %697 = zext i16 %696 to i64
+  %698 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %697
+  %699 = load float, ptr %698, align 4, !tbaa !14
+  store float %699, ptr %11, align 4, !tbaa !14
+  %700 = load i16, ptr %557, align 2, !tbaa !10
+  %701 = zext i16 %700 to i64
+  %702 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %701
+  %703 = load float, ptr %702, align 4, !tbaa !14
+  store float %703, ptr %359, align 4, !tbaa !14
+  %704 = load i16, ptr %562, align 2, !tbaa !10
+  %705 = zext i16 %704 to i64
+  %706 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %705
+  %707 = load float, ptr %706, align 4, !tbaa !14
+  store float %707, ptr %360, align 4, !tbaa !14
+  %708 = load i16, ptr %567, align 2, !tbaa !10
+  %709 = zext i16 %708 to i64
+  %710 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %709
+  %711 = load float, ptr %710, align 4, !tbaa !14
+  store float %711, ptr %361, align 4, !tbaa !14
+  %712 = load i16, ptr %572, align 2, !tbaa !10
+  %713 = zext i16 %712 to i64
+  %714 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %713
+  %715 = load float, ptr %714, align 4, !tbaa !14
+  store float %715, ptr %362, align 4, !tbaa !14
+  %716 = load i16, ptr %577, align 2, !tbaa !10
+  %717 = zext i16 %716 to i64
+  %718 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %717
+  %719 = load float, ptr %718, align 4, !tbaa !14
+  store float %719, ptr %363, align 4, !tbaa !14
+  %720 = load i16, ptr %582, align 2, !tbaa !10
+  %721 = zext i16 %720 to i64
+  %722 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %721
+  %723 = load float, ptr %722, align 4, !tbaa !14
+  store float %723, ptr %364, align 4, !tbaa !14
+  %724 = load i16, ptr %587, align 2, !tbaa !10
+  %725 = zext i16 %724 to i64
+  %726 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %725
+  %727 = load float, ptr %726, align 4, !tbaa !14
+  store float %727, ptr %365, align 4, !tbaa !14
+  %728 = call <vscale x 2 x float> @llvm.riscv.vle.nxv2f32.i64(<vscale x 2 x float> poison, ptr nonnull %11, i64 8)
+  %729 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %692, <vscale x 16 x i8> %621, i64 64)
+  %730 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %729, <vscale x 16 x i8> %693, <vscale x 16 x i8> %623, i64 64, i64 3)
+  %731 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %730, <vscale x 16 x i8> %694, <vscale x 16 x i8> %625, i64 64, i64 3)
+  %732 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %731, <vscale x 16 x i8> %695, <vscale x 16 x i8> %627, i64 64, i64 3)
+  %733 = bitcast <vscale x 16 x i16> %732 to <vscale x 8 x i32>
+  %734 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %733, i64 0, i64 32)
+  %735 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %733, i64 16, i64 32)
+  %736 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %734, <vscale x 8 x i16> %735, i64 32)
+  %737 = bitcast <vscale x 8 x i16> %736 to <vscale x 4 x i32>
+  %738 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %737, i64 0, i64 16)
+  %739 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %737, i64 16, i64 16)
+  %740 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %738, <vscale x 4 x i16> %739, i64 16)
+  %741 = bitcast <vscale x 4 x i16> %740 to <vscale x 2 x i32>
+  %742 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %741, i64 0, i64 8)
+  %743 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %741, i64 16, i64 8)
+  %744 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %742, <vscale x 2 x i16> %743, i64 8)
+  %745 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %744, i64 7, i64 8)
+  %746 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %745, float %447, i64 7, i64 8)
+  %747 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %435, <vscale x 2 x float> %746, <vscale x 2 x float> %728, i64 7, i64 8, i64 3)
+  call void @llvm.lifetime.end.p0(i64 32, ptr nonnull %11) #10
+  %748 = getelementptr inbounds %struct.block, ptr %408, i64 %429, i32 1, i64 16
+  %749 = load i64, ptr %748, align 2, !tbaa !16
+  %750 = getelementptr inbounds %struct.block, ptr %408, i64 %429, i32 1, i64 48
+  %751 = load i64, ptr %750, align 2, !tbaa !16
+  %752 = getelementptr inbounds %struct.block, ptr %408, i64 %429, i32 1, i64 80
+  %753 = load i64, ptr %752, align 2, !tbaa !16
+  %754 = getelementptr inbounds %struct.block, ptr %408, i64 %429, i32 1, i64 112
+  %755 = load i64, ptr %754, align 2, !tbaa !16
+  tail call void asm sideeffect "", "~{memory}"() #10, !srcloc !28
+  %756 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %749, i64 8)
+  %757 = bitcast <vscale x 2 x i64> %756 to <vscale x 16 x i8>
+  %758 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %751, i64 8)
+  %759 = bitcast <vscale x 2 x i64> %758 to <vscale x 16 x i8>
+  %760 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %753, i64 8)
+  %761 = bitcast <vscale x 2 x i64> %760 to <vscale x 16 x i8>
+  %762 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %755, i64 8)
+  %763 = bitcast <vscale x 2 x i64> %762 to <vscale x 16 x i8>
+  %764 = tail call <vscale x 32 x i8> @llvm.riscv.vle.nxv32i8.i64(<vscale x 32 x i8> poison, ptr nonnull %475, i64 128)
+  %765 = tail call <vscale x 32 x i8> @llvm.riscv.vsll.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %764, i64 4, i64 128)
+  %766 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %765, i64 4, i64 128)
+  %767 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %764, i64 4, i64 128)
+  %768 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %766, i64 0)
+  %769 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %766, i64 16)
+  %770 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %767, i64 0)
+  %771 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %767, i64 16)
+  call void @llvm.lifetime.start.p0(i64 32, ptr nonnull %12) #10
+  %772 = load i16, ptr %474, align 2, !tbaa !10
+  %773 = zext i16 %772 to i64
+  %774 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %773
+  %775 = load float, ptr %774, align 4, !tbaa !14
+  store float %775, ptr %12, align 4, !tbaa !14
+  %776 = load i16, ptr %488, align 2, !tbaa !10
+  %777 = zext i16 %776 to i64
+  %778 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %777
+  %779 = load float, ptr %778, align 4, !tbaa !14
+  store float %779, ptr %366, align 4, !tbaa !14
+  %780 = load i16, ptr %493, align 2, !tbaa !10
+  %781 = zext i16 %780 to i64
+  %782 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %781
+  %783 = load float, ptr %782, align 4, !tbaa !14
+  store float %783, ptr %367, align 4, !tbaa !14
+  %784 = load i16, ptr %498, align 2, !tbaa !10
+  %785 = zext i16 %784 to i64
+  %786 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %785
+  %787 = load float, ptr %786, align 4, !tbaa !14
+  store float %787, ptr %368, align 4, !tbaa !14
+  %788 = load i16, ptr %503, align 2, !tbaa !10
+  %789 = zext i16 %788 to i64
+  %790 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %789
+  %791 = load float, ptr %790, align 4, !tbaa !14
+  store float %791, ptr %369, align 4, !tbaa !14
+  %792 = load i16, ptr %508, align 2, !tbaa !10
+  %793 = zext i16 %792 to i64
+  %794 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %793
+  %795 = load float, ptr %794, align 4, !tbaa !14
+  store float %795, ptr %370, align 4, !tbaa !14
+  %796 = load i16, ptr %513, align 2, !tbaa !10
+  %797 = zext i16 %796 to i64
+  %798 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %797
+  %799 = load float, ptr %798, align 4, !tbaa !14
+  store float %799, ptr %371, align 4, !tbaa !14
+  %800 = load i16, ptr %518, align 2, !tbaa !10
+  %801 = zext i16 %800 to i64
+  %802 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %801
+  %803 = load float, ptr %802, align 4, !tbaa !14
+  store float %803, ptr %372, align 4, !tbaa !14
+  %804 = call <vscale x 2 x float> @llvm.riscv.vle.nxv2f32.i64(<vscale x 2 x float> poison, ptr nonnull %12, i64 8)
+  %805 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %768, <vscale x 16 x i8> %757, i64 64)
+  %806 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %805, <vscale x 16 x i8> %769, <vscale x 16 x i8> %759, i64 64, i64 3)
+  %807 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %806, <vscale x 16 x i8> %770, <vscale x 16 x i8> %761, i64 64, i64 3)
+  %808 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %807, <vscale x 16 x i8> %771, <vscale x 16 x i8> %763, i64 64, i64 3)
+  %809 = bitcast <vscale x 16 x i16> %808 to <vscale x 8 x i32>
+  %810 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %809, i64 0, i64 32)
+  %811 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %809, i64 16, i64 32)
+  %812 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %810, <vscale x 8 x i16> %811, i64 32)
+  %813 = bitcast <vscale x 8 x i16> %812 to <vscale x 4 x i32>
+  %814 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %813, i64 0, i64 16)
+  %815 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %813, i64 16, i64 16)
+  %816 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %814, <vscale x 4 x i16> %815, i64 16)
+  %817 = bitcast <vscale x 4 x i16> %816 to <vscale x 2 x i32>
+  %818 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %817, i64 0, i64 8)
+  %819 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %817, i64 16, i64 8)
+  %820 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %818, <vscale x 2 x i16> %819, i64 8)
+  %821 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %820, i64 7, i64 8)
+  %822 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %821, float %452, i64 7, i64 8)
+  %823 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %432, <vscale x 2 x float> %822, <vscale x 2 x float> %804, i64 7, i64 8, i64 3)
+  call void @llvm.lifetime.end.p0(i64 32, ptr nonnull %12) #10
+  %824 = tail call <vscale x 32 x i8> @llvm.riscv.vle.nxv32i8.i64(<vscale x 32 x i8> poison, ptr nonnull %544, i64 128)
+  %825 = tail call <vscale x 32 x i8> @llvm.riscv.vsll.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %824, i64 4, i64 128)
+  %826 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %825, i64 4, i64 128)
+  %827 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %824, i64 4, i64 128)
+  %828 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %826, i64 0)
+  %829 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %826, i64 16)
+  %830 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %827, i64 0)
+  %831 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %827, i64 16)
+  call void @llvm.lifetime.start.p0(i64 32, ptr nonnull %13) #10
+  %832 = load i16, ptr %543, align 2, !tbaa !10
+  %833 = zext i16 %832 to i64
+  %834 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %833
+  %835 = load float, ptr %834, align 4, !tbaa !14
+  store float %835, ptr %13, align 4, !tbaa !14
+  %836 = load i16, ptr %557, align 2, !tbaa !10
+  %837 = zext i16 %836 to i64
+  %838 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %837
+  %839 = load float, ptr %838, align 4, !tbaa !14
+  store float %839, ptr %373, align 4, !tbaa !14
+  %840 = load i16, ptr %562, align 2, !tbaa !10
+  %841 = zext i16 %840 to i64
+  %842 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %841
+  %843 = load float, ptr %842, align 4, !tbaa !14
+  store float %843, ptr %374, align 4, !tbaa !14
+  %844 = load i16, ptr %567, align 2, !tbaa !10
+  %845 = zext i16 %844 to i64
+  %846 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %845
+  %847 = load float, ptr %846, align 4, !tbaa !14
+  store float %847, ptr %375, align 4, !tbaa !14
+  %848 = load i16, ptr %572, align 2, !tbaa !10
+  %849 = zext i16 %848 to i64
+  %850 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %849
+  %851 = load float, ptr %850, align 4, !tbaa !14
+  store float %851, ptr %376, align 4, !tbaa !14
+  %852 = load i16, ptr %577, align 2, !tbaa !10
+  %853 = zext i16 %852 to i64
+  %854 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %853
+  %855 = load float, ptr %854, align 4, !tbaa !14
+  store float %855, ptr %377, align 4, !tbaa !14
+  %856 = load i16, ptr %582, align 2, !tbaa !10
+  %857 = zext i16 %856 to i64
+  %858 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %857
+  %859 = load float, ptr %858, align 4, !tbaa !14
+  store float %859, ptr %378, align 4, !tbaa !14
+  %860 = load i16, ptr %587, align 2, !tbaa !10
+  %861 = zext i16 %860 to i64
+  %862 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %861
+  %863 = load float, ptr %862, align 4, !tbaa !14
+  store float %863, ptr %379, align 4, !tbaa !14
+  %864 = call <vscale x 2 x float> @llvm.riscv.vle.nxv2f32.i64(<vscale x 2 x float> poison, ptr nonnull %13, i64 8)
+  %865 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %828, <vscale x 16 x i8> %757, i64 64)
+  %866 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %865, <vscale x 16 x i8> %829, <vscale x 16 x i8> %759, i64 64, i64 3)
+  %867 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %866, <vscale x 16 x i8> %830, <vscale x 16 x i8> %761, i64 64, i64 3)
+  %868 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %867, <vscale x 16 x i8> %831, <vscale x 16 x i8> %763, i64 64, i64 3)
+  %869 = bitcast <vscale x 16 x i16> %868 to <vscale x 8 x i32>
+  %870 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %869, i64 0, i64 32)
+  %871 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %869, i64 16, i64 32)
+  %872 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %870, <vscale x 8 x i16> %871, i64 32)
+  %873 = bitcast <vscale x 8 x i16> %872 to <vscale x 4 x i32>
+  %874 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %873, i64 0, i64 16)
+  %875 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %873, i64 16, i64 16)
+  %876 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %874, <vscale x 4 x i16> %875, i64 16)
+  %877 = bitcast <vscale x 4 x i16> %876 to <vscale x 2 x i32>
+  %878 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %877, i64 0, i64 8)
+  %879 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %877, i64 16, i64 8)
+  %880 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %878, <vscale x 2 x i16> %879, i64 8)
+  %881 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %880, i64 7, i64 8)
+  %882 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %881, float %452, i64 7, i64 8)
+  %883 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %436, <vscale x 2 x float> %882, <vscale x 2 x float> %864, i64 7, i64 8, i64 3)
+  call void @llvm.lifetime.end.p0(i64 32, ptr nonnull %13) #10
+  %884 = getelementptr inbounds %struct.block, ptr %408, i64 %429, i32 1, i64 24
+  %885 = load i64, ptr %884, align 2, !tbaa !16
+  %886 = getelementptr inbounds %struct.block, ptr %408, i64 %429, i32 1, i64 56
+  %887 = load i64, ptr %886, align 2, !tbaa !16
+  %888 = getelementptr inbounds %struct.block, ptr %408, i64 %429, i32 1, i64 88
+  %889 = load i64, ptr %888, align 2, !tbaa !16
+  %890 = getelementptr inbounds %struct.block, ptr %408, i64 %429, i32 1, i64 120
+  %891 = load i64, ptr %890, align 2, !tbaa !16
+  tail call void asm sideeffect "", "~{memory}"() #10, !srcloc !29
+  %892 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %885, i64 8)
+  %893 = bitcast <vscale x 2 x i64> %892 to <vscale x 16 x i8>
+  %894 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %887, i64 8)
+  %895 = bitcast <vscale x 2 x i64> %894 to <vscale x 16 x i8>
+  %896 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %889, i64 8)
+  %897 = bitcast <vscale x 2 x i64> %896 to <vscale x 16 x i8>
+  %898 = tail call <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64> poison, i64 %891, i64 8)
+  %899 = bitcast <vscale x 2 x i64> %898 to <vscale x 16 x i8>
+  %900 = tail call <vscale x 32 x i8> @llvm.riscv.vle.nxv32i8.i64(<vscale x 32 x i8> poison, ptr nonnull %475, i64 128)
+  %901 = tail call <vscale x 32 x i8> @llvm.riscv.vsll.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %900, i64 4, i64 128)
+  %902 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %901, i64 4, i64 128)
+  %903 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %900, i64 4, i64 128)
+  %904 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %902, i64 0)
+  %905 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %902, i64 16)
+  %906 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %903, i64 0)
+  %907 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %903, i64 16)
+  call void @llvm.lifetime.start.p0(i64 32, ptr nonnull %14) #10
+  %908 = load i16, ptr %474, align 2, !tbaa !10
+  %909 = zext i16 %908 to i64
+  %910 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %909
+  %911 = load float, ptr %910, align 4, !tbaa !14
+  store float %911, ptr %14, align 4, !tbaa !14
+  %912 = load i16, ptr %488, align 2, !tbaa !10
+  %913 = zext i16 %912 to i64
+  %914 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %913
+  %915 = load float, ptr %914, align 4, !tbaa !14
+  store float %915, ptr %380, align 4, !tbaa !14
+  %916 = load i16, ptr %493, align 2, !tbaa !10
+  %917 = zext i16 %916 to i64
+  %918 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %917
+  %919 = load float, ptr %918, align 4, !tbaa !14
+  store float %919, ptr %381, align 4, !tbaa !14
+  %920 = load i16, ptr %498, align 2, !tbaa !10
+  %921 = zext i16 %920 to i64
+  %922 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %921
+  %923 = load float, ptr %922, align 4, !tbaa !14
+  store float %923, ptr %382, align 4, !tbaa !14
+  %924 = load i16, ptr %503, align 2, !tbaa !10
+  %925 = zext i16 %924 to i64
+  %926 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %925
+  %927 = load float, ptr %926, align 4, !tbaa !14
+  store float %927, ptr %383, align 4, !tbaa !14
+  %928 = load i16, ptr %508, align 2, !tbaa !10
+  %929 = zext i16 %928 to i64
+  %930 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %929
+  %931 = load float, ptr %930, align 4, !tbaa !14
+  store float %931, ptr %384, align 4, !tbaa !14
+  %932 = load i16, ptr %513, align 2, !tbaa !10
+  %933 = zext i16 %932 to i64
+  %934 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %933
+  %935 = load float, ptr %934, align 4, !tbaa !14
+  store float %935, ptr %385, align 4, !tbaa !14
+  %936 = load i16, ptr %518, align 2, !tbaa !10
+  %937 = zext i16 %936 to i64
+  %938 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %937
+  %939 = load float, ptr %938, align 4, !tbaa !14
+  store float %939, ptr %386, align 4, !tbaa !14
+  %940 = call <vscale x 2 x float> @llvm.riscv.vle.nxv2f32.i64(<vscale x 2 x float> poison, ptr nonnull %14, i64 8)
+  %941 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %904, <vscale x 16 x i8> %893, i64 64)
+  %942 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %941, <vscale x 16 x i8> %905, <vscale x 16 x i8> %895, i64 64, i64 3)
+  %943 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %942, <vscale x 16 x i8> %906, <vscale x 16 x i8> %897, i64 64, i64 3)
+  %944 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %943, <vscale x 16 x i8> %907, <vscale x 16 x i8> %899, i64 64, i64 3)
+  %945 = bitcast <vscale x 16 x i16> %944 to <vscale x 8 x i32>
+  %946 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %945, i64 0, i64 32)
+  %947 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %945, i64 16, i64 32)
+  %948 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %946, <vscale x 8 x i16> %947, i64 32)
+  %949 = bitcast <vscale x 8 x i16> %948 to <vscale x 4 x i32>
+  %950 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %949, i64 0, i64 16)
+  %951 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %949, i64 16, i64 16)
+  %952 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %950, <vscale x 4 x i16> %951, i64 16)
+  %953 = bitcast <vscale x 4 x i16> %952 to <vscale x 2 x i32>
+  %954 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %953, i64 0, i64 8)
+  %955 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %953, i64 16, i64 8)
+  %956 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %954, <vscale x 2 x i16> %955, i64 8)
+  %957 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %956, i64 7, i64 8)
+  %958 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %957, float %457, i64 7, i64 8)
+  %959 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %433, <vscale x 2 x float> %958, <vscale x 2 x float> %940, i64 7, i64 8, i64 3)
+  call void @llvm.lifetime.end.p0(i64 32, ptr nonnull %14) #10
+  %960 = tail call <vscale x 32 x i8> @llvm.riscv.vle.nxv32i8.i64(<vscale x 32 x i8> poison, ptr nonnull %544, i64 128)
+  %961 = tail call <vscale x 32 x i8> @llvm.riscv.vsll.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %960, i64 4, i64 128)
+  %962 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %961, i64 4, i64 128)
+  %963 = tail call <vscale x 32 x i8> @llvm.riscv.vsra.nxv32i8.i64.i64(<vscale x 32 x i8> poison, <vscale x 32 x i8> %960, i64 4, i64 128)
+  %964 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %962, i64 0)
+  %965 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %962, i64 16)
+  %966 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %963, i64 0)
+  %967 = tail call <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i8> %963, i64 16)
+  call void @llvm.lifetime.start.p0(i64 32, ptr nonnull %15) #10
+  %968 = load i16, ptr %543, align 2, !tbaa !10
+  %969 = zext i16 %968 to i64
+  %970 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %969
+  %971 = load float, ptr %970, align 4, !tbaa !14
+  store float %971, ptr %15, align 4, !tbaa !14
+  %972 = load i16, ptr %557, align 2, !tbaa !10
+  %973 = zext i16 %972 to i64
+  %974 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %973
+  %975 = load float, ptr %974, align 4, !tbaa !14
+  store float %975, ptr %387, align 4, !tbaa !14
+  %976 = load i16, ptr %562, align 2, !tbaa !10
+  %977 = zext i16 %976 to i64
+  %978 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %977
+  %979 = load float, ptr %978, align 4, !tbaa !14
+  store float %979, ptr %388, align 4, !tbaa !14
+  %980 = load i16, ptr %567, align 2, !tbaa !10
+  %981 = zext i16 %980 to i64
+  %982 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %981
+  %983 = load float, ptr %982, align 4, !tbaa !14
+  store float %983, ptr %389, align 4, !tbaa !14
+  %984 = load i16, ptr %572, align 2, !tbaa !10
+  %985 = zext i16 %984 to i64
+  %986 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %985
+  %987 = load float, ptr %986, align 4, !tbaa !14
+  store float %987, ptr %390, align 4, !tbaa !14
+  %988 = load i16, ptr %577, align 2, !tbaa !10
+  %989 = zext i16 %988 to i64
+  %990 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %989
+  %991 = load float, ptr %990, align 4, !tbaa !14
+  store float %991, ptr %391, align 4, !tbaa !14
+  %992 = load i16, ptr %582, align 2, !tbaa !10
+  %993 = zext i16 %992 to i64
+  %994 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %993
+  %995 = load float, ptr %994, align 4, !tbaa !14
+  store float %995, ptr %392, align 4, !tbaa !14
+  %996 = load i16, ptr %587, align 2, !tbaa !10
+  %997 = zext i16 %996 to i64
+  %998 = getelementptr inbounds [65536 x float], ptr @ggml_table_f32_f16, i64 0, i64 %997
+  %999 = load float, ptr %998, align 4, !tbaa !14
+  store float %999, ptr %393, align 4, !tbaa !14
+  %1000 = call <vscale x 2 x float> @llvm.riscv.vle.nxv2f32.i64(<vscale x 2 x float> poison, ptr nonnull %15, i64 8)
+  %1001 = tail call <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> poison, <vscale x 16 x i8> %964, <vscale x 16 x i8> %893, i64 64)
+  %1002 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %1001, <vscale x 16 x i8> %965, <vscale x 16 x i8> %895, i64 64, i64 3)
+  %1003 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %1002, <vscale x 16 x i8> %966, <vscale x 16 x i8> %897, i64 64, i64 3)
+  %1004 = tail call <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16> %1003, <vscale x 16 x i8> %967, <vscale x 16 x i8> %899, i64 64, i64 3)
+  %1005 = bitcast <vscale x 16 x i16> %1004 to <vscale x 8 x i32>
+  %1006 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %1005, i64 0, i64 32)
+  %1007 = tail call <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16> poison, <vscale x 8 x i32> %1005, i64 16, i64 32)
+  %1008 = tail call <vscale x 8 x i16> @llvm.riscv.vadd.nxv8i16.nxv8i16.i64(<vscale x 8 x i16> poison, <vscale x 8 x i16> %1006, <vscale x 8 x i16> %1007, i64 32)
+  %1009 = bitcast <vscale x 8 x i16> %1008 to <vscale x 4 x i32>
+  %1010 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %1009, i64 0, i64 16)
+  %1011 = tail call <vscale x 4 x i16> @llvm.riscv.vnsrl.nxv4i16.nxv4i32.i64.i64(<vscale x 4 x i16> poison, <vscale x 4 x i32> %1009, i64 16, i64 16)
+  %1012 = tail call <vscale x 4 x i16> @llvm.riscv.vadd.nxv4i16.nxv4i16.i64(<vscale x 4 x i16> poison, <vscale x 4 x i16> %1010, <vscale x 4 x i16> %1011, i64 16)
+  %1013 = bitcast <vscale x 4 x i16> %1012 to <vscale x 2 x i32>
+  %1014 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %1013, i64 0, i64 8)
+  %1015 = tail call <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2 x i16> poison, <vscale x 2 x i32> %1013, i64 16, i64 8)
+  %1016 = tail call <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32> poison, <vscale x 2 x i16> %1014, <vscale x 2 x i16> %1015, i64 8)
+  %1017 = tail call <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float> poison, <vscale x 2 x i32> %1016, i64 7, i64 8)
+  %1018 = tail call <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float> poison, <vscale x 2 x float> %1017, float %457, i64 7, i64 8)
+  %1019 = tail call <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float> %437, <vscale x 2 x float> %1018, <vscale x 2 x float> %1000, i64 7, i64 8, i64 3)
+  call void @llvm.lifetime.end.p0(i64 32, ptr nonnull %15) #10
+  %1020 = add nuw nsw i64 %429, 1
+  %1021 = icmp eq i64 %1020, %404
+  br i1 %1021, label %1022, label %428, !llvm.loop !30
 
-834:                                              ; preds = %616
-  br i1 %332, label %398, label %377
+1022:                                             ; preds = %428
+  %1023 = shl nsw i64 %422, 3
+  %1024 = getelementptr float, ptr %411, i64 %1023
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %542, ptr %1024, i64 8)
+  %1025 = shl nsw i64 %425, 3
+  %1026 = getelementptr float, ptr %411, i64 %1025
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %611, ptr %1026, i64 8)
+  %1027 = getelementptr float, ptr %414, i64 %1023
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %687, ptr %1027, i64 8)
+  %1028 = getelementptr float, ptr %414, i64 %1025
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %747, ptr %1028, i64 8)
+  %1029 = getelementptr float, ptr %417, i64 %1023
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %823, ptr %1029, i64 8)
+  %1030 = getelementptr float, ptr %417, i64 %1025
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %883, ptr %1030, i64 8)
+  %1031 = getelementptr float, ptr %420, i64 %1023
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %959, ptr %1031, i64 8)
+  %1032 = getelementptr float, ptr %420, i64 %1025
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %1019, ptr %1032, i64 8)
+  %1033 = add nuw nsw i64 %422, 2
+  %1034 = icmp ult i64 %1033, %402
+  br i1 %1034, label %421, label %1035, !llvm.loop !31
 
-835:                                              ; preds = %377
-  %836 = add nuw nsw i64 %355, 1
-  %837 = icmp eq i64 %836, %351
-  br i1 %837, label %839, label %354, !llvm.loop !37
+1035:                                             ; preds = %1022
+  %1036 = add nuw nsw i64 %406, 1
+  %1037 = icmp eq i64 %1036, %403
+  br i1 %1037, label %1070, label %405, !llvm.loop !32
 
-838:                                              ; preds = %23
+1038:                                             ; preds = %397, %1066
+  %1039 = phi i64 [ 0, %397 ], [ %1067, %1066 ]
+  %1040 = shl nsw i64 %1039, 2
+  %1041 = mul i64 %1040, %2
+  %1042 = getelementptr float, ptr %1, i64 %1041
+  %1043 = or disjoint i64 %1040, 1
+  %1044 = mul i64 %1043, %2
+  %1045 = getelementptr float, ptr %1, i64 %1044
+  %1046 = or disjoint i64 %1040, 2
+  %1047 = mul i64 %1046, %2
+  %1048 = getelementptr float, ptr %1, i64 %1047
+  %1049 = or disjoint i64 %1040, 3
+  %1050 = mul i64 %1049, %2
+  %1051 = getelementptr float, ptr %1, i64 %1050
+  br label %1052
+
+1052:                                             ; preds = %1038, %1052
+  %1053 = phi i64 [ 0, %1038 ], [ %1064, %1052 ]
+  %1054 = shl i64 %1053, 3
+  %1055 = getelementptr float, ptr %1042, i64 %1054
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %396, ptr %1055, i64 8)
+  %1056 = or disjoint i64 %1054, 8
+  %1057 = getelementptr float, ptr %1042, i64 %1056
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %396, ptr %1057, i64 8)
+  %1058 = getelementptr float, ptr %1045, i64 %1054
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %396, ptr %1058, i64 8)
+  %1059 = getelementptr float, ptr %1045, i64 %1056
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %396, ptr %1059, i64 8)
+  %1060 = getelementptr float, ptr %1048, i64 %1054
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %396, ptr %1060, i64 8)
+  %1061 = getelementptr float, ptr %1048, i64 %1056
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %396, ptr %1061, i64 8)
+  %1062 = getelementptr float, ptr %1051, i64 %1054
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %396, ptr %1062, i64 8)
+  %1063 = getelementptr float, ptr %1051, i64 %1056
+  tail call void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float> %396, ptr %1063, i64 8)
+  %1064 = add nuw nsw i64 %1053, 2
+  %1065 = icmp ult i64 %1064, %398
+  br i1 %1065, label %1052, label %1066, !llvm.loop !31
+
+1066:                                             ; preds = %1052
+  %1067 = add nuw nsw i64 %1039, 1
+  %1068 = icmp eq i64 %1067, %399
+  br i1 %1068, label %1070, label %1038, !llvm.loop !32
+
+1069:                                             ; preds = %29
   tail call void @ggml_gemm_q4_0_8x8_q8_0_generic(i32 noundef signext %0, ptr noundef %1, i64 noundef %2, ptr noundef %3, ptr noundef %4, i32 noundef signext %5, i32 noundef signext %6)
-  br label %839
+  br label %1070
 
-839:                                              ; preds = %325, %299, %835, %329, %32, %31, %328, %838
+1070:                                             ; preds = %331, %305, %1066, %1035, %335, %38, %37, %334, %1069
   ret void
 }
 
@@ -987,6 +1288,9 @@ declare i64 @llvm.read_register.i64(metadata) #3
 
 ; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(none)
 declare <vscale x 2 x float> @llvm.riscv.vfmv.v.f.nxv2f32.i64(<vscale x 2 x float>, float, i64) #4
+
+; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(none)
+declare <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64>, i64, i64) #4
 
 ; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(argmem: read)
 declare <vscale x 32 x i8> @llvm.riscv.vle.nxv32i8.i64(<vscale x 32 x i8>, ptr nocapture, i64) #5
@@ -1004,13 +1308,27 @@ declare <vscale x 16 x i8> @llvm.vector.extract.nxv16i8.nxv32i8(<vscale x 32 x i
 declare <vscale x 2 x float> @llvm.riscv.vle.nxv2f32.i64(<vscale x 2 x float>, ptr nocapture, i64) #5
 
 ; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(none)
-declare <vscale x 2 x i64> @llvm.riscv.vmv.v.x.nxv2i64.i64(<vscale x 2 x i64>, i64, i64) #4
-
-; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(none)
 declare <vscale x 16 x i16> @llvm.riscv.vwmul.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16>, <vscale x 16 x i8>, <vscale x 16 x i8>, i64) #4
 
 ; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(none)
 declare <vscale x 16 x i16> @llvm.riscv.vwmacc.nxv16i16.nxv16i8.nxv16i8.i64(<vscale x 16 x i16>, <vscale x 16 x i8>, <vscale x 16 x i8>, i64, i64 immarg) #4
+
+; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(none)
+declare <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float>, <vscale x 2 x i32>, i64 immarg, i64) #4
+
+; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(none)
+declare <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float>, <vscale x 2 x float>, float, i64 immarg, i64) #4
+
+; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(none)
+declare <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float>, <vscale x 2 x float>, <vscale x 2 x float>, i64 immarg, i64, i64 immarg) #4
+
+; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(argmem: readwrite)
+declare void @llvm.lifetime.end.p0(i64 immarg, ptr nocapture) #1
+
+; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(argmem: write)
+declare void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float>, ptr nocapture, i64) #7
+
+declare void @ggml_gemm_q4_0_8x8_q8_0_generic(i32 noundef signext, ptr noundef, i64 noundef, ptr noundef, ptr noundef, i32 noundef signext, i32 noundef signext) local_unnamed_addr #8
 
 ; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(none)
 declare <vscale x 8 x i16> @llvm.riscv.vnsrl.nxv8i16.nxv8i32.i64.i64(<vscale x 8 x i16>, <vscale x 8 x i32>, i64, i64) #4
@@ -1030,32 +1348,15 @@ declare <vscale x 2 x i16> @llvm.riscv.vnsrl.nxv2i16.nxv2i32.i64.i64(<vscale x 2
 ; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(none)
 declare <vscale x 2 x i32> @llvm.riscv.vwadd.nxv2i32.nxv2i16.nxv2i16.i64(<vscale x 2 x i32>, <vscale x 2 x i16>, <vscale x 2 x i16>, i64) #4
 
-; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(none)
-declare <vscale x 2 x float> @llvm.riscv.vfcvt.f.x.v.nxv2f32.nxv2i32.i64(<vscale x 2 x float>, <vscale x 2 x i32>, i64 immarg, i64) #4
-
-; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(none)
-declare <vscale x 2 x float> @llvm.riscv.vfmul.nxv2f32.f32.i64(<vscale x 2 x float>, <vscale x 2 x float>, float, i64 immarg, i64) #4
-
-; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(none)
-declare <vscale x 2 x float> @llvm.riscv.vfmacc.nxv2f32.nxv2f32.i64(<vscale x 2 x float>, <vscale x 2 x float>, <vscale x 2 x float>, i64 immarg, i64, i64 immarg) #4
-
-; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(argmem: readwrite)
-declare void @llvm.lifetime.end.p0(i64 immarg, ptr nocapture) #1
-
-; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(argmem: write)
-declare void @llvm.riscv.vse.nxv2f32.i64(<vscale x 2 x float>, ptr nocapture, i64) #7
-
-declare void @ggml_gemm_q4_0_8x8_q8_0_generic(i32 noundef signext, ptr noundef, i64 noundef, ptr noundef, ptr noundef, i32 noundef signext, i32 noundef signext) local_unnamed_addr #8
-
-attributes #0 = { mustprogress uwtable vscale_range(2,1024) "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="generic-rv64" "target-features"="+64bit,+a,+c,+d,+f,+m,+relax,+v,+zicsr,+zifencei,+zve32f,+zve32x,+zve64d,+zve64f,+zve64x,+zvl128b,+zvl32b,+zvl64b,-e,-experimental-zacas,-experimental-zcmop,-experimental-zfbfmin,-experimental-zicfilp,-experimental-zicfiss,-experimental-zimop,-experimental-ztso,-experimental-zvfbfmin,-experimental-zvfbfwma,-h,-smaia,-smepmp,-ssaia,-svinval,-svnapot,-svpbmt,-xcvalu,-xcvbi,-xcvbitmanip,-xcvelw,-xcvmac,-xcvmem,-xcvsimd,-xsfvcp,-xsfvfnrclipxfqf,-xsfvfwmaccqqq,-xsfvqmaccdod,-xsfvqmaccqoq,-xtheadba,-xtheadbb,-xtheadbs,-xtheadcmo,-xtheadcondmov,-xtheadfmemidx,-xtheadmac,-xtheadmemidx,-xtheadmempair,-xtheadsync,-xtheadvdot,-xventanacondops,-za128rs,-za64rs,-zawrs,-zba,-zbb,-zbc,-zbkb,-zbkc,-zbkx,-zbs,-zca,-zcb,-zcd,-zce,-zcf,-zcmp,-zcmt,-zdinx,-zfa,-zfh,-zfhmin,-zfinx,-zhinx,-zhinxmin,-zic64b,-zicbom,-zicbop,-zicboz,-ziccamoa,-ziccif,-zicclsm,-ziccrse,-zicntr,-zicond,-zihintntl,-zihintpause,-zihpm,-zk,-zkn,-zknd,-zkne,-zknh,-zkr,-zks,-zksed,-zksh,-zkt,-zmmul,-zvbb,-zvbc,-zvfh,-zvfhmin,-zvkb,-zvkg,-zvkn,-zvknc,-zvkned,-zvkng,-zvknha,-zvknhb,-zvks,-zvksc,-zvksed,-zvksg,-zvksh,-zvkt,-zvl1024b,-zvl16384b,-zvl2048b,-zvl256b,-zvl32768b,-zvl4096b,-zvl512b,-zvl65536b,-zvl8192b" }
+attributes #0 = { mustprogress uwtable vscale_range(4,1024) "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="generic-rv64" "target-features"="+64bit,+a,+c,+d,+f,+m,+relax,+v,+zicsr,+zifencei,+zve32f,+zve32x,+zve64d,+zve64f,+zve64x,+zvl128b,+zvl256b,+zvl32b,+zvl64b,-e,-experimental-zacas,-experimental-zcmop,-experimental-zfbfmin,-experimental-zicfilp,-experimental-zicfiss,-experimental-zimop,-experimental-ztso,-experimental-zvfbfmin,-experimental-zvfbfwma,-h,-smaia,-smepmp,-ssaia,-svinval,-svnapot,-svpbmt,-xcvalu,-xcvbi,-xcvbitmanip,-xcvelw,-xcvmac,-xcvmem,-xcvsimd,-xsfvcp,-xsfvfnrclipxfqf,-xsfvfwmaccqqq,-xsfvqmaccdod,-xsfvqmaccqoq,-xtheadba,-xtheadbb,-xtheadbs,-xtheadcmo,-xtheadcondmov,-xtheadfmemidx,-xtheadmac,-xtheadmemidx,-xtheadmempair,-xtheadsync,-xtheadvdot,-xventanacondops,-za128rs,-za64rs,-zawrs,-zba,-zbb,-zbc,-zbkb,-zbkc,-zbkx,-zbs,-zca,-zcb,-zcd,-zce,-zcf,-zcmp,-zcmt,-zdinx,-zfa,-zfh,-zfhmin,-zfinx,-zhinx,-zhinxmin,-zic64b,-zicbom,-zicbop,-zicboz,-ziccamoa,-ziccif,-zicclsm,-ziccrse,-zicntr,-zicond,-zihintntl,-zihintpause,-zihpm,-zk,-zkn,-zknd,-zkne,-zknh,-zkr,-zks,-zksed,-zksh,-zkt,-zmmul,-zvbb,-zvbc,-zvfh,-zvfhmin,-zvkb,-zvkg,-zvkn,-zvknc,-zvkned,-zvkng,-zvknha,-zvknhb,-zvks,-zvksc,-zvksed,-zvksg,-zvksh,-zvkt,-zvl1024b,-zvl16384b,-zvl2048b,-zvl32768b,-zvl4096b,-zvl512b,-zvl65536b,-zvl8192b" }
 attributes #1 = { mustprogress nocallback nofree nosync nounwind willreturn memory(argmem: readwrite) }
-attributes #2 = { noreturn nounwind "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="generic-rv64" "target-features"="+64bit,+a,+c,+d,+f,+m,+relax,+v,+zicsr,+zifencei,+zve32f,+zve32x,+zve64d,+zve64f,+zve64x,+zvl128b,+zvl32b,+zvl64b,-e,-experimental-zacas,-experimental-zcmop,-experimental-zfbfmin,-experimental-zicfilp,-experimental-zicfiss,-experimental-zimop,-experimental-ztso,-experimental-zvfbfmin,-experimental-zvfbfwma,-h,-smaia,-smepmp,-ssaia,-svinval,-svnapot,-svpbmt,-xcvalu,-xcvbi,-xcvbitmanip,-xcvelw,-xcvmac,-xcvmem,-xcvsimd,-xsfvcp,-xsfvfnrclipxfqf,-xsfvfwmaccqqq,-xsfvqmaccdod,-xsfvqmaccqoq,-xtheadba,-xtheadbb,-xtheadbs,-xtheadcmo,-xtheadcondmov,-xtheadfmemidx,-xtheadmac,-xtheadmemidx,-xtheadmempair,-xtheadsync,-xtheadvdot,-xventanacondops,-za128rs,-za64rs,-zawrs,-zba,-zbb,-zbc,-zbkb,-zbkc,-zbkx,-zbs,-zca,-zcb,-zcd,-zce,-zcf,-zcmp,-zcmt,-zdinx,-zfa,-zfh,-zfhmin,-zfinx,-zhinx,-zhinxmin,-zic64b,-zicbom,-zicbop,-zicboz,-ziccamoa,-ziccif,-zicclsm,-ziccrse,-zicntr,-zicond,-zihintntl,-zihintpause,-zihpm,-zk,-zkn,-zknd,-zkne,-zknh,-zkr,-zks,-zksed,-zksh,-zkt,-zmmul,-zvbb,-zvbc,-zvfh,-zvfhmin,-zvkb,-zvkg,-zvkn,-zvknc,-zvkned,-zvkng,-zvknha,-zvknhb,-zvks,-zvksc,-zvksed,-zvksg,-zvksh,-zvkt,-zvl1024b,-zvl16384b,-zvl2048b,-zvl256b,-zvl32768b,-zvl4096b,-zvl512b,-zvl65536b,-zvl8192b" }
+attributes #2 = { noreturn nounwind "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="generic-rv64" "target-features"="+64bit,+a,+c,+d,+f,+m,+relax,+v,+zicsr,+zifencei,+zve32f,+zve32x,+zve64d,+zve64f,+zve64x,+zvl128b,+zvl256b,+zvl32b,+zvl64b,-e,-experimental-zacas,-experimental-zcmop,-experimental-zfbfmin,-experimental-zicfilp,-experimental-zicfiss,-experimental-zimop,-experimental-ztso,-experimental-zvfbfmin,-experimental-zvfbfwma,-h,-smaia,-smepmp,-ssaia,-svinval,-svnapot,-svpbmt,-xcvalu,-xcvbi,-xcvbitmanip,-xcvelw,-xcvmac,-xcvmem,-xcvsimd,-xsfvcp,-xsfvfnrclipxfqf,-xsfvfwmaccqqq,-xsfvqmaccdod,-xsfvqmaccqoq,-xtheadba,-xtheadbb,-xtheadbs,-xtheadcmo,-xtheadcondmov,-xtheadfmemidx,-xtheadmac,-xtheadmemidx,-xtheadmempair,-xtheadsync,-xtheadvdot,-xventanacondops,-za128rs,-za64rs,-zawrs,-zba,-zbb,-zbc,-zbkb,-zbkc,-zbkx,-zbs,-zca,-zcb,-zcd,-zce,-zcf,-zcmp,-zcmt,-zdinx,-zfa,-zfh,-zfhmin,-zfinx,-zhinx,-zhinxmin,-zic64b,-zicbom,-zicbop,-zicboz,-ziccamoa,-ziccif,-zicclsm,-ziccrse,-zicntr,-zicond,-zihintntl,-zihintpause,-zihpm,-zk,-zkn,-zknd,-zkne,-zknh,-zkr,-zks,-zksed,-zksh,-zkt,-zmmul,-zvbb,-zvbc,-zvfh,-zvfhmin,-zvkb,-zvkg,-zvkn,-zvknc,-zvkned,-zvkng,-zvknha,-zvknhb,-zvks,-zvksc,-zvksed,-zvksg,-zvksh,-zvkt,-zvl1024b,-zvl16384b,-zvl2048b,-zvl32768b,-zvl4096b,-zvl512b,-zvl65536b,-zvl8192b" }
 attributes #3 = { mustprogress nocallback nofree nosync nounwind willreturn memory(read) }
 attributes #4 = { mustprogress nocallback nofree nosync nounwind willreturn memory(none) }
 attributes #5 = { mustprogress nocallback nofree nosync nounwind willreturn memory(argmem: read) }
 attributes #6 = { mustprogress nocallback nofree nosync nounwind speculatable willreturn memory(none) }
 attributes #7 = { mustprogress nocallback nofree nosync nounwind willreturn memory(argmem: write) }
-attributes #8 = { "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="generic-rv64" "target-features"="+64bit,+a,+c,+d,+f,+m,+relax,+v,+zicsr,+zifencei,+zve32f,+zve32x,+zve64d,+zve64f,+zve64x,+zvl128b,+zvl32b,+zvl64b,-e,-experimental-zacas,-experimental-zcmop,-experimental-zfbfmin,-experimental-zicfilp,-experimental-zicfiss,-experimental-zimop,-experimental-ztso,-experimental-zvfbfmin,-experimental-zvfbfwma,-h,-smaia,-smepmp,-ssaia,-svinval,-svnapot,-svpbmt,-xcvalu,-xcvbi,-xcvbitmanip,-xcvelw,-xcvmac,-xcvmem,-xcvsimd,-xsfvcp,-xsfvfnrclipxfqf,-xsfvfwmaccqqq,-xsfvqmaccdod,-xsfvqmaccqoq,-xtheadba,-xtheadbb,-xtheadbs,-xtheadcmo,-xtheadcondmov,-xtheadfmemidx,-xtheadmac,-xtheadmemidx,-xtheadmempair,-xtheadsync,-xtheadvdot,-xventanacondops,-za128rs,-za64rs,-zawrs,-zba,-zbb,-zbc,-zbkb,-zbkc,-zbkx,-zbs,-zca,-zcb,-zcd,-zce,-zcf,-zcmp,-zcmt,-zdinx,-zfa,-zfh,-zfhmin,-zfinx,-zhinx,-zhinxmin,-zic64b,-zicbom,-zicbop,-zicboz,-ziccamoa,-ziccif,-zicclsm,-ziccrse,-zicntr,-zicond,-zihintntl,-zihintpause,-zihpm,-zk,-zkn,-zknd,-zkne,-zknh,-zkr,-zks,-zksed,-zksh,-zkt,-zmmul,-zvbb,-zvbc,-zvfh,-zvfhmin,-zvkb,-zvkg,-zvkn,-zvknc,-zvkned,-zvkng,-zvknha,-zvknhb,-zvks,-zvksc,-zvksed,-zvksg,-zvksh,-zvkt,-zvl1024b,-zvl16384b,-zvl2048b,-zvl256b,-zvl32768b,-zvl4096b,-zvl512b,-zvl65536b,-zvl8192b" }
+attributes #8 = { "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="generic-rv64" "target-features"="+64bit,+a,+c,+d,+f,+m,+relax,+v,+zicsr,+zifencei,+zve32f,+zve32x,+zve64d,+zve64f,+zve64x,+zvl128b,+zvl256b,+zvl32b,+zvl64b,-e,-experimental-zacas,-experimental-zcmop,-experimental-zfbfmin,-experimental-zicfilp,-experimental-zicfiss,-experimental-zimop,-experimental-ztso,-experimental-zvfbfmin,-experimental-zvfbfwma,-h,-smaia,-smepmp,-ssaia,-svinval,-svnapot,-svpbmt,-xcvalu,-xcvbi,-xcvbitmanip,-xcvelw,-xcvmac,-xcvmem,-xcvsimd,-xsfvcp,-xsfvfnrclipxfqf,-xsfvfwmaccqqq,-xsfvqmaccdod,-xsfvqmaccqoq,-xtheadba,-xtheadbb,-xtheadbs,-xtheadcmo,-xtheadcondmov,-xtheadfmemidx,-xtheadmac,-xtheadmemidx,-xtheadmempair,-xtheadsync,-xtheadvdot,-xventanacondops,-za128rs,-za64rs,-zawrs,-zba,-zbb,-zbc,-zbkb,-zbkc,-zbkx,-zbs,-zca,-zcb,-zcd,-zce,-zcf,-zcmp,-zcmt,-zdinx,-zfa,-zfh,-zfhmin,-zfinx,-zhinx,-zhinxmin,-zic64b,-zicbom,-zicbop,-zicboz,-ziccamoa,-ziccif,-zicclsm,-ziccrse,-zicntr,-zicond,-zihintntl,-zihintpause,-zihpm,-zk,-zkn,-zknd,-zkne,-zknh,-zkr,-zks,-zksed,-zksh,-zkt,-zmmul,-zvbb,-zvbc,-zvfh,-zvfhmin,-zvkb,-zvkg,-zvkn,-zvknc,-zvkned,-zvkng,-zvknha,-zvknhb,-zvks,-zvksc,-zvksed,-zvksg,-zvksh,-zvkt,-zvl1024b,-zvl16384b,-zvl2048b,-zvl32768b,-zvl4096b,-zvl512b,-zvl65536b,-zvl8192b" }
 attributes #9 = { noreturn nounwind }
 attributes #10 = { nounwind }
 
@@ -1065,7 +1366,7 @@ attributes #10 = { nounwind }
 !0 = !{i32 1, !"wchar_size", i32 4}
 !1 = !{i32 1, !"target-abi", !"lp64d"}
 !2 = !{i32 6, !"riscv-isa", !3}
-!3 = !{!"rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_v1p0_zicsr2p0_zifencei2p0_zve32f1p0_zve32x1p0_zve64d1p0_zve64f1p0_zve64x1p0_zvl128b1p0_zvl32b1p0_zvl64b1p0"}
+!3 = !{!"rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_v1p0_zicsr2p0_zifencei2p0_zve32f1p0_zve32x1p0_zve64d1p0_zve64f1p0_zve64x1p0_zvl128b1p0_zvl256b1p0_zvl32b1p0_zvl64b1p0"}
 !4 = !{i32 8, !"PIC Level", i32 2}
 !5 = !{i32 7, !"PIE Level", i32 2}
 !6 = !{i32 7, !"uwtable", i32 2}
@@ -1080,23 +1381,18 @@ attributes #10 = { nounwind }
 !15 = !{!"float", !12, i64 0}
 !16 = !{!17, !17, i64 0}
 !17 = !{!"long", !12, i64 0}
-!18 = !{i64 37157}
-!19 = !{i64 40246}
-!20 = !{i64 43336}
-!21 = !{i64 46426}
+!18 = !{i64 42733}
+!19 = !{i64 43157}
+!20 = !{i64 43582}
+!21 = !{i64 44007}
 !22 = distinct !{!22, !23}
 !23 = !{!"llvm.loop.mustprogress"}
 !24 = distinct !{!24, !23}
 !25 = distinct !{!25, !23}
-!26 = distinct !{!26, !23}
-!27 = !{i64 20863}
-!28 = !{i64 24010}
-!29 = !{i64 27158}
-!30 = !{i64 30306}
+!26 = !{i64 8600}
+!27 = !{i64 18193}
+!28 = !{i64 24855}
+!29 = !{i64 31409}
+!30 = distinct !{!30, !23}
 !31 = distinct !{!31, !23}
-!32 = !{i64 5991}
-!33 = !{i64 9138}
-!34 = !{i64 12286}
-!35 = !{i64 15434}
-!36 = distinct !{!36, !23}
-!37 = distinct !{!37, !23}
+!32 = distinct !{!32, !23}

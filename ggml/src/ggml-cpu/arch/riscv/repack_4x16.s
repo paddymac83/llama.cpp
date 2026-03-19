@@ -1,1281 +1,1530 @@
+	.text
+	.attribute	4, 16
+	.attribute	5, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_v1p0_zicsr2p0_zifencei2p0_zve32f1p0_zve32x1p0_zve64d1p0_zve64f1p0_zve64x1p0_zvl128b1p0_zvl256b1p0_zvl32b1p0_zvl64b1p0"
 	.file	"repack_4x16.cpp"
-	.option pic
-	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_v1p0_zicsr2p0_zifencei2p0_zve32f1p0_zve32x1p0_zve64d1p0_zve64f1p0_zve64x1p0_zvl128b1p0_zvl32b1p0_zvl64b1p0"
-	.attribute unaligned_access, 0
-	.attribute stack_align, 16
-	.text
-	.section	.rodata.str1.8,"aMS",@progbits,1
-	.align	3
-.LC0:
-	.string	"void ggml_gemm_q4_0_8x8_q8_0_4x16(int, float*, size_t, const void*, const void*, int, int)"
-	.align	3
-.LC1:
-	.string	"repack_4x16.cpp"
-	.align	3
-.LC2:
-	.string	"n % qk == 0"
-	.align	3
-.LC3:
-	.string	"nr % 4 == 0"
-	.align	3
-.LC4:
-	.string	"nc % ncols_interleaved == 0"
-	.text
-	.align	1
-	.globl	ggml_gemm_q4_0_8x8_q8_0_4x16
-	.type	ggml_gemm_q4_0_8x8_q8_0_4x16, @function
-ggml_gemm_q4_0_8x8_q8_0_4x16:
-.LFB2019:
+	.globl	ggml_gemm_q4_0_8x8_q8_0_4x16    # -- Begin function ggml_gemm_q4_0_8x8_q8_0_4x16
+	.p2align	1
+	.type	ggml_gemm_q4_0_8x8_q8_0_4x16,@function
+ggml_gemm_q4_0_8x8_q8_0_4x16:           # @ggml_gemm_q4_0_8x8_q8_0_4x16
 	.cfi_startproc
-	addi	sp,sp,-256
-	.cfi_def_cfa_offset 256
-	sd	s1,232(sp)
-	csrr	t0,vlenb
-	.cfi_offset 9, -24
-	csrr	s1,vlenb
-	slli	t1,t0,1
-	slli	s1,s1,1
-	sd	s0,240(sp)
-	sd	ra,248(sp)
-	sd	s2,224(sp)
-	sd	s3,216(sp)
-	sd	s4,208(sp)
-	sd	s5,200(sp)
-	sd	s6,192(sp)
-	sd	s7,184(sp)
-	sd	s8,176(sp)
-	sd	s9,168(sp)
-	sd	s10,160(sp)
-	sd	s11,152(sp)
-	addi	s1,s1,136
-	sub	sp,sp,t1
-	.cfi_escape 0xf,0xc,0x72,0,0x92,0xa2,0x38,0,0x32,0x1e,0x23,0x80,0x2,0x22
-	.cfi_offset 8, -16
-	.cfi_offset 1, -8
-	.cfi_offset 18, -32
-	.cfi_offset 19, -40
-	.cfi_offset 20, -48
-	.cfi_offset 21, -56
-	.cfi_offset 22, -64
-	.cfi_offset 23, -72
-	.cfi_offset 24, -80
-	.cfi_offset 25, -88
-	.cfi_offset 26, -96
-	.cfi_offset 27, -104
-	la	s0,__stack_chk_guard
-	add	s1,s1,sp
-	ld	a7, 0(s0)
-	sd	a7, 0(s1)
-	li	a7, 0
-	andi	t5,a0,31
-	vsetivli	zero,8,e32,m1,ta,ma
-	bne	t5,zero,.L33
-	andi	t5,a5,3
-	mv	a7,a5
-	bne	t5,zero,.L34
-	andi	t5,a6,7
-	bne	t5,zero,.L35
-	csrr	t0,vlenb
-	li	t5,31
-	bleu	t0,t5,.L5
-	mv	s1,a3
-	sraiw	a5,a5,31
-	sraiw	a3,a0,31
-	srliw	a3,a3,27
-	srliw	a5,a5,30
-	mv	t4,a4
-	addw	a3,a3,a0
-	addw	a5,a5,a7
-	andi	a4,a6,15
-	mv	t3,a0
-	mv	t2,a1
-	mv	t6,a2
-	sraiw	s2,a3,5
-	sraiw	s0,a5,2
-	bne	a4,zero,.L36
-	li	a5,3
-	ble	a7,a5,.L1
-	sraiw	a5,a6,31
-	srliw	a5,a5,29
-	addw	a5,a5,a6
-	li	a4,7
-	sraiw	s10,a5,3
-	ble	a6,a4,.L1
-	slli	a5,s2,3
-	slliw	a3,s2,1
-	add	a5,a5,s2
-	slli	a2,a3,3
-	slli	t0,a5,4
-	csrr	a7,vlenb
-	csrr	a5,vlenb
-	csrr	t1,vlenb
-	add	a3,a2,a3
-	slli	a4,s2,4
-	slli	a5,a5,1
-	addi	a7,a7,56
-	addi	t1,t1,88
-	add	a4,a4,s2
-	slli	t5,a3,4
-	addi	a5,a5,104
-	add	a7,a7,sp
-	add	t1,t1,sp
-	slli	a6,a4,3
-	add	s7,sp,a5
-	sd	s10,0(a7)
-	sd	s0,0(t1)
-	li	a1,0
-	li	a2,0
-	addi	s1,s1,16
-	la	a3,ggml_table_f32_f16
-	li	a0,128
-	li	a5,64
-	li	a4,32
-	mv	a7,t4
-	mv	t1,t5
-	vmv.v.i	v25,0
-.L15:
-	addiw	t4,a2,3
-	slli	t5,a2,32
-	slli	t4,t4,32
-	csrr	s0,vlenb
-	srli	t5,t5,32
-	srli	t4,t4,32
-	addi	s0,s0,64
-	mul	t5,t5,t6
-	addiw	s6,a2,2
-	add	s0,s0,sp
-	slli	s6,s6,32
-	sd	a1,0(s0)
-	csrr	a1,vlenb
-	srli	s6,s6,32
-	addi	a1,a1,-8
-	addiw	s8,a2,1
-	add	a1,a1,sp
-	mul	t4,t4,t6
-	li	s9,0
-	sd	s9,0(a1)
-	slli	s8,s8,32
-	csrr	a1,vlenb
-	add	a1,a1,sp
-	srli	s8,s8,32
-	sd	a7,0(a1)
-	csrr	a1,vlenb
-	addi	a1,a1,72
-	mul	s6,s6,t6
-	add	a1,a1,sp
-	sd	a2,0(a1)
-	csrr	a2,vlenb
-	sub	t4,t4,t5
-	addi	a2,a2,32
-	add	a2,a2,sp
-	slli	t4,t4,2
-	sd	t4,0(a2)
-	csrr	a2,vlenb
-	mul	s8,s8,t6
-	sub	s6,s6,t5
-	addi	a2,a2,40
-	add	a2,a2,sp
-	slli	s6,s6,2
-	sd	s6,0(a2)
-	csrr	a2,vlenb
-	addi	a2,a2,48
-	add	a2,a2,sp
-	slli	s3,t5,2
-	sub	s8,s8,t5
-	slli	s8,s8,2
-	sd	s8,0(a2)
-	csrr	a2,vlenb
-	addi	a2,a2,80
-	addi	s4,s3,32
-	add	a2,a2,sp
-	mv	s5,s1
-	add	s3,t2,s3
-	add	s4,t2,s4
-	sd	t2,0(a2)
-	mv	t5,a6
-.L11:
-	li	a2,31
-	vmv1r.v	v29,v25
-	vmv1r.v	v27,v25
-	vmv1r.v	v26,v25
-	vmv1r.v	v24,v25
-	vmv1r.v	v12,v25
-	vmv1r.v	v11,v25
-	vmv1r.v	v10,v25
-	vmv1r.v	v9,v25
-	ble	t3,a2,.L12
-	csrr	s0,vlenb
-	addi	s0,s0,8
-	add	s0,s0,sp
-	sd	s5,0(s0)
-	csrr	s0,vlenb
-	addi	s0,s0,16
-	add	s0,s0,sp
-	csrr	a2,vlenb
-	sd	s4,0(s0)
-	add	a2,a2,sp
-	csrr	s0,vlenb
-	addi	s0,s0,24
-	ld	a2,0(a2)
-	add	s0,s0,sp
-	mv	a1,s5
-	li	s11,0
-	sd	s3,0(s0)
-	vmv1r.v	v13,v25
-	vmv1r.v	v4,v25
-	vmv1r.v	v5,v25
-.L13:
-	lhu	s0,-2(a1)
-	lhu	s10,-16(a1)
-	lhu	s9,-14(a1)
-	slli	s0,s0,2
-	add	s0,a3,s0
-	slli	s10,s10,2
-	flw	fa1,0(s0)
-	add	s10,a3,s10
-	csrr	s0,vlenb
-	flw	ft1,0(s10)
-	slli	s0,s0,1
-	addi	s0,s0,104
-	add	s0,s0,sp
-	slli	s9,s9,2
-	fsw	ft1,0(s0)
-	lhu	s8,-12(a1)
-	add	s9,a3,s9
-	csrr	s0,vlenb
-	flw	ft0,0(s9)
-	slli	s0,s0,1
-	addi	s0,s0,108
-	add	s0,s0,sp
-	slli	s8,s8,2
-	fsw	ft0,0(s0)
-	lhu	s6,-10(a1)
-	add	s8,a3,s8
-	csrr	s0,vlenb
-	flw	fa0,0(s8)
-	slli	s0,s0,1
-	addi	s0,s0,112
-	add	s0,s0,sp
-	slli	s6,s6,2
-	fsw	fa0,0(s0)
-	lhu	s5,-8(a1)
-	add	s6,a3,s6
-	csrr	s0,vlenb
-	flw	fa2,0(s6)
-	slli	s0,s0,1
-	addi	s0,s0,116
-	add	s0,s0,sp
-	slli	s5,s5,2
-	fsw	fa2,0(s0)
-	lhu	s4,-6(a1)
-	add	s5,a3,s5
-	csrr	s0,vlenb
-	flw	fa3,0(s5)
-	slli	s0,s0,1
-	addi	s0,s0,120
-	add	s0,s0,sp
-	slli	s4,s4,2
-	fsw	fa3,0(s0)
-	lhu	s3,-4(a1)
-	add	s4,a3,s4
-	csrr	s0,vlenb
-	flw	fa4,0(s4)
-	slli	s0,s0,1
-	addi	s0,s0,124
-	add	s0,s0,sp
-	slli	s3,s3,2
-	fsw	fa4,0(s0)
-	add	s3,a3,s3
-	csrr	s0,vlenb
-	flw	fa5,0(s3)
-	slli	s0,s0,1
-	addi	s0,s0,128
-	lhu	t2,0(a2)
-	lhu	t4,2(a2)
-	lhu	a7,4(a2)
-	lhu	a6,6(a2)
-	add	s0,s0,sp
-	fsw	fa5,0(s0)
-	csrr	s0,vlenb
-	slli	s0,s0,1
-	slli	t2,t2,2
-	slli	t4,t4,2
-	slli	a7,a7,2
-	slli	a6,a6,2
-	addi	s0,s0,132
-	vsetvli	zero,a0,e8,m4,ta,ma
-	add	t2,a3,t2
-	add	t4,a3,t4
-	add	a7,a3,a7
-	add	a6,a3,a6
-	add	s0,s0,sp
-	vle8.v	v16,0(a1)
-	flw	fa2,0(t2)
-	vsll.vi	v20,v16,4
-	flw	fa3,0(t4)
-	flw	fa4,0(a7)
-	flw	fa5,0(a6)
-	vsra.vi	v20,v20,4
-	fsw	fa1,0(s0)
-	vsra.vi	v16,v16,4
-	ld	t2,8(a2)
-	vsetivli	zero,8,e64,m2,ta,ma
-	ld	t4,40(a2)
-	ld	a7,72(a2)
-	ld	a6,104(a2)
-	vle32.v	v28,0(s7)
-	vmv.v.x	v30,a6
-	vmv.v.x	v2,t2
-	vmv.v.x	v0,t4
-	vmv.v.x	v14,a7
-	vsetvli	zero,a5,e8,m2,ta,ma
-	vwmul.vv	v8,v20,v2
-	vwmacc.vv	v8,v22,v0
-	vwmacc.vv	v8,v16,v14
-	vwmacc.vv	v8,v18,v30
-	vsetvli	zero,a4,e16,m2,ta,ma
-	vnsrl.wi	v30,v8,0
-	vnsrl.wi	v8,v8,16
-	vadd.vv	v8,v30,v8
-	vsetivli	zero,16,e16,m1,ta,ma
-	vnsrl.wi	v30,v8,0
-	vnsrl.wi	v8,v8,16
-	vadd.vv	v30,v30,v8
-	vsetivli	zero,8,e16,mf2,ta,ma
-	vnsrl.wi	v8,v30,0
-	vnsrl.wi	v30,v30,16
-	ld	t2,16(a2)
-	vwadd.vv	v31,v8,v30
-	ld	t4,48(a2)
-	vsetvli	zero,zero,e32,m1,ta,ma
-	ld	a7,80(a2)
-	vfcvt.f.x.v	v30,v31
-	ld	a6,112(a2)
-	vfmul.vf	v30,v30,fa2
-	vfmacc.vv	v29,v30,v28
-	vsetvli	zero,zero,e64,m2,ta,ma
-	vmv.v.x	v30,a6
-	vmv.v.x	v2,t2
-	vmv.v.x	v0,t4
-	vmv.v.x	v14,a7
-	vsetvli	zero,a5,e8,m2,ta,ma
-	vwmul.vv	v8,v20,v2
-	vwmacc.vv	v8,v22,v0
-	vwmacc.vv	v8,v16,v14
-	vwmacc.vv	v8,v18,v30
-	vsetvli	zero,a4,e16,m2,ta,ma
-	vnsrl.wi	v30,v8,0
-	vnsrl.wi	v8,v8,16
-	vadd.vv	v8,v30,v8
-	vsetivli	zero,16,e16,m1,ta,ma
-	vnsrl.wi	v30,v8,0
-	vnsrl.wi	v8,v8,16
-	vadd.vv	v30,v30,v8
-	vsetivli	zero,8,e16,mf2,ta,ma
-	vnsrl.wi	v8,v30,0
-	vnsrl.wi	v30,v30,16
-	ld	t2,24(a2)
-	vwadd.vv	v31,v8,v30
-	ld	t4,56(a2)
-	vsetvli	zero,zero,e32,m1,ta,ma
-	ld	a7,88(a2)
-	vfcvt.f.x.v	v30,v31
-	ld	a6,120(a2)
-	vfmul.vf	v30,v30,fa3
-	vfmacc.vv	v27,v30,v28
-	vsetvli	zero,zero,e64,m2,ta,ma
-	vmv.v.x	v30,a6
-	vmv.v.x	v2,t2
-	vmv.v.x	v0,t4
-	vmv.v.x	v14,a7
-	vsetvli	zero,a5,e8,m2,ta,ma
-	vwmul.vv	v8,v20,v2
-	vwmacc.vv	v8,v22,v0
-	vwmacc.vv	v8,v16,v14
-	vwmacc.vv	v8,v18,v30
-	vsetvli	zero,a4,e16,m2,ta,ma
-	vnsrl.wi	v30,v8,0
-	vnsrl.wi	v8,v8,16
-	vadd.vv	v8,v30,v8
-	vsetivli	zero,16,e16,m1,ta,ma
-	vnsrl.wi	v30,v8,0
-	vnsrl.wi	v8,v8,16
-	vadd.vv	v30,v30,v8
-	vsetivli	zero,8,e16,mf2,ta,ma
-	vnsrl.wi	v8,v30,0
-	vnsrl.wi	v30,v30,16
-	ld	t2,32(a2)
-	vwadd.vv	v31,v8,v30
-	ld	t4,64(a2)
-	vsetvli	zero,zero,e32,m1,ta,ma
-	ld	a7,96(a2)
-	vfcvt.f.x.v	v30,v31
-	ld	a6,128(a2)
-	vfmul.vf	v30,v30,fa4
-	vfmacc.vv	v26,v30,v28
-	vsetvli	zero,zero,e64,m2,ta,ma
-	vmv.v.x	v30,a6
-	vmv.v.x	v2,t2
-	vmv.v.x	v0,t4
-	vmv.v.x	v14,a7
-	vsetvli	zero,a5,e8,m2,ta,ma
-	vwmul.vv	v8,v20,v2
-	vwmacc.vv	v8,v22,v0
-	vwmacc.vv	v8,v16,v14
-	vwmacc.vv	v8,v18,v30
-	vsetvli	zero,a4,e16,m2,ta,ma
-	vnsrl.wi	v30,v8,0
-	vnsrl.wi	v8,v8,16
-	vadd.vv	v8,v30,v8
-	vsetivli	zero,16,e16,m1,ta,ma
-	vnsrl.wi	v30,v8,0
-	vnsrl.wi	v8,v8,16
-	addiw	s11,s11,1
-	vadd.vv	v30,v30,v8
-	vsetivli	zero,8,e16,mf2,ta,ma
-	vnsrl.wi	v8,v30,0
-	vnsrl.wi	v30,v30,16
-	addi	a1,a1,144
-	vwadd.vv	v31,v8,v30
-	addi	a2,a2,136
-	vsetvli	zero,zero,e32,m1,ta,ma
-	vfcvt.f.x.v	v30,v31
-	vfmul.vf	v30,v30,fa5
-	vfmacc.vv	v24,v30,v28
-	bgt	s2,s11,.L13
-	csrr	a2,vlenb
-	addi	a2,a2,8
-	add	a2,a2,sp
-	ld	s5,0(a2)
-	csrr	a2,vlenb
-	add	a2,a2,sp
-	csrr	s0,vlenb
-	ld	a2,0(a2)
-	addi	s0,s0,96
-	add	s0,s0,sp
-	add	a1,t0,s5
-	li	s11,0
-	vmv1r.v	v11,v13
-	vmv1r.v	v10,v4
-	vmv1r.v	v9,v5
-	vs1r.v	v29,0(s0)
-.L14:
-	lhu	s0,-2(a1)
-	lhu	s10,-16(a1)
-	lhu	s9,-14(a1)
-	slli	s0,s0,2
-	add	s0,a3,s0
-	slli	s10,s10,2
-	flw	fa1,0(s0)
-	add	s10,a3,s10
-	csrr	s0,vlenb
-	flw	ft1,0(s10)
-	slli	s0,s0,1
-	addi	s0,s0,104
-	add	s0,s0,sp
-	slli	s9,s9,2
-	vsetvli	zero,a0,e8,m4,ta,ma
-	lhu	s8,-12(a1)
-	vle8.v	v28,0(a1)
-	add	s9,a3,s9
-	fsw	ft1,0(s0)
-	csrr	s0,vlenb
-	flw	ft0,0(s9)
-	slli	s0,s0,1
-	addi	s0,s0,108
-	add	s0,s0,sp
-	slli	s8,s8,2
-	fsw	ft0,0(s0)
-	lhu	s6,-10(a1)
-	add	s8,a3,s8
-	csrr	s0,vlenb
-	flw	fa0,0(s8)
-	slli	s0,s0,1
-	addi	s0,s0,112
-	add	s0,s0,sp
-	slli	s6,s6,2
-	fsw	fa0,0(s0)
-	lhu	s5,-8(a1)
-	add	s6,a3,s6
-	csrr	s0,vlenb
-	flw	fa2,0(s6)
-	slli	s0,s0,1
-	addi	s0,s0,116
-	add	s0,s0,sp
-	slli	s5,s5,2
-	fsw	fa2,0(s0)
-	lhu	s4,-6(a1)
-	add	s5,a3,s5
-	csrr	s0,vlenb
-	flw	fa3,0(s5)
-	slli	s0,s0,1
-	addi	s0,s0,120
-	add	s0,s0,sp
-	slli	s4,s4,2
-	fsw	fa3,0(s0)
-	lhu	s3,-4(a1)
-	add	s4,a3,s4
-	csrr	s0,vlenb
-	flw	fa4,0(s4)
-	slli	s0,s0,1
-	addi	s0,s0,124
-	add	s0,s0,sp
-	slli	s3,s3,2
-	fsw	fa4,0(s0)
-	add	s3,a3,s3
-	csrr	s0,vlenb
-	flw	fa5,0(s3)
-	slli	s0,s0,1
-	addi	s0,s0,128
-	lhu	t2,0(a2)
-	lhu	t4,2(a2)
-	lhu	a7,4(a2)
-	lhu	a6,6(a2)
-	add	s0,s0,sp
-	fsw	fa5,0(s0)
-	csrr	s0,vlenb
-	slli	s0,s0,1
-	slli	t2,t2,2
-	slli	t4,t4,2
-	slli	a7,a7,2
-	slli	a6,a6,2
-	addi	s0,s0,132
-	add	t2,a3,t2
-	add	t4,a3,t4
-	add	a7,a3,a7
-	add	a6,a3,a6
-	add	s0,s0,sp
-	vsll.vi	v20,v28,4
-	flw	fa2,0(t2)
-	flw	fa3,0(t4)
-	flw	fa4,0(a7)
-	flw	fa5,0(a6)
-	vsra.vi	v20,v20,4
-	fsw	fa1,0(s0)
-	vsra.vi	v28,v28,4
-	ld	t2,8(a2)
-	vsetivli	zero,8,e64,m2,ta,ma
-	ld	t4,40(a2)
-	ld	a7,72(a2)
-	ld	a6,104(a2)
-	vle32.v	v8,0(s7)
-	vmv.v.x	v14,a6
-	vmv.v.x	v4,t2
-	vmv.v.x	v2,t4
-	vmv.v.x	v0,a7
-	vsetvli	zero,a5,e8,m2,ta,ma
-	vwmul.vv	v16,v20,v4
-	vwmacc.vv	v16,v22,v2
-	vwmacc.vv	v16,v28,v0
-	vwmacc.vv	v16,v30,v14
-	vsetvli	zero,a4,e16,m2,ta,ma
-	vnsrl.wi	v14,v16,0
-	vnsrl.wi	v16,v16,16
-	vadd.vv	v14,v14,v16
-	vsetivli	zero,16,e16,m1,ta,ma
-	vnsrl.wi	v13,v14,0
-	vnsrl.wi	v14,v14,16
-	vadd.vv	v13,v13,v14
-	vsetivli	zero,8,e16,mf2,ta,ma
-	vnsrl.wi	v15,v13,0
-	vnsrl.wi	v13,v13,16
-	ld	t2,16(a2)
-	vwadd.vv	v14,v15,v13
-	ld	t4,48(a2)
-	vsetvli	zero,zero,e32,m1,ta,ma
-	ld	a7,80(a2)
-	vfcvt.f.x.v	v13,v14
-	ld	a6,112(a2)
-	vfmul.vf	v13,v13,fa2
-	vfmacc.vv	v12,v13,v8
-	vsetvli	zero,zero,e64,m2,ta,ma
-	vmv.v.x	v14,a6
-	vmv.v.x	v4,t2
-	vmv.v.x	v2,t4
-	vmv.v.x	v0,a7
-	vsetvli	zero,a5,e8,m2,ta,ma
-	vwmul.vv	v16,v20,v4
-	vwmacc.vv	v16,v22,v2
-	vwmacc.vv	v16,v28,v0
-	vwmacc.vv	v16,v30,v14
-	vsetvli	zero,a4,e16,m2,ta,ma
-	vnsrl.wi	v14,v16,0
-	vnsrl.wi	v16,v16,16
-	vadd.vv	v14,v14,v16
-	vsetivli	zero,16,e16,m1,ta,ma
-	vnsrl.wi	v13,v14,0
-	vnsrl.wi	v14,v14,16
-	vadd.vv	v13,v13,v14
-	vsetivli	zero,8,e16,mf2,ta,ma
-	vnsrl.wi	v15,v13,0
-	vnsrl.wi	v13,v13,16
-	ld	t2,24(a2)
-	vwadd.vv	v14,v15,v13
-	ld	t4,56(a2)
-	vsetvli	zero,zero,e32,m1,ta,ma
-	ld	a7,88(a2)
-	vfcvt.f.x.v	v13,v14
-	ld	a6,120(a2)
-	vfmul.vf	v13,v13,fa3
-	vfmacc.vv	v11,v13,v8
-	vsetvli	zero,zero,e64,m2,ta,ma
-	vmv.v.x	v14,a6
-	vmv.v.x	v4,t2
-	vmv.v.x	v2,t4
-	vmv.v.x	v0,a7
-	vsetvli	zero,a5,e8,m2,ta,ma
-	vwmul.vv	v16,v20,v4
-	vwmacc.vv	v16,v22,v2
-	vwmacc.vv	v16,v28,v0
-	vwmacc.vv	v16,v30,v14
-	vsetvli	zero,a4,e16,m2,ta,ma
-	vnsrl.wi	v14,v16,0
-	vnsrl.wi	v16,v16,16
-	vadd.vv	v14,v14,v16
-	vsetivli	zero,16,e16,m1,ta,ma
-	vnsrl.wi	v13,v14,0
-	vnsrl.wi	v14,v14,16
-	vadd.vv	v13,v13,v14
-	vsetivli	zero,8,e16,mf2,ta,ma
-	vnsrl.wi	v15,v13,0
-	vnsrl.wi	v13,v13,16
-	ld	t2,32(a2)
-	vwadd.vv	v14,v15,v13
-	ld	t4,64(a2)
-	vsetvli	zero,zero,e32,m1,ta,ma
-	ld	a7,96(a2)
-	vfcvt.f.x.v	v13,v14
-	ld	a6,128(a2)
-	vfmul.vf	v13,v13,fa4
-	vfmacc.vv	v10,v13,v8
-	vsetvli	zero,zero,e64,m2,ta,ma
-	vmv.v.x	v0,t2
-	vmv.v.x	v18,t4
-	vmv.v.x	v16,a7
-	vmv.v.x	v14,a6
-	vsetvli	zero,a5,e8,m2,ta,ma
-	vwmul.vv	v4,v20,v0
-	vmv4r.v	v0,v4
-	vwmacc.vv	v0,v22,v18
-	vmv4r.v	v20,v0
-	vwmacc.vv	v20,v28,v16
-	vmv4r.v	v16,v20
-	vwmacc.vv	v16,v30,v14
-	vsetvli	zero,a4,e16,m2,ta,ma
-	vnsrl.wi	v28,v16,16
-	vnsrl.wi	v30,v16,0
-	vadd.vv	v30,v30,v28
-	vsetivli	zero,16,e16,m1,ta,ma
-	addiw	s11,s11,1
-	vnsrl.wi	v28,v30,0
-	vnsrl.wi	v30,v30,16
-	vadd.vv	v28,v28,v30
-	vsetivli	zero,8,e16,mf2,ta,ma
-	vnsrl.wi	v31,v28,0
-	vnsrl.wi	v28,v28,16
-	addi	a1,a1,144
-	vwadd.vv	v30,v31,v28
-	addi	a2,a2,136
-	vsetvli	zero,zero,e32,m1,ta,ma
-	vfcvt.f.x.v	v28,v30
-	vfmul.vf	v28,v28,fa5
-	vfmacc.vv	v9,v28,v8
-	bgt	s2,s11,.L14
-	csrr	a2,vlenb
-	addi	a2,a2,96
-	add	a2,a2,sp
-	vl1re32.v	v29,0(a2)
-	csrr	a2,vlenb
-	addi	a2,a2,8
-	add	a2,a2,sp
-	ld	s5,0(a2)
-	csrr	a2,vlenb
-	addi	a2,a2,16
-	add	a2,a2,sp
-	ld	s4,0(a2)
-	csrr	a2,vlenb
-	addi	a2,a2,24
-	add	a2,a2,sp
-	ld	s3,0(a2)
-.L12:
-	csrr	a2,vlenb
-	addi	a2,a2,48
-	add	a2,a2,sp
-	ld	a2,0(a2)
-	csrr	a7,vlenb
-	addi	a7,a7,-8
-	add	s11,a2,s3
-	add	s0,a2,s4
-	csrr	a2,vlenb
-	addi	a2,a2,40
-	add	a2,a2,sp
-	ld	a2,0(a2)
-	add	a7,a7,sp
-	csrr	t4,vlenb
-	add	t2,a2,s3
-	add	a6,a2,s4
-	csrr	a2,vlenb
-	addi	a2,a2,32
-	add	a2,a2,sp
-	ld	a2,0(a2)
-	vse32.v	v29,0(s3)
-	ld	a7,0(a7)
-	addi	t4,t4,-8
-	add	t4,t4,sp
-	addiw	a7,a7,2
-	sd	a7,0(t4)
-	add	a1,a2,s3
-	add	a2,a2,s4
-	vse32.v	v12,0(s4)
-	vse32.v	v27,0(s11)
-	vse32.v	v11,0(s0)
-	vse32.v	v26,0(t2)
-	vse32.v	v10,0(a6)
-	vse32.v	v24,0(a1)
-	vse32.v	v9,0(a2)
-	csrr	a2,vlenb
-	addi	a2,a2,56
-	add	a2,a2,sp
-	ld	a2,0(a2)
-	addi	s3,s3,64
-	addi	s4,s4,64
-	add	s5,s5,t1
-	bgt	a2,a7,.L11
-	csrr	a2,vlenb
-	addi	a2,a2,64
-	add	a2,a2,sp
-	csrr	s0,vlenb
-	ld	a1,0(a2)
-	addi	s0,s0,80
-	csrr	a2,vlenb
-	add	a2,a2,sp
-	add	s0,s0,sp
-	ld	a7,0(a2)
-	ld	t2,0(s0)
-	csrr	a2,vlenb
-	csrr	s0,vlenb
-	addi	a2,a2,72
-	addi	s0,s0,88
-	add	a2,a2,sp
-	add	s0,s0,sp
-	ld	a2,0(a2)
-	ld	s0,0(s0)
-	addiw	a1,a1,1
-	mv	a6,t5
-	addiw	a2,a2,4
-	add	a7,a7,t5
-	blt	a1,s0,.L15
-.L1:
-	csrr	a4,vlenb
-	slli	a3,a4,1
-	addi	a3,a3,136
-	la	a5,__stack_chk_guard
-	add	a3,a3,sp
-	ld	a4, 0(a3)
-	ld	a5, 0(a5)
-	xor	a5, a4, a5
+# %bb.0:
+	addi	sp, sp, -208
+	.cfi_def_cfa_offset 208
+	sd	ra, 200(sp)                     # 8-byte Folded Spill
+	sd	s0, 192(sp)                     # 8-byte Folded Spill
+	sd	s1, 184(sp)                     # 8-byte Folded Spill
+	sd	s2, 176(sp)                     # 8-byte Folded Spill
+	sd	s3, 168(sp)                     # 8-byte Folded Spill
+	sd	s4, 160(sp)                     # 8-byte Folded Spill
+	sd	s5, 152(sp)                     # 8-byte Folded Spill
+	sd	s6, 144(sp)                     # 8-byte Folded Spill
+	sd	s7, 136(sp)                     # 8-byte Folded Spill
+	sd	s8, 128(sp)                     # 8-byte Folded Spill
+	sd	s9, 120(sp)                     # 8-byte Folded Spill
+	sd	s10, 112(sp)                    # 8-byte Folded Spill
+	sd	s11, 104(sp)                    # 8-byte Folded Spill
+	.cfi_offset ra, -8
+	.cfi_offset s0, -16
+	.cfi_offset s1, -24
+	.cfi_offset s2, -32
+	.cfi_offset s3, -40
+	.cfi_offset s4, -48
+	.cfi_offset s5, -56
+	.cfi_offset s6, -64
+	.cfi_offset s7, -72
+	.cfi_offset s8, -80
+	.cfi_offset s9, -88
+	.cfi_offset s10, -96
+	.cfi_offset s11, -104
+	andi	s1, a0, 31
+	sd	a4, 56(sp)                      # 8-byte Folded Spill
+	sd	a3, 32(sp)                      # 8-byte Folded Spill
+	beqz	s1, .LBB0_1
+	j	.LBB0_33
+.LBB0_1:
+	andi	a3, a5, 3
+	beqz	a3, .LBB0_2
+	j	.LBB0_34
+.LBB0_2:
+	andi	a3, a6, 7
+	beqz	a3, .LBB0_3
+	j	.LBB0_35
+.LBB0_3:
+	li	a3, 32
+	csrr	s1, vlenb
+	bltu	s1, a3, .LBB0_14
+# %bb.4:
+	slli	a3, a0, 1
+	srli	a3, a3, 59
+	add	a3, a3, a0
+	sraiw	a3, a3, 5
+	andi	s1, a6, 8
+	srai	t0, a5, 2
+	sd	t0, 48(sp)                      # 8-byte Folded Spill
+	bnez	s1, .LBB0_15
+# %bb.5:
+	bgtz	t0, .LBB0_6
+	j	.LBB0_32
+.LBB0_6:
+	srai	t4, a6, 3
+	bgtz	t4, .LBB0_7
+	j	.LBB0_32
+.LBB0_7:
+	vsetivli	zero, 8, e32, m1, ta, ma
+	li	a4, 31
+	vmv.v.i	v8, 0
+	blt	a4, a0, .LBB0_8
+	j	.LBB0_24
+.LBB0_8:
+	li	s1, 0
+	ld	a0, 56(sp)                      # 8-byte Folded Reload
+	addi	t1, a0, 64
+	li	a0, 17
+	slli	a0, a0, 35
+	slli	a4, a3, 32
+	mulhu	a3, a4, a0
+	li	a0, 9
+	slli	a5, a0, 36
+	mulhu	t5, a4, a5
+	slli	a0, a0, 37
+	mulhu	a0, a4, a0
+	sd	a0, 64(sp)                      # 8-byte Folded Spill
+	addi	a0, a3, 64
+	sd	a0, 0(sp)                       # 8-byte Folded Spill
+.Lpcrel_hi10:
+	auipc	a0, %got_pcrel_hi(ggml_table_f32_f16)
+	ld	a5, %pcrel_lo(.Lpcrel_hi10)(a0)
+	li	t6, 128
+	addi	s10, sp, 72
+	li	s11, 64
+	li	ra, 32
+	sd	a1, 24(sp)                      # 8-byte Folded Spill
+	sd	a2, 16(sp)                      # 8-byte Folded Spill
+	sd	a3, 8(sp)                       # 8-byte Folded Spill
+.LBB0_9:                                # =>This Loop Header: Depth=1
+                                        #     Child Loop BB0_10 Depth 2
+                                        #       Child Loop BB0_11 Depth 3
+	li	s2, 0
+	mul	a0, a3, s1
+	ld	a3, 0(sp)                       # 8-byte Folded Reload
+	add	a0, a0, a3
+	ld	s3, 56(sp)                      # 8-byte Folded Reload
+	add	s3, s3, a0
+	sd	s1, 40(sp)                      # 8-byte Folded Spill
+	slli	a0, s1, 2
+	mul	a4, a0, a2
+	slli	a4, a4, 2
+	add	s4, a1, a4
+	addi	a4, a0, 1
+	mul	a4, a4, a2
+	slli	a4, a4, 2
+	add	s5, a1, a4
+	addi	a4, a0, 2
+	mul	a4, a4, a2
+	slli	a4, a4, 2
+	add	s6, a1, a4
+	addi	a0, a0, 3
+	mul	a0, a0, a2
+	slli	a0, a0, 2
+	add	s7, a1, a0
+	ld	t2, 32(sp)                      # 8-byte Folded Reload
+.LBB0_10:                               #   Parent Loop BB0_9 Depth=1
+                                        # =>  This Loop Header: Depth=2
+                                        #       Child Loop BB0_11 Depth 3
+	ori	s9, s2, 1
+	mv	s8, t2
+	mv	s0, t1
+	vmv1r.v	v15, v8
+	vmv1r.v	v13, v8
+	vmv1r.v	v11, v8
+	vmv1r.v	v9, v8
+	vmv1r.v	v16, v8
+	vmv1r.v	v14, v8
+	vmv1r.v	v12, v8
+	vmv1r.v	v10, v8
+.LBB0_11:                               #   Parent Loop BB0_9 Depth=1
+                                        #     Parent Loop BB0_10 Depth=2
+                                        # =>    This Inner Loop Header: Depth=3
+	lhu	a0, -64(s0)
+	lhu	a4, -62(s0)
+	slli	a0, a0, 2
+	add	a0, a0, a5
+	flw	fa2, 0(a0)
+	slli	a4, a4, 2
+	lhu	a0, -60(s0)
+	add	a4, a4, a5
+	flw	fa3, 0(a4)
+	lhu	a4, -58(s0)
+	slli	a0, a0, 2
+	add	a0, a0, a5
+	flw	fa4, 0(a0)
+	slli	a4, a4, 2
+	add	a4, a4, a5
+	flw	fa5, 0(a4)
+	lhu	a0, -54(s0)
+	lhu	a4, -56(s0)
+	lhu	a3, -52(s0)
+	lhu	s1, -50(s0)
+	slli	a0, a0, 16
+	or	a0, a0, a4
+	slli	a3, a3, 32
+	slli	s1, s1, 48
+	or	a3, a3, s1
+	or	t0, a3, a0
+	lhu	a3, -22(s0)
+	lhu	a4, -24(s0)
+	lhu	s1, -20(s0)
+	lhu	a0, -18(s0)
+	slli	a3, a3, 16
+	or	a3, a3, a4
+	slli	s1, s1, 32
+	slli	a0, a0, 48
+	or	a0, a0, s1
+	or	t3, a0, a3
+	lhu	a3, 10(s0)
+	lhu	a4, 8(s0)
+	lhu	s1, 12(s0)
+	lhu	a0, 14(s0)
+	slli	a3, a3, 16
+	or	a3, a3, a4
+	slli	s1, s1, 32
+	slli	a0, a0, 48
+	or	a0, a0, s1
+	or	a0, a0, a3
+	lhu	a3, 42(s0)
+	lhu	a4, 40(s0)
+	lhu	s1, 44(s0)
+	lhu	a6, 46(s0)
+	slli	a3, a3, 16
+	or	a3, a3, a4
+	slli	s1, s1, 32
+	slli	a6, a6, 48
+	or	a4, a6, s1
+	or	a3, a3, a4
+	#APP
+	#NO_APP
+	vsetivli	zero, 8, e64, m2, ta, ma
+	vmv.v.x	v24, t0
+	vmv.v.x	v22, t3
+	vmv.v.x	v20, a0
+	vmv.v.x	v18, a3
+	addi	t3, s8, 16
+	vsetvli	zero, t6, e8, m4, ta, ma
+	vle8.v	v28, (t3)
+	lhu	a0, 0(s8)
+	vsll.vi	v0, v28, 4
+	lhu	a3, 2(s8)
+	slli	a0, a0, 2
+	add	a0, a0, a5
+	flw	fa1, 0(a0)
+	slli	a3, a3, 2
+	add	a3, a3, a5
+	flw	fa0, 0(a3)
+	lhu	a0, 4(s8)
+	vsra.vi	v0, v0, 4
+	fsw	fa1, 72(sp)
+	fsw	fa0, 76(sp)
+	slli	a0, a0, 2
+	lhu	a3, 6(s8)
+	add	a0, a0, a5
+	flw	fa1, 0(a0)
+	lhu	a0, 8(s8)
+	slli	a3, a3, 2
+	add	a3, a3, a5
+	flw	fa0, 0(a3)
+	slli	a0, a0, 2
+	add	a0, a0, a5
+	flw	ft0, 0(a0)
+	lhu	a0, 10(s8)
+	fsw	fa1, 80(sp)
+	fsw	fa0, 84(sp)
+	fsw	ft0, 88(sp)
+	slli	a0, a0, 2
+	lhu	a3, 12(s8)
+	add	a0, a0, a5
+	flw	fa1, 0(a0)
+	lhu	a0, 14(s8)
+	slli	a3, a3, 2
+	add	a3, a3, a5
+	flw	fa0, 0(a3)
+	slli	a0, a0, 2
+	add	a0, a0, a5
+	flw	ft0, 0(a0)
+	vsra.vi	v28, v28, 4
+	fsw	fa1, 92(sp)
+	fsw	fa0, 96(sp)
+	fsw	ft0, 100(sp)
+	vsetivli	zero, 8, e32, m1, ta, ma
+	vle32.v	v17, (s10)
+	vsetvli	zero, s11, e8, m2, ta, ma
+	vwmul.vv	v4, v0, v24
+	vwmacc.vv	v4, v2, v22
+	vwmacc.vv	v4, v28, v20
+	vwmacc.vv	v4, v30, v18
+	vsetvli	zero, ra, e16, m2, ta, ma
+	vnsrl.wi	v26, v4, 0
+	vnsrl.wi	v28, v4, 16
+	vadd.vv	v26, v26, v28
+	vsetivli	zero, 16, e16, m1, ta, ma
+	vnsrl.wi	v28, v26, 0
+	vnsrl.wi	v29, v26, 16
+	vadd.vv	v26, v28, v29
+	vsetivli	zero, 8, e16, mf2, ta, ma
+	vnsrl.wi	v27, v26, 0
+	vnsrl.wi	v26, v26, 16
+	vwadd.vv	v28, v27, v26
+	vsetvli	zero, zero, e32, m1, ta, ma
+	vfcvt.f.x.v	v26, v28
+	vfmul.vf	v26, v26, fa2
+	vfmacc.vv	v15, v17, v26
+	add	a0, s8, t5
+	vsetvli	zero, t6, e8, m4, ta, ma
+	lhu	a3, 0(a0)
+	slli	a3, a3, 2
+	lhu	a4, 2(a0)
+	add	a3, a3, a5
+	flw	fa1, 0(a3)
+	lhu	a3, 4(a0)
+	slli	a4, a4, 2
+	add	a4, a4, a5
+	flw	fa0, 0(a4)
+	slli	a3, a3, 2
+	add	a3, a3, a5
+	flw	ft0, 0(a3)
+	lhu	a3, 6(a0)
+	fsw	fa1, 72(sp)
+	fsw	fa0, 76(sp)
+	fsw	ft0, 80(sp)
+	slli	a3, a3, 2
+	lhu	a4, 8(a0)
+	add	a3, a3, a5
+	flw	fa1, 0(a3)
+	lhu	a3, 10(a0)
+	slli	a4, a4, 2
+	add	a4, a4, a5
+	flw	fa0, 0(a4)
+	slli	a3, a3, 2
+	add	a3, a3, a5
+	flw	ft0, 0(a3)
+	lhu	a3, 12(a0)
+	fsw	fa1, 84(sp)
+	fsw	fa0, 88(sp)
+	fsw	ft0, 92(sp)
+	slli	a3, a3, 2
+	add	a3, a3, a5
+	flw	fa1, 0(a3)
+	lhu	a3, 14(a0)
+	addi	t0, a0, 16
+	vle8.v	v28, (t0)
+	fsw	fa1, 96(sp)
+	slli	a3, a3, 2
+	add	a3, a3, a5
+	flw	fa1, 0(a3)
+	vsll.vi	v0, v28, 4
+	vsra.vi	v0, v0, 4
+	vsra.vi	v28, v28, 4
+	fsw	fa1, 100(sp)
+	vsetivli	zero, 8, e32, m1, ta, ma
+	vle32.v	v17, (s10)
+	vsetvli	zero, s11, e8, m2, ta, ma
+	vwmul.vv	v4, v0, v24
+	vwmacc.vv	v4, v2, v22
+	vwmacc.vv	v4, v28, v20
+	vwmacc.vv	v4, v30, v18
+	vsetvli	zero, ra, e16, m2, ta, ma
+	vnsrl.wi	v18, v4, 0
+	vnsrl.wi	v20, v4, 16
+	vadd.vv	v18, v18, v20
+	vsetivli	zero, 16, e16, m1, ta, ma
+	vnsrl.wi	v20, v18, 0
+	vnsrl.wi	v21, v18, 16
+	vadd.vv	v18, v20, v21
+	vsetivli	zero, 8, e16, mf2, ta, ma
+	vnsrl.wi	v19, v18, 0
+	vnsrl.wi	v18, v18, 16
+	vwadd.vv	v20, v19, v18
+	vsetvli	zero, zero, e32, m1, ta, ma
+	lhu	a3, -46(s0)
+	lhu	a4, -48(s0)
+	lhu	s1, -44(s0)
+	lhu	a2, -42(s0)
+	slli	a3, a3, 16
+	or	a3, a3, a4
+	slli	s1, s1, 32
+	slli	a2, a2, 48
+	or	a2, a2, s1
+	or	a6, a2, a3
+	lhu	a3, -14(s0)
+	lhu	a4, -16(s0)
+	lhu	s1, -12(s0)
+	lhu	a2, -10(s0)
+	slli	a3, a3, 16
+	or	a3, a3, a4
+	slli	s1, s1, 32
+	slli	a2, a2, 48
+	or	a2, a2, s1
+	or	a2, a2, a3
+	lhu	a3, 18(s0)
+	lhu	a4, 16(s0)
+	lhu	s1, 20(s0)
+	lhu	a7, 22(s0)
+	slli	a3, a3, 16
+	or	a3, a3, a4
+	slli	s1, s1, 32
+	slli	a7, a7, 48
+	or	a4, a7, s1
+	lhu	s1, 50(s0)
+	lhu	a1, 48(s0)
+	vfcvt.f.x.v	v18, v20
+	or	a3, a3, a4
+	slli	s1, s1, 16
+	or	a1, a1, s1
+	lhu	a4, 52(s0)
+	lhu	s1, 54(s0)
+	vfmul.vf	v18, v18, fa2
+	vfmacc.vv	v16, v17, v18
+	slli	a4, a4, 32
+	slli	s1, s1, 48
+	or	a4, a4, s1
+	or	a1, a1, a4
+	#APP
+	#NO_APP
+	vsetivli	zero, 8, e64, m2, ta, ma
+	vmv.v.x	v24, a6
+	vmv.v.x	v22, a2
+	vmv.v.x	v20, a3
+	vmv.v.x	v18, a1
+	vsetvli	zero, t6, e8, m4, ta, ma
+	lhu	a1, 0(s8)
+	lhu	a2, 2(s8)
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa2, 0(a1)
+	slli	a2, a2, 2
+	add	a2, a2, a5
+	flw	fa1, 0(a2)
+	lhu	a1, 4(s8)
+	fsw	fa2, 72(sp)
+	fsw	fa1, 76(sp)
+	lhu	a2, 6(s8)
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa2, 0(a1)
+	slli	a2, a2, 2
+	add	a2, a2, a5
+	flw	fa1, 0(a2)
+	vle8.v	v28, (t3)
+	lhu	a1, 8(s8)
+	fsw	fa2, 80(sp)
+	fsw	fa1, 84(sp)
+	lhu	a2, 10(s8)
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa2, 0(a1)
+	slli	a2, a2, 2
+	add	a2, a2, a5
+	flw	fa1, 0(a2)
+	vsll.vi	v0, v28, 4
+	lhu	a1, 12(s8)
+	fsw	fa2, 88(sp)
+	fsw	fa1, 92(sp)
+	lhu	a2, 14(s8)
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa2, 0(a1)
+	slli	a2, a2, 2
+	add	a2, a2, a5
+	flw	fa1, 0(a2)
+	vsra.vi	v0, v0, 4
+	vsra.vi	v28, v28, 4
+	fsw	fa2, 96(sp)
+	fsw	fa1, 100(sp)
+	vsetivli	zero, 8, e32, m1, ta, ma
+	vle32.v	v17, (s10)
+	vsetvli	zero, s11, e8, m2, ta, ma
+	vwmul.vv	v4, v0, v24
+	vwmacc.vv	v4, v2, v22
+	vwmacc.vv	v4, v28, v20
+	vwmacc.vv	v4, v30, v18
+	vsetvli	zero, ra, e16, m2, ta, ma
+	vnsrl.wi	v26, v4, 0
+	vnsrl.wi	v28, v4, 16
+	vadd.vv	v26, v26, v28
+	vsetivli	zero, 16, e16, m1, ta, ma
+	vnsrl.wi	v28, v26, 0
+	vnsrl.wi	v29, v26, 16
+	vadd.vv	v26, v28, v29
+	vsetivli	zero, 8, e16, mf2, ta, ma
+	vnsrl.wi	v27, v26, 0
+	vnsrl.wi	v26, v26, 16
+	vwadd.vv	v28, v27, v26
+	vsetvli	zero, zero, e32, m1, ta, ma
+	vfcvt.f.x.v	v26, v28
+	vfmul.vf	v26, v26, fa3
+	vfmacc.vv	v13, v17, v26
+	vsetvli	zero, t6, e8, m4, ta, ma
+	lhu	a1, 0(a0)
+	lhu	a2, 2(a0)
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa2, 0(a1)
+	slli	a2, a2, 2
+	add	a2, a2, a5
+	flw	fa1, 0(a2)
+	lhu	a1, 4(a0)
+	fsw	fa2, 72(sp)
+	fsw	fa1, 76(sp)
+	lhu	a2, 6(a0)
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa2, 0(a1)
+	slli	a2, a2, 2
+	add	a2, a2, a5
+	flw	fa1, 0(a2)
+	vle8.v	v28, (t0)
+	lhu	a1, 8(a0)
+	fsw	fa2, 80(sp)
+	fsw	fa1, 84(sp)
+	lhu	a2, 10(a0)
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa2, 0(a1)
+	slli	a2, a2, 2
+	add	a2, a2, a5
+	flw	fa1, 0(a2)
+	vsll.vi	v0, v28, 4
+	lhu	a1, 12(a0)
+	fsw	fa2, 88(sp)
+	fsw	fa1, 92(sp)
+	lhu	a2, 14(a0)
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa2, 0(a1)
+	slli	a2, a2, 2
+	add	a2, a2, a5
+	flw	fa1, 0(a2)
+	vsra.vi	v0, v0, 4
+	vsra.vi	v28, v28, 4
+	fsw	fa2, 96(sp)
+	fsw	fa1, 100(sp)
+	vsetivli	zero, 8, e32, m1, ta, ma
+	vle32.v	v17, (s10)
+	vsetvli	zero, s11, e8, m2, ta, ma
+	vwmul.vv	v4, v0, v24
+	vwmacc.vv	v4, v2, v22
+	vwmacc.vv	v4, v28, v20
+	vwmacc.vv	v4, v30, v18
+	vsetvli	zero, ra, e16, m2, ta, ma
+	vnsrl.wi	v18, v4, 0
+	vnsrl.wi	v20, v4, 16
+	vadd.vv	v18, v18, v20
+	vsetivli	zero, 16, e16, m1, ta, ma
+	vnsrl.wi	v20, v18, 0
+	vnsrl.wi	v21, v18, 16
+	vadd.vv	v18, v20, v21
+	vsetivli	zero, 8, e16, mf2, ta, ma
+	vnsrl.wi	v19, v18, 0
+	vnsrl.wi	v18, v18, 16
+	vwadd.vv	v20, v19, v18
+	vsetvli	zero, zero, e32, m1, ta, ma
+	lhu	a1, -38(s0)
+	lhu	a2, -40(s0)
+	lhu	a3, -36(s0)
+	lhu	a4, -34(s0)
+	slli	a1, a1, 16
+	or	a1, a1, a2
+	slli	a3, a3, 32
+	slli	a4, a4, 48
+	or	a3, a3, a4
+	or	a6, a3, a1
+	lhu	a2, -6(s0)
+	lhu	a3, -8(s0)
+	lhu	a4, -4(s0)
+	lhu	s1, -2(s0)
+	slli	a2, a2, 16
+	or	a2, a2, a3
+	slli	a4, a4, 32
+	slli	s1, s1, 48
+	or	a4, a4, s1
+	or	a2, a2, a4
+	lhu	a3, 26(s0)
+	lhu	a4, 24(s0)
+	lhu	s1, 28(s0)
+	lhu	a1, 30(s0)
+	slli	a3, a3, 16
+	or	a3, a3, a4
+	slli	s1, s1, 32
+	slli	a1, a1, 48
+	or	a1, a1, s1
+	lhu	a4, 58(s0)
+	lhu	s1, 56(s0)
+	vfcvt.f.x.v	v18, v20
+	or	a1, a1, a3
+	slli	a4, a4, 16
+	or	a4, a4, s1
+	lhu	a3, 60(s0)
+	lhu	s1, 62(s0)
+	vfmul.vf	v18, v18, fa3
+	vfmacc.vv	v14, v17, v18
+	slli	a3, a3, 32
+	slli	s1, s1, 48
+	or	a3, a3, s1
+	or	a3, a3, a4
+	#APP
+	#NO_APP
+	vsetivli	zero, 8, e64, m2, ta, ma
+	vmv.v.x	v24, a6
+	vmv.v.x	v22, a2
+	vmv.v.x	v20, a1
+	vmv.v.x	v18, a3
+	vsetvli	zero, t6, e8, m4, ta, ma
+	vle8.v	v28, (t3)
+	lhu	a1, 0(s8)
+	vsll.vi	v0, v28, 4
+	lhu	a2, 2(s8)
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa3, 0(a1)
+	slli	a2, a2, 2
+	add	a2, a2, a5
+	flw	fa2, 0(a2)
+	lhu	a1, 4(s8)
+	vsra.vi	v0, v0, 4
+	fsw	fa3, 72(sp)
+	fsw	fa2, 76(sp)
+	slli	a1, a1, 2
+	lhu	a2, 6(s8)
+	add	a1, a1, a5
+	flw	fa3, 0(a1)
+	lhu	a1, 8(s8)
+	slli	a2, a2, 2
+	add	a2, a2, a5
+	flw	fa2, 0(a2)
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa1, 0(a1)
+	lhu	a1, 10(s8)
+	fsw	fa3, 80(sp)
+	fsw	fa2, 84(sp)
+	fsw	fa1, 88(sp)
+	slli	a1, a1, 2
+	lhu	a2, 12(s8)
+	add	a1, a1, a5
+	flw	fa3, 0(a1)
+	lhu	a1, 14(s8)
+	slli	a2, a2, 2
+	add	a2, a2, a5
+	flw	fa2, 0(a2)
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa1, 0(a1)
+	vsra.vi	v28, v28, 4
+	fsw	fa3, 92(sp)
+	fsw	fa2, 96(sp)
+	fsw	fa1, 100(sp)
+	vsetivli	zero, 8, e32, m1, ta, ma
+	vle32.v	v17, (s10)
+	vsetvli	zero, s11, e8, m2, ta, ma
+	vwmul.vv	v4, v0, v24
+	vwmacc.vv	v4, v2, v22
+	vwmacc.vv	v4, v28, v20
+	vwmacc.vv	v4, v30, v18
+	vsetvli	zero, ra, e16, m2, ta, ma
+	vnsrl.wi	v26, v4, 0
+	vnsrl.wi	v28, v4, 16
+	vadd.vv	v26, v26, v28
+	vsetivli	zero, 16, e16, m1, ta, ma
+	vnsrl.wi	v28, v26, 0
+	vnsrl.wi	v29, v26, 16
+	vadd.vv	v26, v28, v29
+	vsetivli	zero, 8, e16, mf2, ta, ma
+	vnsrl.wi	v27, v26, 0
+	vnsrl.wi	v26, v26, 16
+	vwadd.vv	v28, v27, v26
+	vsetvli	zero, zero, e32, m1, ta, ma
+	vfcvt.f.x.v	v26, v28
+	vfmul.vf	v26, v26, fa4
+	vfmacc.vv	v11, v17, v26
+	vsetvli	zero, t6, e8, m4, ta, ma
+	vle8.v	v28, (t0)
+	lhu	a1, 0(a0)
+	vsll.vi	v0, v28, 4
+	lhu	a2, 2(a0)
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa3, 0(a1)
+	slli	a2, a2, 2
+	add	a2, a2, a5
+	flw	fa2, 0(a2)
+	lhu	a1, 4(a0)
+	vsra.vi	v0, v0, 4
+	fsw	fa3, 72(sp)
+	fsw	fa2, 76(sp)
+	slli	a1, a1, 2
+	lhu	a2, 6(a0)
+	add	a1, a1, a5
+	flw	fa3, 0(a1)
+	lhu	a1, 8(a0)
+	slli	a2, a2, 2
+	add	a2, a2, a5
+	flw	fa2, 0(a2)
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa1, 0(a1)
+	lhu	a1, 10(a0)
+	fsw	fa3, 80(sp)
+	fsw	fa2, 84(sp)
+	fsw	fa1, 88(sp)
+	slli	a1, a1, 2
+	lhu	a2, 12(a0)
+	add	a1, a1, a5
+	flw	fa3, 0(a1)
+	lhu	a1, 14(a0)
+	slli	a2, a2, 2
+	add	a2, a2, a5
+	flw	fa2, 0(a2)
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa1, 0(a1)
+	vsra.vi	v28, v28, 4
+	fsw	fa3, 92(sp)
+	fsw	fa2, 96(sp)
+	fsw	fa1, 100(sp)
+	vsetivli	zero, 8, e32, m1, ta, ma
+	vle32.v	v17, (s10)
+	vsetvli	zero, s11, e8, m2, ta, ma
+	vwmul.vv	v4, v0, v24
+	vwmacc.vv	v4, v2, v22
+	vwmacc.vv	v4, v28, v20
+	vwmacc.vv	v4, v30, v18
+	vsetvli	zero, ra, e16, m2, ta, ma
+	vnsrl.wi	v18, v4, 0
+	vnsrl.wi	v20, v4, 16
+	vadd.vv	v18, v18, v20
+	vsetivli	zero, 16, e16, m1, ta, ma
+	vnsrl.wi	v20, v18, 0
+	vnsrl.wi	v21, v18, 16
+	vadd.vv	v18, v20, v21
+	vsetivli	zero, 8, e16, mf2, ta, ma
+	vnsrl.wi	v19, v18, 0
+	vnsrl.wi	v18, v18, 16
+	vwadd.vv	v20, v19, v18
+	vsetvli	zero, zero, e32, m1, ta, ma
+	lhu	a1, -30(s0)
+	lhu	a2, -32(s0)
+	lhu	a3, -28(s0)
+	lhu	a4, -26(s0)
+	slli	a1, a1, 16
+	or	a1, a1, a2
+	slli	a3, a3, 32
+	slli	a4, a4, 48
+	or	a3, a3, a4
+	or	a6, a3, a1
+	lhu	a2, 2(s0)
+	lhu	a3, 0(s0)
+	lhu	a4, 4(s0)
+	lhu	s1, 6(s0)
+	slli	a2, a2, 16
+	or	a2, a2, a3
+	slli	a4, a4, 32
+	slli	s1, s1, 48
+	or	a4, a4, s1
+	or	a2, a2, a4
+	lhu	a3, 34(s0)
+	lhu	a4, 32(s0)
+	lhu	s1, 36(s0)
+	lhu	a1, 38(s0)
+	slli	a3, a3, 16
+	or	a3, a3, a4
+	slli	s1, s1, 32
+	slli	a1, a1, 48
+	or	a1, a1, s1
+	lhu	a4, 66(s0)
+	lhu	s1, 64(s0)
+	vfcvt.f.x.v	v18, v20
+	or	a1, a1, a3
+	slli	a4, a4, 16
+	or	a4, a4, s1
+	lhu	a3, 68(s0)
+	lhu	s1, 70(s0)
+	vfmul.vf	v18, v18, fa4
+	vfmacc.vv	v12, v17, v18
+	slli	a3, a3, 32
+	slli	s1, s1, 48
+	or	a3, a3, s1
+	or	a3, a3, a4
+	#APP
+	#NO_APP
+	vsetivli	zero, 8, e64, m2, ta, ma
+	vmv.v.x	v24, a6
+	vmv.v.x	v22, a2
+	vmv.v.x	v20, a1
+	vmv.v.x	v18, a3
+	vsetvli	zero, t6, e8, m4, ta, ma
+	vle8.v	v28, (t3)
+	lhu	a1, 0(s8)
+	vsll.vi	v0, v28, 4
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa4, 0(a1)
+	lhu	a1, 2(s8)
+	vsra.vi	v0, v0, 4
+	vsra.vi	v28, v28, 4
+	fsw	fa4, 72(sp)
+	slli	a1, a1, 2
+	lhu	a2, 4(s8)
+	add	a1, a1, a5
+	flw	fa4, 0(a1)
+	lhu	a1, 6(s8)
+	slli	a2, a2, 2
+	add	a2, a2, a5
+	flw	fa3, 0(a2)
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa2, 0(a1)
+	fsw	fa4, 76(sp)
+	lhu	a1, 8(s8)
+	fsw	fa3, 80(sp)
+	fsw	fa2, 84(sp)
+	lhu	a2, 10(s8)
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa4, 0(a1)
+	slli	a2, a2, 2
+	lhu	a1, 12(s8)
+	add	a2, a2, a5
+	flw	fa3, 0(a2)
+	lhu	a2, 14(s8)
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa2, 0(a1)
+	slli	a2, a2, 2
+	add	a2, a2, a5
+	flw	fa1, 0(a2)
+	fsw	fa4, 88(sp)
+	fsw	fa3, 92(sp)
+	fsw	fa2, 96(sp)
+	fsw	fa1, 100(sp)
+	vsetivli	zero, 8, e32, m1, ta, ma
+	vle32.v	v17, (s10)
+	vsetvli	zero, s11, e8, m2, ta, ma
+	vwmul.vv	v4, v0, v24
+	vwmacc.vv	v4, v2, v22
+	vwmacc.vv	v4, v28, v20
+	vwmacc.vv	v4, v30, v18
+	vsetvli	zero, ra, e16, m2, ta, ma
+	vnsrl.wi	v26, v4, 0
+	vnsrl.wi	v28, v4, 16
+	vadd.vv	v26, v26, v28
+	vsetivli	zero, 16, e16, m1, ta, ma
+	vnsrl.wi	v28, v26, 0
+	vnsrl.wi	v29, v26, 16
+	vadd.vv	v26, v28, v29
+	vsetivli	zero, 8, e16, mf2, ta, ma
+	vnsrl.wi	v27, v26, 0
+	vnsrl.wi	v26, v26, 16
+	vwadd.vv	v28, v27, v26
+	vsetvli	zero, zero, e32, m1, ta, ma
+	vfcvt.f.x.v	v26, v28
+	vfmul.vf	v26, v26, fa5
+	vfmacc.vv	v9, v17, v26
+	vsetvli	zero, t6, e8, m4, ta, ma
+	vle8.v	v28, (t0)
+	lhu	a1, 0(a0)
+	vsll.vi	v0, v28, 4
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa4, 0(a1)
+	lhu	a1, 2(a0)
+	vsra.vi	v0, v0, 4
+	vsra.vi	v28, v28, 4
+	fsw	fa4, 72(sp)
+	slli	a1, a1, 2
+	lhu	a2, 4(a0)
+	add	a1, a1, a5
+	flw	fa4, 0(a1)
+	lhu	a1, 6(a0)
+	slli	a2, a2, 2
+	add	a2, a2, a5
+	flw	fa3, 0(a2)
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa2, 0(a1)
+	fsw	fa4, 76(sp)
+	lhu	a1, 8(a0)
+	fsw	fa3, 80(sp)
+	fsw	fa2, 84(sp)
+	lhu	a2, 10(a0)
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa4, 0(a1)
+	slli	a2, a2, 2
+	lhu	a1, 12(a0)
+	add	a2, a2, a5
+	flw	fa3, 0(a2)
+	lhu	a0, 14(a0)
+	slli	a1, a1, 2
+	add	a1, a1, a5
+	flw	fa2, 0(a1)
+	slli	a0, a0, 2
+	add	a0, a0, a5
+	flw	fa1, 0(a0)
+	fsw	fa4, 88(sp)
+	fsw	fa3, 92(sp)
+	fsw	fa2, 96(sp)
+	fsw	fa1, 100(sp)
+	vsetivli	zero, 8, e32, m1, ta, ma
+	vle32.v	v17, (s10)
+	vsetvli	zero, s11, e8, m2, ta, ma
+	vwmul.vv	v4, v0, v24
+	vwmacc.vv	v4, v2, v22
+	vwmacc.vv	v4, v28, v20
+	vwmacc.vv	v4, v30, v18
+	vsetvli	zero, ra, e16, m2, ta, ma
+	vnsrl.wi	v18, v4, 0
+	vnsrl.wi	v20, v4, 16
+	vadd.vv	v18, v18, v20
+	vsetivli	zero, 16, e16, m1, ta, ma
+	vnsrl.wi	v20, v18, 0
+	vnsrl.wi	v21, v18, 16
+	vadd.vv	v18, v20, v21
+	vsetivli	zero, 8, e16, mf2, ta, ma
+	vnsrl.wi	v19, v18, 0
+	vnsrl.wi	v18, v18, 16
+	vwadd.vv	v20, v19, v18
+	vsetvli	zero, zero, e32, m1, ta, ma
+	vfcvt.f.x.v	v18, v20
+	vfmul.vf	v18, v18, fa5
+	vfmacc.vv	v10, v17, v18
+	addi	s0, s0, 136
+	addi	s8, s8, 144
+	bne	s0, s3, .LBB0_11
+# %bb.12:                               #   in Loop: Header=BB0_10 Depth=2
+	slli	a0, s2, 5
+	add	a1, s4, a0
+	vse32.v	v15, (a1)
+	slli	s9, s9, 5
+	add	a1, s4, s9
+	vse32.v	v16, (a1)
+	add	a1, s5, a0
+	vse32.v	v13, (a1)
+	add	a1, s5, s9
+	vse32.v	v14, (a1)
+	add	a1, s6, a0
+	vse32.v	v11, (a1)
+	add	a1, s6, s9
+	vse32.v	v12, (a1)
+	add	a0, a0, s7
+	vse32.v	v9, (a0)
+	add	s9, s9, s7
+	vse32.v	v10, (s9)
+	addi	s2, s2, 2
+	ld	a0, 64(sp)                      # 8-byte Folded Reload
+	add	t2, t2, a0
+	bltu	s2, t4, .LBB0_10
+# %bb.13:                               #   in Loop: Header=BB0_9 Depth=1
+	ld	s1, 40(sp)                      # 8-byte Folded Reload
+	addi	s1, s1, 1
+	ld	a3, 8(sp)                       # 8-byte Folded Reload
+	add	t1, t1, a3
+	ld	a1, 24(sp)                      # 8-byte Folded Reload
+	ld	a0, 48(sp)                      # 8-byte Folded Reload
+	ld	a2, 16(sp)                      # 8-byte Folded Reload
+	bne	s1, a0, .LBB0_9
+	j	.LBB0_32
+.LBB0_14:
+	ld	a3, 32(sp)                      # 8-byte Folded Reload
+	ld	a4, 56(sp)                      # 8-byte Folded Reload
+	ld	ra, 200(sp)                     # 8-byte Folded Reload
+	ld	s0, 192(sp)                     # 8-byte Folded Reload
+	ld	s1, 184(sp)                     # 8-byte Folded Reload
+	ld	s2, 176(sp)                     # 8-byte Folded Reload
+	ld	s3, 168(sp)                     # 8-byte Folded Reload
+	ld	s4, 160(sp)                     # 8-byte Folded Reload
+	ld	s5, 152(sp)                     # 8-byte Folded Reload
+	ld	s6, 144(sp)                     # 8-byte Folded Reload
+	ld	s7, 136(sp)                     # 8-byte Folded Reload
+	ld	s8, 128(sp)                     # 8-byte Folded Reload
+	ld	s9, 120(sp)                     # 8-byte Folded Reload
+	ld	s10, 112(sp)                    # 8-byte Folded Reload
+	ld	s11, 104(sp)                    # 8-byte Folded Reload
+	addi	sp, sp, 208
+	tail	ggml_gemm_q4_0_8x8_q8_0_generic
+.LBB0_15:
+	blez	t0, .LBB0_32
+# %bb.16:
+	srai	t3, a6, 3
+	blez	t3, .LBB0_32
+# %bb.17:
+	vsetivli	zero, 8, e32, m1, ta, ma
+	li	a5, 31
+	vmv.v.i	v8, 0
+	bge	a5, a0, .LBB0_28
+# %bb.18:
+	li	t2, 0
+	ld	a0, 56(sp)                      # 8-byte Folded Reload
+	addi	t5, a0, 64
+	li	a0, 17
+	slli	a0, a0, 35
+	slli	a3, a3, 32
+	mulhu	t1, a3, a0
+	ld	a0, 32(sp)                      # 8-byte Folded Reload
+	addi	a0, a0, 16
+	sd	a0, 64(sp)                      # 8-byte Folded Spill
+	li	a0, 9
+	slli	a0, a0, 36
+	mulhu	a7, a3, a0
+	addi	a0, t1, 64
+	sd	a0, 40(sp)                      # 8-byte Folded Spill
+	li	s2, 128
+.Lpcrel_hi9:
+	auipc	a0, %got_pcrel_hi(ggml_table_f32_f16)
+	ld	ra, %pcrel_lo(.Lpcrel_hi9)(a0)
+	addi	s8, sp, 72
+	li	s10, 64
+	li	s11, 32
+.LBB0_19:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB0_20 Depth 2
+                                        #       Child Loop BB0_21 Depth 3
+	li	t6, 0
+	mul	a3, t1, t2
+	ld	a0, 40(sp)                      # 8-byte Folded Reload
+	add	a3, a3, a0
+	ld	s9, 56(sp)                      # 8-byte Folded Reload
+	add	s9, s9, a3
+	slli	a3, t2, 2
+	mul	s1, a3, a2
+	slli	s1, s1, 2
+	add	s3, a1, s1
+	addi	s1, a3, 1
+	mul	s1, s1, a2
+	slli	s1, s1, 2
+	add	s4, a1, s1
+	addi	s1, a3, 2
+	mul	s1, s1, a2
+	slli	s1, s1, 2
+	add	s5, a1, s1
+	addi	a3, a3, 3
+	mul	a3, a3, a2
+	slli	a3, a3, 2
+	add	s6, a1, a3
+	ld	t4, 64(sp)                      # 8-byte Folded Reload
+.LBB0_20:                               #   Parent Loop BB0_19 Depth=1
+                                        # =>  This Loop Header: Depth=2
+                                        #       Child Loop BB0_21 Depth 3
+	mv	s7, t4
+	mv	s1, t5
+	vmv1r.v	v9, v8
+	vmv1r.v	v10, v8
+	vmv1r.v	v11, v8
+	vmv1r.v	v12, v8
+.LBB0_21:                               #   Parent Loop BB0_19 Depth=1
+                                        #     Parent Loop BB0_20 Depth=2
+                                        # =>    This Inner Loop Header: Depth=3
+	vsetvli	zero, s2, e8, m4, ta, ma
+	vle8.v	v16, (s7)
+	vsll.vi	v20, v16, 4
+	lhu	s0, -64(s1)
+	vsra.vi	v20, v20, 4
+	vsra.vi	v16, v16, 4
+	lhu	a5, -62(s1)
+	slli	s0, s0, 2
+	add	s0, s0, ra
+	flw	fa2, 0(s0)
+	slli	a5, a5, 2
+	lhu	s0, -60(s1)
+	add	a5, a5, ra
+	flw	fa3, 0(a5)
+	lhu	a5, -16(s7)
+	slli	s0, s0, 2
+	add	s0, s0, ra
+	lhu	a0, -14(s7)
+	slli	a5, a5, 2
+	add	a5, a5, ra
+	flw	fa4, 0(a5)
+	slli	a0, a0, 2
+	add	a0, a0, ra
+	flw	fa1, 0(a0)
+	flw	fa5, 0(s0)
+	lhu	a0, -12(s7)
+	fsw	fa4, 72(sp)
+	fsw	fa1, 76(sp)
+	lhu	a5, -10(s7)
+	slli	a0, a0, 2
+	add	a0, a0, ra
+	flw	fa4, 0(a0)
+	slli	a5, a5, 2
+	add	a5, a5, ra
+	flw	fa1, 0(a5)
+	lhu	a0, -58(s1)
+	lhu	a5, -8(s7)
+	fsw	fa4, 80(sp)
+	fsw	fa1, 84(sp)
+	lhu	s0, -6(s7)
+	slli	a5, a5, 2
+	add	a5, a5, ra
+	flw	fa4, 0(a5)
+	slli	s0, s0, 2
+	add	s0, s0, ra
+	flw	fa1, 0(s0)
+	slli	a0, a0, 2
+	lhu	a5, -4(s7)
+	fsw	fa4, 88(sp)
+	fsw	fa1, 92(sp)
+	lhu	s0, -2(s7)
+	slli	a5, a5, 2
+	add	a5, a5, ra
+	flw	fa4, 0(a5)
+	slli	s0, s0, 2
+	add	s0, s0, ra
+	flw	fa1, 0(s0)
+	add	a0, a0, ra
+	fsw	fa4, 96(sp)
+	flw	fa4, 0(a0)
+	fsw	fa1, 100(sp)
+	vsetivli	zero, 8, e32, m1, ta, ma
+	lhu	a0, -54(s1)
+	lhu	a5, -56(s1)
+	lhu	s0, -52(s1)
+	lhu	t0, -50(s1)
+	slli	a0, a0, 16
+	or	a0, a0, a5
+	slli	s0, s0, 32
+	slli	t0, t0, 48
+	or	a5, t0, s0
+	or	t0, a5, a0
+	lhu	a5, -22(s1)
+	lhu	s0, -24(s1)
+	lhu	a4, -20(s1)
+	lhu	a0, -18(s1)
+	slli	a5, a5, 16
+	or	a5, a5, s0
+	slli	a4, a4, 32
+	slli	a0, a0, 48
+	or	a0, a0, a4
+	or	a0, a0, a5
+	lhu	a4, 10(s1)
+	lhu	a5, 8(s1)
+	lhu	s0, 12(s1)
+	lhu	a6, 14(s1)
+	slli	a4, a4, 16
+	or	a4, a4, a5
+	slli	s0, s0, 32
+	slli	a6, a6, 48
+	lhu	a5, 42(s1)
+	or	s0, a6, s0
+	or	a6, s0, a4
+	lhu	s0, 40(s1)
+	slli	a5, a5, 16
+	lhu	a3, 44(s1)
+	lhu	a4, 46(s1)
+	or	a5, a5, s0
+	vle32.v	v13, (s8)
+	slli	a3, a3, 32
+	slli	a4, a4, 48
+	or	a3, a3, a4
+	or	a3, a3, a5
+	#APP
+	#NO_APP
+	vsetivli	zero, 8, e64, m2, ta, ma
+	vmv.v.x	v14, t0
+	vmv.v.x	v24, a0
+	vmv.v.x	v26, a6
+	vmv.v.x	v28, a3
+	vsetvli	zero, s10, e8, m2, ta, ma
+	vwmul.vv	v0, v20, v14
+	vwmacc.vv	v0, v22, v24
+	vwmacc.vv	v0, v16, v26
+	vwmacc.vv	v0, v18, v28
+	vsetvli	zero, s11, e16, m2, ta, ma
+	vnsrl.wi	v14, v0, 0
+	vnsrl.wi	v24, v0, 16
+	vadd.vv	v14, v14, v24
+	vsetivli	zero, 16, e16, m1, ta, ma
+	vnsrl.wi	v24, v14, 0
+	vnsrl.wi	v25, v14, 16
+	vadd.vv	v14, v24, v25
+	vsetivli	zero, 8, e16, mf2, ta, ma
+	vnsrl.wi	v15, v14, 0
+	vnsrl.wi	v14, v14, 16
+	vwadd.vv	v24, v15, v14
+	vsetvli	zero, zero, e32, m1, ta, ma
+	lhu	a0, -46(s1)
+	lhu	a3, -48(s1)
+	lhu	a4, -44(s1)
+	lhu	a5, -42(s1)
+	slli	a0, a0, 16
+	or	a0, a0, a3
+	slli	a4, a4, 32
+	slli	a5, a5, 48
+	or	a4, a4, a5
+	or	a6, a4, a0
+	lhu	a3, -14(s1)
+	lhu	a4, -16(s1)
+	lhu	a5, -12(s1)
+	lhu	s0, -10(s1)
+	slli	a3, a3, 16
+	or	a3, a3, a4
+	slli	a5, a5, 32
+	slli	s0, s0, 48
+	or	a5, a5, s0
+	or	a3, a3, a5
+	lhu	a4, 18(s1)
+	lhu	a5, 16(s1)
+	lhu	s0, 20(s1)
+	lhu	a0, 22(s1)
+	slli	a4, a4, 16
+	or	a4, a4, a5
+	slli	s0, s0, 32
+	slli	a0, a0, 48
+	or	a0, a0, s0
+	lhu	a5, 50(s1)
+	lhu	s0, 48(s1)
+	vfcvt.f.x.v	v14, v24
+	or	a0, a0, a4
+	slli	a5, a5, 16
+	or	a5, a5, s0
+	lhu	a4, 52(s1)
+	lhu	s0, 54(s1)
+	vfmul.vf	v14, v14, fa2
+	vfmacc.vv	v12, v13, v14
+	slli	a4, a4, 32
+	slli	s0, s0, 48
+	or	a4, a4, s0
+	or	a4, a4, a5
+	#APP
+	#NO_APP
+	vsetivli	zero, 8, e64, m2, ta, ma
+	vmv.v.x	v14, a6
+	vmv.v.x	v24, a3
+	vmv.v.x	v26, a0
+	vmv.v.x	v28, a4
+	vsetvli	zero, s10, e8, m2, ta, ma
+	vwmul.vv	v0, v20, v14
+	vwmacc.vv	v0, v22, v24
+	vwmacc.vv	v0, v16, v26
+	vwmacc.vv	v0, v18, v28
+	vsetvli	zero, s11, e16, m2, ta, ma
+	vnsrl.wi	v14, v0, 0
+	vnsrl.wi	v24, v0, 16
+	vadd.vv	v14, v14, v24
+	vsetivli	zero, 16, e16, m1, ta, ma
+	vnsrl.wi	v24, v14, 0
+	vnsrl.wi	v25, v14, 16
+	vadd.vv	v14, v24, v25
+	vsetivli	zero, 8, e16, mf2, ta, ma
+	vnsrl.wi	v15, v14, 0
+	vnsrl.wi	v14, v14, 16
+	vwadd.vv	v24, v15, v14
+	vsetvli	zero, zero, e32, m1, ta, ma
+	lhu	a0, -38(s1)
+	lhu	a3, -40(s1)
+	lhu	a4, -36(s1)
+	lhu	a5, -34(s1)
+	slli	a0, a0, 16
+	or	a0, a0, a3
+	slli	a4, a4, 32
+	slli	a5, a5, 48
+	or	a4, a4, a5
+	or	a6, a4, a0
+	lhu	a3, -6(s1)
+	lhu	a4, -8(s1)
+	lhu	a5, -4(s1)
+	lhu	s0, -2(s1)
+	slli	a3, a3, 16
+	or	a3, a3, a4
+	slli	a5, a5, 32
+	slli	s0, s0, 48
+	or	a5, a5, s0
+	or	a3, a3, a5
+	lhu	a4, 26(s1)
+	lhu	a5, 24(s1)
+	lhu	s0, 28(s1)
+	lhu	a0, 30(s1)
+	slli	a4, a4, 16
+	or	a4, a4, a5
+	slli	s0, s0, 32
+	slli	a0, a0, 48
+	or	a0, a0, s0
+	lhu	a5, 58(s1)
+	lhu	s0, 56(s1)
+	vfcvt.f.x.v	v14, v24
+	or	a0, a0, a4
+	slli	a5, a5, 16
+	or	a5, a5, s0
+	lhu	a4, 60(s1)
+	lhu	s0, 62(s1)
+	vfmul.vf	v14, v14, fa3
+	vfmacc.vv	v11, v13, v14
+	slli	a4, a4, 32
+	slli	s0, s0, 48
+	or	a4, a4, s0
+	or	a4, a4, a5
+	#APP
+	#NO_APP
+	vsetivli	zero, 8, e64, m2, ta, ma
+	vmv.v.x	v14, a6
+	vmv.v.x	v24, a3
+	vmv.v.x	v26, a0
+	vmv.v.x	v28, a4
+	vsetvli	zero, s10, e8, m2, ta, ma
+	vwmul.vv	v0, v20, v14
+	vwmacc.vv	v0, v22, v24
+	vwmacc.vv	v0, v16, v26
+	vwmacc.vv	v0, v18, v28
+	vsetvli	zero, s11, e16, m2, ta, ma
+	vnsrl.wi	v14, v0, 0
+	vnsrl.wi	v24, v0, 16
+	vadd.vv	v14, v14, v24
+	vsetivli	zero, 16, e16, m1, ta, ma
+	vnsrl.wi	v24, v14, 0
+	vnsrl.wi	v25, v14, 16
+	vadd.vv	v14, v24, v25
+	vsetivli	zero, 8, e16, mf2, ta, ma
+	vnsrl.wi	v15, v14, 0
+	vnsrl.wi	v14, v14, 16
+	vwadd.vv	v24, v15, v14
+	vsetvli	zero, zero, e32, m1, ta, ma
+	lhu	a0, -30(s1)
+	lhu	a3, -32(s1)
+	lhu	a4, -28(s1)
+	lhu	a5, -26(s1)
+	slli	a0, a0, 16
+	or	a0, a0, a3
+	slli	a4, a4, 32
+	slli	a5, a5, 48
+	or	a4, a4, a5
+	or	a6, a4, a0
+	lhu	a3, 2(s1)
+	lhu	a4, 0(s1)
+	lhu	a5, 4(s1)
+	lhu	s0, 6(s1)
+	slli	a3, a3, 16
+	or	a3, a3, a4
+	slli	a5, a5, 32
+	slli	s0, s0, 48
+	or	a5, a5, s0
+	or	a3, a3, a5
+	lhu	a4, 34(s1)
+	lhu	a5, 32(s1)
+	lhu	s0, 36(s1)
+	lhu	a0, 38(s1)
+	slli	a4, a4, 16
+	or	a4, a4, a5
+	slli	s0, s0, 32
+	slli	a0, a0, 48
+	or	a0, a0, s0
+	lhu	a5, 66(s1)
+	lhu	s0, 64(s1)
+	vfcvt.f.x.v	v14, v24
+	or	a0, a0, a4
+	slli	a5, a5, 16
+	or	a5, a5, s0
+	lhu	a4, 68(s1)
+	lhu	s0, 70(s1)
+	vfmul.vf	v14, v14, fa5
+	vfmacc.vv	v10, v13, v14
+	slli	a4, a4, 32
+	slli	s0, s0, 48
+	or	a4, a4, s0
+	or	a4, a4, a5
+	#APP
+	#NO_APP
+	vsetivli	zero, 8, e64, m2, ta, ma
+	vmv.v.x	v14, a6
+	vmv.v.x	v24, a3
+	vmv.v.x	v26, a0
+	vmv.v.x	v28, a4
+	vsetvli	zero, s10, e8, m2, ta, ma
+	vwmul.vv	v0, v20, v14
+	vwmacc.vv	v0, v22, v24
+	vwmacc.vv	v0, v16, v26
+	vwmacc.vv	v0, v18, v28
+	vsetvli	zero, s11, e16, m2, ta, ma
+	vnsrl.wi	v14, v0, 0
+	vnsrl.wi	v16, v0, 16
+	vadd.vv	v14, v14, v16
+	vsetivli	zero, 16, e16, m1, ta, ma
+	vnsrl.wi	v16, v14, 0
+	vnsrl.wi	v17, v14, 16
+	vadd.vv	v14, v16, v17
+	vsetivli	zero, 8, e16, mf2, ta, ma
+	vnsrl.wi	v15, v14, 0
+	vnsrl.wi	v14, v14, 16
+	vwadd.vv	v16, v15, v14
+	vsetvli	zero, zero, e32, m1, ta, ma
+	vfcvt.f.x.v	v14, v16
+	vfmul.vf	v14, v14, fa4
+	vfmacc.vv	v9, v13, v14
+	addi	s1, s1, 136
+	addi	s7, s7, 144
+	bne	s1, s9, .LBB0_21
+# %bb.22:                               #   in Loop: Header=BB0_20 Depth=2
+	slli	a0, t6, 5
+	add	a3, s3, a0
+	vse32.v	v12, (a3)
+	add	a3, s4, a0
+	vse32.v	v11, (a3)
+	add	a3, s5, a0
+	vse32.v	v10, (a3)
+	add	a0, a0, s6
+	vse32.v	v9, (a0)
+	addi	t6, t6, 1
+	add	t4, t4, a7
+	bne	t6, t3, .LBB0_20
+# %bb.23:                               #   in Loop: Header=BB0_19 Depth=1
+	addi	t2, t2, 1
+	add	t5, t5, t1
+	ld	a0, 48(sp)                      # 8-byte Folded Reload
+	bne	t2, a0, .LBB0_19
+	j	.LBB0_32
+.LBB0_24:
+	li	a0, 0
+	slli	a3, a2, 4
+	slli	a2, a2, 2
+	addi	a2, a2, -32
+.LBB0_25:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB0_26 Depth 2
 	li	a4, 0
-	bne	a5,zero,.L31
-	csrr	t0,vlenb
-	slli	t1,t0,1
-	add	sp,sp,t1
-	.cfi_remember_state
-	.cfi_def_cfa_offset 256
-	ld	ra,248(sp)
-	.cfi_restore 1
-	ld	s0,240(sp)
-	.cfi_restore 8
-	ld	s1,232(sp)
-	.cfi_restore 9
-	ld	s2,224(sp)
-	.cfi_restore 18
-	ld	s3,216(sp)
-	.cfi_restore 19
-	ld	s4,208(sp)
-	.cfi_restore 20
-	ld	s5,200(sp)
-	.cfi_restore 21
-	ld	s6,192(sp)
-	.cfi_restore 22
-	ld	s7,184(sp)
-	.cfi_restore 23
-	ld	s8,176(sp)
-	.cfi_restore 24
-	ld	s9,168(sp)
-	.cfi_restore 25
-	ld	s10,160(sp)
-	.cfi_restore 26
-	ld	s11,152(sp)
-	.cfi_restore 27
-	addi	sp,sp,256
-	.cfi_def_cfa_offset 0
-	jr	ra
-.L36:
-	.cfi_restore_state
-	li	a5,3
-	ble	a7,a5,.L1
-	sraiw	a5,a6,31
-	srliw	a5,a5,29
-	addw	a5,a5,a6
-	li	a4,7
-	sraiw	a7,a5,3
-	ble	a6,a4,.L1
-	mv	a6,t4
-	csrr	t4,vlenb
-	slli	a4,s2,4
-	addi	t4,t4,48
-	add	a4,a4,s2
-	add	t4,t4,sp
-	slli	a0,a4,3
-	sd	a7,0(t4)
-	csrr	a4,vlenb
-	csrr	a7,vlenb
-	slli	a5,s2,3
-	slli	a4,a4,1
-	addi	a7,a7,72
-	add	a5,a5,s2
-	addi	a4,a4,104
-	add	a7,a7,sp
-	slli	t1,a5,4
-	add	s5,sp,a4
-	li	a1,0
-	li	a5,0
-	addi	s1,s1,16
-	la	a2,ggml_table_f32_f16
-	li	s3,128
-	li	a4,64
-	li	a3,32
-	sd	s0,0(a7)
-	vmv.v.i	v25,0
-.L20:
-	addiw	t4,a5,3
-	slli	t5,a5,32
-	slli	t4,t4,32
-	srli	t5,t5,32
-	srli	t4,t4,32
-	mul	t5,t5,t6
-	addiw	s10,a5,2
-	csrr	s0,vlenb
-	slli	s10,s10,32
-	addi	s0,s0,56
-	add	s0,s0,sp
-	srli	s10,s10,32
-	addiw	s11,a5,1
-	sd	a1,0(s0)
-	csrr	a1,vlenb
-	mul	t4,t4,t6
-	slli	s11,s11,32
-	addi	a1,a1,40
-	add	a1,a1,sp
-	srli	s11,s11,32
-	sd	a6,0(a1)
-	csrr	a1,vlenb
-	addi	a1,a1,64
-	add	a1,a1,sp
-	sd	a5,0(a1)
-	mul	s10,s10,t6
-	csrr	a5,vlenb
-	sub	t4,t4,t5
-	addi	a5,a5,16
-	add	a5,a5,sp
-	slli	t4,t4,2
-	sd	t4,0(a5)
-	csrr	a5,vlenb
-	addi	a5,a5,24
-	add	a5,a5,sp
-	mul	s11,s11,t6
-	sub	s10,s10,t5
-	slli	s10,s10,2
-	sd	s10,0(a5)
-	csrr	a5,vlenb
-	addi	a5,a5,32
-	slli	s7,t5,2
-	add	a5,a5,sp
-	add	s7,t2,s7
-	mv	s0,t2
-	sub	s11,s11,t5
-	slli	s11,s11,2
-	mv	s9,s1
-	li	s8,0
-	sd	s11,0(a5)
-	mv	t2,t6
-	mv	t0,a0
-.L17:
-	li	a5,31
-	vmv1r.v	v12,v25
-	vmv1r.v	v11,v25
-	vmv1r.v	v10,v25
-	vmv1r.v	v9,v25
-	ble	t3,a5,.L18
-	csrr	a0,vlenb
-	addi	a0,a0,-8
-	add	a0,a0,sp
-	sd	s8,0(a0)
-	csrr	a5,vlenb
-	csrr	a0,vlenb
-	add	a0,a0,sp
-	addi	a5,a5,40
-	sd	s9,0(a0)
-	add	a5,a5,sp
-	csrr	a0,vlenb
-	addi	a0,a0,8
-	ld	a5,0(a5)
-	add	a0,a0,sp
-	mv	a1,s9
-	li	s11,0
-	sd	s7,0(a0)
-	vmv1r.v	v13,v25
-.L19:
-	lhu	t5,-2(a1)
-	lhu	s10,-16(a1)
-	lhu	s9,-14(a1)
-	slli	t5,t5,2
-	add	t5,a2,t5
-	slli	s10,s10,2
-	flw	fa1,0(t5)
-	add	s10,a2,s10
-	csrr	t5,vlenb
-	flw	ft1,0(s10)
-	slli	t5,t5,1
-	addi	t5,t5,104
-	add	t5,t5,sp
-	slli	s9,s9,2
-	fsw	ft1,0(t5)
-	lhu	s8,-12(a1)
-	add	s9,a2,s9
-	csrr	t5,vlenb
-	flw	ft0,0(s9)
-	slli	t5,t5,1
-	addi	t5,t5,108
-	add	t5,t5,sp
-	slli	s8,s8,2
-	fsw	ft0,0(t5)
-	lhu	s7,-10(a1)
-	add	s8,a2,s8
-	csrr	t5,vlenb
-	flw	fa0,0(s8)
-	slli	t5,t5,1
-	addi	t5,t5,112
-	add	t5,t5,sp
-	slli	s7,s7,2
-	fsw	fa0,0(t5)
-	lhu	s6,-8(a1)
-	add	s7,a2,s7
-	csrr	t5,vlenb
-	flw	fa2,0(s7)
-	slli	t5,t5,1
-	addi	t5,t5,116
-	add	t5,t5,sp
-	slli	s6,s6,2
-	fsw	fa2,0(t5)
-	lhu	s4,-6(a1)
-	add	s6,a2,s6
-	csrr	t5,vlenb
-	flw	fa3,0(s6)
-	slli	t5,t5,1
-	addi	t5,t5,120
-	add	t5,t5,sp
-	slli	s4,s4,2
-	fsw	fa3,0(t5)
-	lhu	t6,-4(a1)
-	add	s4,a2,s4
-	csrr	t5,vlenb
-	flw	fa4,0(s4)
-	slli	t5,t5,1
-	addi	t5,t5,124
-	lhu	a0,6(a5)
-	add	t5,t5,sp
-	slli	t6,t6,2
-	fsw	fa4,0(t5)
-	add	t6,a2,t6
-	csrr	t5,vlenb
-	flw	fa5,0(t6)
-	slli	t5,t5,1
-	slli	a0,a0,2
-	addi	t5,t5,128
-	lhu	t4,0(a5)
-	lhu	a7,2(a5)
-	lhu	a6,4(a5)
-	add	a0,a2,a0
-	add	t5,t5,sp
-	fsw	fa5,0(t5)
-	flw	fa5,0(a0)
-	csrr	a0,vlenb
-	slli	a0,a0,1
-	slli	t4,t4,2
-	slli	a7,a7,2
-	slli	a6,a6,2
-	addi	a0,a0,132
-	vsetvli	zero,s3,e8,m4,ta,ma
-	add	t4,a2,t4
-	add	a7,a2,a7
-	add	a6,a2,a6
-	add	a0,a0,sp
-	vle8.v	v28,0(a1)
-	flw	fa2,0(t4)
-	vsll.vi	v16,v28,4
-	flw	fa3,0(a7)
-	flw	fa4,0(a6)
-	vsra.vi	v16,v16,4
-	fsw	fa1,0(a0)
-	vsra.vi	v28,v28,4
-	ld	t4,8(a5)
-	vsetivli	zero,8,e64,m2,ta,ma
-	ld	a7,40(a5)
-	ld	a6,72(a5)
-	ld	a0,104(a5)
-	vle32.v	v8,0(s5)
-	vmv.v.x	v14,a0
-	vmv.v.x	v0,t4
-	vmv.v.x	v22,a7
-	vmv.v.x	v20,a6
-	vsetvli	zero,a4,e8,m2,ta,ma
-	vwmul.vv	v24,v16,v0
-	vwmacc.vv	v24,v18,v22
-	vwmacc.vv	v24,v28,v20
-	vwmacc.vv	v24,v30,v14
-	vsetvli	zero,a3,e16,m2,ta,ma
-	vnsrl.wi	v14,v24,0
-	vnsrl.wi	v24,v24,16
-	vadd.vv	v26,v14,v24
-	vsetivli	zero,16,e16,m1,ta,ma
-	vnsrl.wi	v24,v26,0
-	vnsrl.wi	v26,v26,16
-	vadd.vv	v24,v24,v26
-	vsetivli	zero,8,e16,mf2,ta,ma
-	vnsrl.wi	v27,v24,0
-	vnsrl.wi	v24,v24,16
-	ld	t4,16(a5)
-	vwadd.vv	v26,v27,v24
-	ld	a7,48(a5)
-	vsetvli	zero,zero,e32,m1,ta,ma
-	ld	a6,80(a5)
-	vfcvt.f.x.v	v24,v26
-	ld	a0,112(a5)
-	vfmul.vf	v24,v24,fa2
-	vfmacc.vv	v12,v24,v8
-	vsetvli	zero,zero,e64,m2,ta,ma
-	vmv.v.x	v14,a0
-	vmv.v.x	v0,t4
-	vmv.v.x	v22,a7
-	vmv.v.x	v20,a6
-	vsetvli	zero,a4,e8,m2,ta,ma
-	vwmul.vv	v24,v16,v0
-	vwmacc.vv	v24,v18,v22
-	vwmacc.vv	v24,v28,v20
-	vwmacc.vv	v24,v30,v14
-	vsetvli	zero,a3,e16,m2,ta,ma
-	vnsrl.wi	v14,v24,0
-	vnsrl.wi	v24,v24,16
-	vadd.vv	v26,v14,v24
-	vsetivli	zero,16,e16,m1,ta,ma
-	vnsrl.wi	v24,v26,0
-	vnsrl.wi	v26,v26,16
-	vadd.vv	v24,v24,v26
-	vsetivli	zero,8,e16,mf2,ta,ma
-	vnsrl.wi	v27,v24,0
-	vnsrl.wi	v24,v24,16
-	ld	t4,24(a5)
-	vwadd.vv	v26,v27,v24
-	ld	a7,56(a5)
-	vsetvli	zero,zero,e32,m1,ta,ma
-	ld	a6,88(a5)
-	vfcvt.f.x.v	v24,v26
-	ld	a0,120(a5)
-	vfmul.vf	v24,v24,fa3
-	vfmacc.vv	v11,v24,v8
-	vsetvli	zero,zero,e64,m2,ta,ma
-	vmv.v.x	v14,a0
-	vmv.v.x	v0,t4
-	vmv.v.x	v22,a7
-	vmv.v.x	v20,a6
-	vsetvli	zero,a4,e8,m2,ta,ma
-	vwmul.vv	v24,v16,v0
-	vwmacc.vv	v24,v18,v22
-	vwmacc.vv	v24,v28,v20
-	vwmacc.vv	v24,v30,v14
-	vsetvli	zero,a3,e16,m2,ta,ma
-	vnsrl.wi	v14,v24,0
-	vnsrl.wi	v24,v24,16
-	vadd.vv	v26,v14,v24
-	vsetivli	zero,16,e16,m1,ta,ma
-	vnsrl.wi	v24,v26,0
-	vnsrl.wi	v26,v26,16
-	vadd.vv	v24,v24,v26
-	vsetivli	zero,8,e16,mf2,ta,ma
-	vnsrl.wi	v27,v24,0
-	vnsrl.wi	v24,v24,16
-	ld	t4,32(a5)
-	vwadd.vv	v26,v27,v24
-	ld	a7,64(a5)
-	vsetvli	zero,zero,e32,m1,ta,ma
-	ld	a6,96(a5)
-	vfcvt.f.x.v	v24,v26
-	ld	a0,128(a5)
-	vfmul.vf	v24,v24,fa4
-	vfmacc.vv	v10,v24,v8
-	vsetvli	zero,zero,e64,m2,ta,ma
-	vmv.v.x	v0,t4
-	vmv.v.x	v22,a7
-	vmv.v.x	v20,a6
-	vmv.v.x	v14,a0
-	vsetvli	zero,a4,e8,m2,ta,ma
-	vwmul.vv	v24,v16,v0
-	vwmacc.vv	v24,v18,v22
-	vwmacc.vv	v24,v28,v20
-	vwmacc.vv	v24,v30,v14
-	vsetvli	zero,a3,e16,m2,ta,ma
-	vnsrl.wi	v28,v24,0
-	vnsrl.wi	v24,v24,16
-	vadd.vv	v26,v28,v24
-	vsetivli	zero,16,e16,m1,ta,ma
-	addiw	s11,s11,1
-	vnsrl.wi	v24,v26,0
-	vnsrl.wi	v26,v26,16
-	vadd.vv	v24,v24,v26
-	vsetivli	zero,8,e16,mf2,ta,ma
-	vnsrl.wi	v27,v24,0
-	vnsrl.wi	v24,v24,16
-	addi	a1,a1,144
-	vwadd.vv	v26,v27,v24
-	addi	a5,a5,136
-	vsetvli	zero,zero,e32,m1,ta,ma
-	vfcvt.f.x.v	v24,v26
-	vfmul.vf	v24,v24,fa5
-	vfmacc.vv	v9,v24,v8
-	bgt	s2,s11,.L19
-	csrr	a5,vlenb
-	addi	a5,a5,-8
-	add	a5,a5,sp
-	ld	s8,0(a5)
-	csrr	a5,vlenb
-	add	a5,a5,sp
-	ld	s9,0(a5)
-	csrr	a5,vlenb
-	addi	a5,a5,8
-	add	a5,a5,sp
-	ld	s7,0(a5)
-	vmv1r.v	v25,v13
-.L18:
-	csrr	a5,vlenb
-	addi	a5,a5,32
-	add	a5,a5,sp
-	ld	a5,0(a5)
-	addiw	s8,s8,1
-	add	s9,s9,t1
-	add	a0,a5,s7
-	csrr	a5,vlenb
-	addi	a5,a5,24
-	add	a5,a5,sp
-	ld	a5,0(a5)
-	add	a1,a5,s7
-	csrr	a5,vlenb
-	addi	a5,a5,16
-	add	a5,a5,sp
-	ld	a5,0(a5)
-	vse32.v	v12,0(s7)
-	vse32.v	v11,0(a0)
-	add	a5,a5,s7
-	vse32.v	v10,0(a1)
-	vse32.v	v9,0(a5)
-	csrr	a5,vlenb
-	addi	a5,a5,48
-	add	a5,a5,sp
-	ld	a5,0(a5)
-	addi	s7,s7,32
-	blt	s8,a5,.L17
-	csrr	a5,vlenb
-	addi	a5,a5,56
-	add	a5,a5,sp
-	ld	a1,0(a5)
-	csrr	a5,vlenb
-	addi	a5,a5,40
-	add	a5,a5,sp
-	ld	a6,0(a5)
-	mv	t6,t2
-	csrr	a5,vlenb
-	mv	t2,s0
-	csrr	s0,vlenb
-	addi	a5,a5,64
-	addi	s0,s0,72
-	add	a5,a5,sp
-	add	s0,s0,sp
-	ld	a5,0(a5)
-	ld	s0,0(s0)
-	addiw	a1,a1,1
-	mv	a0,t0
-	addiw	a5,a5,4
-	add	a6,a6,t0
-	blt	a1,s0,.L20
-	j	.L1
-.L5:
-	csrr	s1,vlenb
-	slli	s1,s1,1
-	addi	s1,s1,136
-	la	s0,__stack_chk_guard
-	add	s1,s1,sp
-	ld	t1, 0(s1)
-	ld	a7, 0(s0)
-	xor	a7, t1, a7
-	li	t1, 0
-	bne	a7,zero,.L31
-	csrr	t0,vlenb
-	slli	t1,t0,1
-	add	sp,sp,t1
-	.cfi_remember_state
-	.cfi_def_cfa_offset 256
-	ld	ra,248(sp)
-	.cfi_restore 1
-	ld	s0,240(sp)
-	.cfi_restore 8
-	ld	s1,232(sp)
-	.cfi_restore 9
-	ld	s2,224(sp)
-	.cfi_restore 18
-	ld	s3,216(sp)
-	.cfi_restore 19
-	ld	s4,208(sp)
-	.cfi_restore 20
-	ld	s5,200(sp)
-	.cfi_restore 21
-	ld	s6,192(sp)
-	.cfi_restore 22
-	ld	s7,184(sp)
-	.cfi_restore 23
-	ld	s8,176(sp)
-	.cfi_restore 24
-	ld	s9,168(sp)
-	.cfi_restore 25
-	ld	s10,160(sp)
-	.cfi_restore 26
-	ld	s11,152(sp)
-	.cfi_restore 27
-	addi	sp,sp,256
-	.cfi_def_cfa_offset 0
-	tail	ggml_gemm_q4_0_8x8_q8_0_generic@plt
-.L31:
-	.cfi_restore_state
-	call	__stack_chk_fail@plt
-.L35:
-	lla	a3,.LC0
-	li	a2,32
-	lla	a1,.LC1
-	lla	a0,.LC4
-	call	__assert_fail@plt
-.L34:
-	lla	a3,.LC0
-	li	a2,31
-	lla	a1,.LC1
-	lla	a0,.LC3
-	call	__assert_fail@plt
-.L33:
-	lla	a3,.LC0
-	li	a2,30
-	lla	a1,.LC1
-	lla	a0,.LC2
-	call	__assert_fail@plt
+	mv	s1, a1
+	mv	a5, a1
+.LBB0_26:                               #   Parent Loop BB0_25 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	vse32.v	v8, (a5)
+	addi	a1, a5, 32
+	vse32.v	v8, (a1)
+	add	a1, a1, a2
+	vse32.v	v8, (a1)
+	addi	a1, a1, 32
+	vse32.v	v8, (a1)
+	add	a1, a1, a2
+	vse32.v	v8, (a1)
+	addi	a1, a1, 32
+	vse32.v	v8, (a1)
+	add	a1, a1, a2
+	vse32.v	v8, (a1)
+	addi	a1, a1, 32
+	vse32.v	v8, (a1)
+	addi	a4, a4, 2
+	addi	a5, a5, 64
+	bltu	a4, t4, .LBB0_26
+# %bb.27:                               #   in Loop: Header=BB0_25 Depth=1
+	addi	a0, a0, 1
+	mv	a1, s1
+	add	a1, s1, a3
+	bne	a0, t0, .LBB0_25
+	j	.LBB0_32
+.LBB0_28:
+	li	a0, 0
+	slli	t3, t3, 32
+	srli	a6, t3, 32
+	slli	a7, a2, 4
+	slli	a4, a2, 2
+	li	a3, 12
+	mul	s1, a2, a3
+	slli	a2, a2, 3
+.LBB0_29:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB0_30 Depth 2
+	mv	a3, a6
+	mv	s0, a1
+.LBB0_30:                               #   Parent Loop BB0_29 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	vse32.v	v8, (s0)
+	add	a5, s0, a4
+	vse32.v	v8, (a5)
+	add	a5, s0, a2
+	vse32.v	v8, (a5)
+	add	a5, s0, s1
+	vse32.v	v8, (a5)
+	addi	a3, a3, -1
+	addi	s0, s0, 32
+	bnez	a3, .LBB0_30
+# %bb.31:                               #   in Loop: Header=BB0_29 Depth=1
+	addi	a0, a0, 1
+	add	a1, a1, a7
+	bne	a0, t0, .LBB0_29
+.LBB0_32:
+	ld	ra, 200(sp)                     # 8-byte Folded Reload
+	ld	s0, 192(sp)                     # 8-byte Folded Reload
+	ld	s1, 184(sp)                     # 8-byte Folded Reload
+	ld	s2, 176(sp)                     # 8-byte Folded Reload
+	ld	s3, 168(sp)                     # 8-byte Folded Reload
+	ld	s4, 160(sp)                     # 8-byte Folded Reload
+	ld	s5, 152(sp)                     # 8-byte Folded Reload
+	ld	s6, 144(sp)                     # 8-byte Folded Reload
+	ld	s7, 136(sp)                     # 8-byte Folded Reload
+	ld	s8, 128(sp)                     # 8-byte Folded Reload
+	ld	s9, 120(sp)                     # 8-byte Folded Reload
+	ld	s10, 112(sp)                    # 8-byte Folded Reload
+	ld	s11, 104(sp)                    # 8-byte Folded Reload
+	addi	sp, sp, 208
+	ret
+.LBB0_33:
+.Lpcrel_hi0:
+	auipc	a0, %pcrel_hi(.L.str)
+	addi	a0, a0, %pcrel_lo(.Lpcrel_hi0)
+.Lpcrel_hi1:
+	auipc	a1, %pcrel_hi(.L.str.1)
+	addi	a1, a1, %pcrel_lo(.Lpcrel_hi1)
+.Lpcrel_hi2:
+	auipc	a2, %pcrel_hi(.L__PRETTY_FUNCTION__.ggml_gemm_q4_0_8x8_q8_0_4x16)
+	addi	a3, a2, %pcrel_lo(.Lpcrel_hi2)
+	li	a2, 87
+	call	__assert_fail
+.LBB0_34:
+.Lpcrel_hi3:
+	auipc	a0, %pcrel_hi(.L.str.2)
+	addi	a0, a0, %pcrel_lo(.Lpcrel_hi3)
+.Lpcrel_hi4:
+	auipc	a1, %pcrel_hi(.L.str.1)
+	addi	a1, a1, %pcrel_lo(.Lpcrel_hi4)
+.Lpcrel_hi5:
+	auipc	a2, %pcrel_hi(.L__PRETTY_FUNCTION__.ggml_gemm_q4_0_8x8_q8_0_4x16)
+	addi	a3, a2, %pcrel_lo(.Lpcrel_hi5)
+	li	a2, 88
+	call	__assert_fail
+.LBB0_35:
+.Lpcrel_hi6:
+	auipc	a0, %pcrel_hi(.L.str.3)
+	addi	a0, a0, %pcrel_lo(.Lpcrel_hi6)
+.Lpcrel_hi7:
+	auipc	a1, %pcrel_hi(.L.str.1)
+	addi	a1, a1, %pcrel_lo(.Lpcrel_hi7)
+.Lpcrel_hi8:
+	auipc	a2, %pcrel_hi(.L__PRETTY_FUNCTION__.ggml_gemm_q4_0_8x8_q8_0_4x16)
+	addi	a3, a2, %pcrel_lo(.Lpcrel_hi8)
+	li	a2, 89
+	call	__assert_fail
+.Lfunc_end0:
+	.size	ggml_gemm_q4_0_8x8_q8_0_4x16, .Lfunc_end0-ggml_gemm_q4_0_8x8_q8_0_4x16
 	.cfi_endproc
-.LFE2019:
-	.size	ggml_gemm_q4_0_8x8_q8_0_4x16, .-ggml_gemm_q4_0_8x8_q8_0_4x16
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
-	.section	.note.GNU-stack,"",@progbits
+                                        # -- End function
+	.type	.L.str,@object                  # @.str
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.L.str:
+	.asciz	"n % qk == 0"
+	.size	.L.str, 12
+
+	.type	.L.str.1,@object                # @.str.1
+.L.str.1:
+	.asciz	"repack_4x16.cpp"
+	.size	.L.str.1, 16
+
+	.type	.L__PRETTY_FUNCTION__.ggml_gemm_q4_0_8x8_q8_0_4x16,@object # @__PRETTY_FUNCTION__.ggml_gemm_q4_0_8x8_q8_0_4x16
+.L__PRETTY_FUNCTION__.ggml_gemm_q4_0_8x8_q8_0_4x16:
+	.asciz	"void ggml_gemm_q4_0_8x8_q8_0_4x16(int, float *__restrict, size_t, const void *__restrict, const void *__restrict, int, int)"
+	.size	.L__PRETTY_FUNCTION__.ggml_gemm_q4_0_8x8_q8_0_4x16, 124
+
+	.type	.L.str.2,@object                # @.str.2
+.L.str.2:
+	.asciz	"nr % 4 == 0"
+	.size	.L.str.2, 12
+
+	.type	.L.str.3,@object                # @.str.3
+.L.str.3:
+	.asciz	"nc % ncols_interleaved == 0"
+	.size	.L.str.3, 28
+
+	.ident	"Ubuntu clang version 18.1.8 (++20240731025043+3b5b5c1ec4a3-1~exp1~20240731145144.92)"
+	.section	".note.GNU-stack","",@progbits
+	.addrsig
