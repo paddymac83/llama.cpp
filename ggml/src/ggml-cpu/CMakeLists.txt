@@ -449,6 +449,12 @@ function(ggml_add_cpu_backend_variant_impl tag_name)
             ggml-cpu/arch/riscv/quants.c
             ggml-cpu/arch/riscv/repack.cpp
             )
+        set_source_files_properties(
+            ggml-cpu/arch/riscv/quants.c
+            ggml-cpu/arch/riscv/repack.cpp
+            PROPERTIES COMPILE_FLAGS
+            "-march=rv64gcv -mabi=lp64d"
+        )
         if (GGML_CPU_RISCV64_SPACEMIT)
             target_compile_definitions(${GGML_CPU_NAME} PRIVATE GGML_USE_CPU_RISCV64_SPACEMIT ${RISCV64_SPACEMIT_IME_SPEC})
             list(APPEND GGML_CPU_SOURCES
@@ -460,14 +466,13 @@ function(ggml_add_cpu_backend_variant_impl tag_name)
         endif()
         if(NOT GGML_CPU_ALL_VARIANTS)
             set(MARCH_STR "rv64gc")
-            if (GGML_RV_ZFH)
-                string(APPEND MARCH_STR "_zfh")
-            endif()
-
             if (GGML_XTHEADVECTOR)
                 string(APPEND MARCH_STR "_xtheadvector")
             elseif (GGML_RVV)
                 string(APPEND MARCH_STR "_v")
+                if (GGML_RV_ZFH)
+                    string(APPEND MARCH_STR "_zfh")
+                endif()
                 if (GGML_RV_ZVFH)
                     string(APPEND MARCH_STR "_zvfh")
                 endif()

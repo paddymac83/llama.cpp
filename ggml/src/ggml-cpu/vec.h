@@ -289,7 +289,7 @@ inline static void ggml_vec_dot_f16_unroll(const int n, const int xs, float * GG
         sumf[0] = __riscv_vfmv_f_s_f32m1_f32(redsum0);
         sumf[1] = __riscv_vfmv_f_s_f32m1_f32(redsum1);
 
-    #else
+    #elif defined(GGML_F16_STEP)
         const int np = (n & ~(GGML_F16_STEP - 1));
 
         GGML_F16_VEC sum[GGML_VEC_DOT_UNROLL][GGML_F16_ARR] = { { GGML_F16_VEC_ZERO } };
@@ -566,7 +566,7 @@ inline static void ggml_vec_mad_f16(const int n, ggml_fp16_t * GGML_RESTRICT y, 
         __riscv_vse16_v_f16m4((_Float16*)y + i, ay0, vl);
     }
     np = n;
-#elif defined(GGML_SIMD)
+#elif defined(GGML_F16_STEP)
     const int np = (n & ~(GGML_F16_STEP - 1));
 
     GGML_F16_VEC vx = GGML_F16_VEC_SET1(v);
@@ -835,7 +835,7 @@ inline static void ggml_vec_scale_f16(const int n, ggml_fp16_t * y, const float 
         ay0 = __riscv_vfmul_vf_f16m4(ay0, scale, vl);
         __riscv_vse16_v_f16m4((_Float16*)y + i, ay0, vl);
     }
-#elif defined(GGML_SIMD)
+#elif defined(GGML_F16_STEP)
     const int np = (n & ~(GGML_F16_STEP - 1));
 
     GGML_F16_VEC vx = GGML_F16_VEC_SET1(v);

@@ -19,7 +19,7 @@ llm_build_qwen::llm_build_qwen(const llama_model & model, const llm_graph_params
     ggml_tensor * inp_out_ids = build_inp_out_ids();
 
     for (int il = 0; il < n_layer; ++il) {
-        fprintf(stderr, "\n[TRACE] ===== layer %d =====\n", il);
+        // fprintf(stderr, "\n[TRACE] ===== layer %d =====\n", il);
 
         ggml_tensor * inpSA = inpL;
 
@@ -28,12 +28,12 @@ llm_build_qwen::llm_build_qwen(const llama_model & model, const llm_graph_params
                 LLM_NORM_RMS, il);
         cb(cur, "attn_norm", il);
 
-        fprintf(stderr, "[TRACE] layer %d: attn_norm done\n", il); 
+        // fprintf(stderr, "[TRACE] layer %d: attn_norm done\n", il); 
 
         // self-attention
         {
             cur = build_lora_mm(model.layers[il].wqkv, cur);
-            fprintf(stderr, "[TRACE] layer %d: wqkv matmul (fused QKV)\n", il);
+            // fprintf(stderr, "[TRACE] layer %d: wqkv matmul (fused QKV)\n", il);
             cb(cur, "wqkv", il);
 
             cur = ggml_add(ctx0, cur, model.layers[il].bqkv);
@@ -64,7 +64,7 @@ llm_build_qwen::llm_build_qwen(const llama_model & model, const llm_graph_params
                     model.layers[il].wo, NULL,
                     Qcur, Kcur, Vcur, nullptr, nullptr, nullptr, 1.0f/sqrtf(float(n_embd_head)), il);
 
-            fprintf(stderr, "[TRACE] layer %d: build_attn done (Q×K, scores×V, wo)\n", il); 
+            // fprintf(stderr, "[TRACE] layer %d: build_attn done (Q×K, scores×V, wo)\n", il); 
         }
         if (il == n_layer - 1 && inp_out_ids) {
             cur   = ggml_get_rows(ctx0,   cur, inp_out_ids);
@@ -78,7 +78,7 @@ llm_build_qwen::llm_build_qwen(const llama_model & model, const llm_graph_params
             cur = build_norm(ffn_inp,
                     model.layers[il].ffn_norm, NULL,
                     LLM_NORM_RMS, il);
-            fprintf(stderr, "[TRACE] layer %d: ffn_norm done\n", il);
+            // fprintf(stderr, "[TRACE] layer %d: ffn_norm done\n", il);
             cb(cur, "ffn_norm", il);
 
             cur = build_ffn(cur,
@@ -108,7 +108,7 @@ llm_build_qwen::llm_build_qwen(const llama_model & model, const llm_graph_params
 
     // lm_head
     cur = build_lora_mm(model.output, cur);
-    fprintf(stderr, "[TRACE] lm_head matmul done → logits\n");
+    // fprintf(stderr, "[TRACE] lm_head matmul done → logits\n");
 
     cb(cur, "result_output", -1);
     res->t_logits = cur;

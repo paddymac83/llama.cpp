@@ -9188,11 +9188,83 @@ void ggml_compute_forward_flash_attn_back(
     }
 }
 
+//  use rvv extension for 
+#if defined(__riscv_v)
+#include <riscv_vector.h>
+
+static void ggml_compute_forward_ssm_conv_f32_rvv(
+        const ggml_compute_params * params,
+        ggml_tensor * dst) {
+    const ggml_tensor * src0 = dst->src[0];
+    const ggml_tensor * src1 = dst->src[1];
+    const int ith = params->ith;
+    const int nth = params->nth;
+    const int nc  = src1->ne[0];
+    const int ncs = src0->ne[0];
+    const int nr  = src0->ne[1];
+    const int n_t = dst->ne[1];
+    const int n_s = dst->ne[2];
+
+    const int dr  = (nr + nth - 1) / nth;
+    const int ir0 = dr * ith;
+    const int ir1 = MIN(ir0 + dr, nr);
+    const int ir  = ir1 - ir0;
+
+    for (int i3 = 0; i3 < n_s; ++i3) {
+        for (int i2 = 0; i2 < n_t; ++i2) {
+            const float * s = (const float *)
+                ((const char *) src0->data
+                 + ir0*(src0->nb[1])
+                 + i2*(src0->nb[0])
+                 + i3*(src0->nb[2]));
+            const float * c = (const float *)
+                ((const char *) src1->data
+                 + ir0*(src1->nb[1]));
+            float * x = (float *)
+                ((char *) dst->data
+                 + ir0*(dst->nb[0])
+                 + i2*(dst->nb[1])
+                 + i3*(dst->nb[2]));
+
+            int i1        = 0;
+            int rows_left = ir;
+
+            while (rows_left > 0) {
+                size_t vl = __riscv_vsetvl_e32m4(rows_left);
+
+                vfloat32m4_t vsum = __riscv_vfmv_v_f_f32m4(0.0f, vl);
+
+                for (int i0 = 0; i0 < nc; ++i0) {
+                    vfloat32m4_t vs = __riscv_vlse32_v_f32m4(
+                        s + i0 + i1*ncs,
+                        ncs * sizeof(float),
+                        vl);
+                    vfloat32m4_t vc = __riscv_vlse32_v_f32m4(
+                        c + i0 + i1*nc,
+                        nc * sizeof(float),
+                        vl);
+                    vsum = __riscv_vfmacc_vv_f32m4(vsum, vs, vc, vl);
+                }
+
+                __riscv_vse32_v_f32m4(x + i1, vsum, vl);
+
+                i1        += vl;
+                rows_left -= vl;
+            }
+        }
+    }
+}
+#endif
+
 // ggml_compute_forward_ssm_conv
 
 static void ggml_compute_forward_ssm_conv_f32(
         const ggml_compute_params * params,
         ggml_tensor * dst) {
+#if defined(__riscv_v)
+    ggml_compute_forward_ssm_conv_f32_rvv(params, dst);
+    return;
+#endif
     const ggml_tensor * src0 = dst->src[0]; // conv_x
     const ggml_tensor * src1 = dst->src[1]; // conv1d.weight
 
